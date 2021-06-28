@@ -22,6 +22,7 @@ import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import FeedingPage from '../FeedingPage/FeedingPage';
+import ColoniesPage from '../ColoniesPage/ColoniesPage';
 
 import './App.css';
 
@@ -105,11 +106,19 @@ function App() {
             <LandingPage />
           </ProtectedRoute>
 
+            {/* MY NEW ROUTES */}
           <ProtectedRoute
             exact
             path="/feedingPage"
           >
             <FeedingPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path="/coloniesPage"
+          >
+            <ColoniesPage />
           </ProtectedRoute>
 
           {/* If none of the other routes matched, we will show a 404. */}

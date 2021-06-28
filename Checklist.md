@@ -54,3 +54,8 @@
 
 
   [] Components/ Home Page built (w/o Calendar)
+    [x]Home page  built with little functionality
+        []Need to get data for tally onChange to pass to a reducer
+    [x]Start tally button clicked and navigates to Feeding page
+    []Colonies button in navbar
+    []Penguins button in navbar
