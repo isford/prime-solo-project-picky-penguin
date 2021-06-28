@@ -20,15 +20,29 @@ function Nav() {
   return (
     <div className="nav">
       <Link to="/home">
-        <h2 className="nav-title">Prime Solo Project</h2>
+        <h2 className="nav-title">Picky Penguins</h2>
       </Link>
       <div>
         <Link className="navLink" to={loginLinkData.path}>
           {loginLinkData.text}
         </Link>
+        <Link className="navLink" to="/about">
+          About
+        </Link>
+
 
         {user.id && (
           <>
+            {/* MY LINKS */}
+            <Link className="navLink" to="/coloniesPage">
+              View Colonies
+            </Link>
+
+            <Link className="navLink" to="/penguinList">
+              View Penguins
+            </Link>
+            {/* END MY LINKS */}
+
             <Link className="navLink" to="/info">
               Info Page
             </Link>
@@ -36,17 +50,7 @@ function Nav() {
           </>
         )}
 
-        <Link className="navLink" to="/about">
-          About
-        </Link>
-        {/* MY LINKS */}
-        <Link className="navLink" to="/coloniesPage">
-          View Colonies
-        </Link>
 
-        <Link className="navLink" to="/penguinList">
-          View Penguins
-        </Link>
       </div>
     </div>
   );

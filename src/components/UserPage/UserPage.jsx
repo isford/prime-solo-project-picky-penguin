@@ -22,6 +22,8 @@ const handleTally = () => {
       <p>Your ID is: {user.id}</p>
       <LogOutButton className="btn" />
 
+      <input type="text" placeholder="Search Penguins Here"></input>
+
       <p>Start your next feed</p>
       <select name="date" id="date">
         <option value="6/28">6/28</option>
