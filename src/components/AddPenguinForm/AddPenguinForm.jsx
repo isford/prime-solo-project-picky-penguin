@@ -9,10 +9,16 @@ export default function AddPenguinForm() {
         history.push('/penguinList')
     }
 
+    const handleAdd = () =>{
+        console.log('Submit button clicked')
+        history.push('/addPenguinSuccess')
+    }
+
     return (
         <div>
             <p>Add Penguin Form</p>
             <button onClick={handleCancel}>Cancel</button>
+            <button onClick={handleAdd}>Submit</button>
         </div>
     )
 }

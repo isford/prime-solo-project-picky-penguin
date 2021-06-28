@@ -64,16 +64,16 @@
         [x]Button to view penguin details in Penguin List Page
         [x]Button to add a new penguin AddPenguinForm
 
-    []Success upon submitting feeding data page
-        []Home Button to go back home
+    [x]Success upon submitting feeding data page
+        [x]Home Button to go back home
 
-    []Delete and Edit buttons on Penguin details page
+    [x]Delete and Edit buttons on Penguin details page
 
     []Penguin deleted page 
         []Home button
 
-    []Penguin created page
-        []Home button
-        []Add another penguin button
+    [x]Penguin created page
+        [x]Home button
+        [x]Add another penguin button
 
 

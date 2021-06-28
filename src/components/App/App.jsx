@@ -27,8 +27,12 @@ import PenguinList from '../PenguinList/PenguinList';
 import PenguinDetails from '../PenguinDetails/PenguinDetails';
 import AddColonyForm from '../AddColonyForm/AddColonyForm';
 import AddPenguinForm from '../AddPenguinForm/AddPenguinForm';
+import SuccessPenguinPage from '../SuccessPenguinPage/SuccessPenguinPage';
+import SuccessFeedingPage from '../SuccessFeedingPage/SuccessFeedingPage';
+import DeletePenguin from '../DeletePenguin/DeletePenguin';
 
 import './App.css';
+
 
 function App() {
   const dispatch = useDispatch();
@@ -151,6 +155,27 @@ function App() {
             path="/addPenguin"
           >
             <AddPenguinForm />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path="/addPenguinSuccess"
+          >
+            <SuccessPenguinPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path="/addFeedingSuccess"
+          >
+            <SuccessFeedingPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path="/deletePenguin"
+          >
+            <DeletePenguin />
           </ProtectedRoute>
 
           {/* If none of the other routes matched, we will show a 404. */}
