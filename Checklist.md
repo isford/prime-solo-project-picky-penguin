@@ -62,4 +62,18 @@
         [x]Need a button to go to AddColonyForm
     [x]Penguins to go to PenguinList button in navbar
         [x]Button to view penguin details in Penguin List Page
-        []Button to add a new penguin AddPenguinForm
+        [x]Button to add a new penguin AddPenguinForm
+
+    []Success upon submitting feeding data page
+        []Home Button to go back home
+
+    []Delete and Edit buttons on Penguin details page
+
+    []Penguin deleted page 
+        []Home button
+
+    []Penguin created page
+        []Home button
+        []Add another penguin button
+
+
