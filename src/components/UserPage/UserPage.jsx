@@ -4,11 +4,30 @@ import {useSelector} from 'react-redux';
 import { StayPrimaryPortraitTwoTone } from '@material-ui/icons';
 import { useHistory } from 'react-router';
 
+//MATERIAL UI STUFF
+import 'date-fns';
+import Grid from '@material-ui/core/Grid';
+import DateFnsUtils from '@date-io/date-fns';
+import {
+  MuiPickersUtilsProvider,
+  KeyboardTimePicker,
+  KeyboardDatePicker,
+} from '@material-ui/pickers';
+//END MATERIAL UI
+
+
 
 function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
   const history = useHistory();
+  //MATERIAL UI STUFF
+  const [selectedDate, setSelectedDate] = React.useState(new Date('2014-08-18T21:11:54'));
+
+  const handleDateChange = (date) => {
+    setSelectedDate(date);
+  };
+  //END MATERIAL UI
 
 const handleTally = () => {
   console.log('Start Tally button clicked')
@@ -23,6 +42,24 @@ const handleTally = () => {
       <LogOutButton className="btn" />
 
       <input type="text" placeholder="Search Penguins Here"></input>
+
+      {/* MATERIAL UI START */}
+      <MuiPickersUtilsProvider utils={DateFnsUtils}>
+        <Grid container justify="space-around">
+          <KeyboardDatePicker
+            margin="normal"
+            id="date-picker-dialog"
+            label="Date picker dialog"
+            format="MM/dd/yyyy"
+            value={selectedDate}
+            onChange={handleDateChange}
+            KeyboardButtonProps={{
+              'aria-label': 'change date',
+            }}
+          />
+        </Grid>
+      </MuiPickersUtilsProvider>
+      {/* METERIAL UI END */}
 
       <p>Start your next feed</p>
       <select name="date" id="date">
