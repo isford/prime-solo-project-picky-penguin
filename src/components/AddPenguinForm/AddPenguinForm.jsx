@@ -1,17 +1,17 @@
-import React from 'react';
+import React from 'react'
 import { useHistory } from 'react-router';
 
-export default function AddColonyForm() {
+export default function AddPenguinForm() {
     const history = useHistory();
 
-    const handleCancel = ()=>{
+    const handleCancel = () => {
         console.log('Cancel button clicked')
-        history.push('/coloniesPage')
+        history.push('/penguinList')
     }
 
     return (
         <div>
-            <p>This is the add colony form</p>
+            <p>Add Penguin Form</p>
             <button onClick={handleCancel}>Cancel</button>
         </div>
     )

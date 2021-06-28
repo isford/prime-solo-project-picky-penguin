@@ -26,6 +26,7 @@ import ColoniesPage from '../ColoniesPage/ColoniesPage';
 import PenguinList from '../PenguinList/PenguinList';
 import PenguinDetails from '../PenguinDetails/PenguinDetails';
 import AddColonyForm from '../AddColonyForm/AddColonyForm';
+import AddPenguinForm from '../AddPenguinForm/AddPenguinForm';
 
 import './App.css';
 
@@ -143,6 +144,13 @@ function App() {
             path="/addColony"
           >
             <AddColonyForm />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path="/addPenguin"
+          >
+            <AddPenguinForm />
           </ProtectedRoute>
 
           {/* If none of the other routes matched, we will show a 404. */}
