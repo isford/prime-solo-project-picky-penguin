@@ -59,5 +59,6 @@
     [x]Start tally button clicked and navigates to Feeding page
     [x]Colonies button in navbar
         [x]Correctly navigating
+        []Need a button to go to AddColonyForm
     [x]Penguins to go to PenguinList button in navbar
-        []Button to view penguin details in Penguin List Page
+        [x]Button to view penguin details in Penguin List Page
