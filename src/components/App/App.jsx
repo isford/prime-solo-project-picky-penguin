@@ -21,6 +21,7 @@ import InfoPage from '../InfoPage/InfoPage';
 import LandingPage from '../LandingPage/LandingPage';
 import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
+import FeedingPage from '../FeedingPage/FeedingPage';
 
 import './App.css';
 
@@ -102,6 +103,13 @@ function App() {
             authRedirect="/user"
           >
             <LandingPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path="/feedingPage"
+          >
+            <FeedingPage />
           </ProtectedRoute>
 
           {/* If none of the other routes matched, we will show a 404. */}
