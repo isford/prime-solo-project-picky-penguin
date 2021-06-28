@@ -1,18 +1,19 @@
 import React from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import {useSelector} from 'react-redux';
-import { StayPrimaryPortraitTwoTone } from '@material-ui/icons';
+//import { StayPrimaryPortraitTwoTone } from '@material-ui/icons';
 import { useHistory } from 'react-router';
 
 //MATERIAL UI STUFF
-import 'date-fns';
-import Grid from '@material-ui/core/Grid';
-import DateFnsUtils from '@date-io/date-fns';
-import {
-  MuiPickersUtilsProvider,
-  KeyboardTimePicker,
-  KeyboardDatePicker,
-} from '@material-ui/pickers';
+//import 'date-fns';
+// import { format, formatDistance, formatRelative, subDays } from 'date-fns';
+// import Grid from '@material-ui/core/Grid';
+// import DateFnsUtils from '@date-io/date-fns';
+// import {
+//   MuiPickersUtilsProvider,
+//   KeyboardTimePicker,
+//   KeyboardDatePicker,
+// } from '@material-ui/pickers';
 //END MATERIAL UI
 
 
@@ -44,7 +45,7 @@ const handleTally = () => {
       <input type="text" placeholder="Search Penguins Here"></input>
 
       {/* MATERIAL UI START */}
-      <MuiPickersUtilsProvider utils={DateFnsUtils}>
+      {/* <MuiPickersUtilsProvider utils={DateFnsUtils}>
         <Grid container justify="space-around">
           <KeyboardDatePicker
             margin="normal"
@@ -58,8 +59,8 @@ const handleTally = () => {
             }}
           />
         </Grid>
-      </MuiPickersUtilsProvider>
-      {/* METERIAL UI END */}
+      </MuiPickersUtilsProvider> */}
+      {/* MATERIAL UI END */}
 
       <p>Start your next feed</p>
       <select name="date" id="date">
