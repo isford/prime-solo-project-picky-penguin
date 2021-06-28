@@ -43,6 +43,10 @@ function Nav() {
         <Link className="navLink" to="/coloniesPage">
           View Colonies
         </Link>
+
+        <Link className="navLink" to="/penguinList">
+          View Penguins
+        </Link>
       </div>
     </div>
   );

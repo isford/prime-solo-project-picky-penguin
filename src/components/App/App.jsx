@@ -23,6 +23,8 @@ import LoginPage from '../LoginPage/LoginPage';
 import RegisterPage from '../RegisterPage/RegisterPage';
 import FeedingPage from '../FeedingPage/FeedingPage';
 import ColoniesPage from '../ColoniesPage/ColoniesPage';
+import PenguinList from '../PenguinList/PenguinList';
+import PenguinDetails from '../PenguinDetails/PenguinDetails';
 
 import './App.css';
 
@@ -119,6 +121,20 @@ function App() {
             path="/coloniesPage"
           >
             <ColoniesPage />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path="/penguinList"
+          >
+            <PenguinList />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path="/penguinDetails"
+          >
+            <PenguinDetails />
           </ProtectedRoute>
 
           {/* If none of the other routes matched, we will show a 404. */}

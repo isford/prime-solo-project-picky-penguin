@@ -57,5 +57,7 @@
     [x]Home page  built with little functionality
         []Need to get data for tally onChange to pass to a reducer
     [x]Start tally button clicked and navigates to Feeding page
-    []Colonies button in navbar
-    []Penguins button in navbar
+    [x]Colonies button in navbar
+        [x]Correctly navigating
+    [x]Penguins to go to PenguinList button in navbar
+        []Button to view penguin details in Penguin List Page
