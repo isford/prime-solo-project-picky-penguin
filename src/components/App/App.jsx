@@ -30,8 +30,10 @@ import AddPenguinForm from '../AddPenguinForm/AddPenguinForm';
 import SuccessPenguinPage from '../SuccessPenguinPage/SuccessPenguinPage';
 import SuccessFeedingPage from '../SuccessFeedingPage/SuccessFeedingPage';
 import DeletePenguin from '../DeletePenguin/DeletePenguin';
+import SuccessNewColonyPage from '../SuccessNewColonyPage/SuccessNewColonyPage';
 
 import './App.css';
+
 
 
 function App() {
@@ -176,6 +178,13 @@ function App() {
             path="/deletePenguin"
           >
             <DeletePenguin />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path="/addColonySuccess"
+          >
+            <SuccessNewColonyPage />
           </ProtectedRoute>
 
           {/* END MY NEW ROUTES */}
