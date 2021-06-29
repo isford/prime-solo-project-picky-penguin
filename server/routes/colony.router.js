@@ -12,9 +12,9 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 router.get('/', (req, res) => {
     // GET route code here
     console.log('req.user is', req.user)
-    const queryText = `SELECT * FROM "colony_manager";`;
+    const queryText = `SELECT * FROM "colony_manager" WHERE "colony_manager".user_id = $1 ;`;
     if (req.isAuthenticated){
-        pool.query(queryText)
+        pool.query(queryText, [req.user.id])
         .then(results => {
             res.send(results.rows)
         }).catch(error => {
