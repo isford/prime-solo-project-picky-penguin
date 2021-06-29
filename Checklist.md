@@ -76,6 +76,17 @@
         [x]Home button
         [x]Add another penguin button
 
-    []Adding tables and data entry forms where applicable
+    [x]Adding tables and data entry forms where applicable
+
+[] Colony Crud
+    [x]Router built
+    []Get route
+    [x]Tables built with references
+    [x]Create reducer and sagas js files
+    []Reducers and sagas built to store data locally
+    []FETCH_COLONIES
+    []POST route
+    []UPDATE
+    []DELETE
 
 
