@@ -1,8 +1,18 @@
-import React from 'react'
+import React, {useEffect} from 'react';
 import { useHistory } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
 
 export default function ColoniesPage() {
     const history = useHistory();
+    const dispatch = useDispatch();
+    //GETs colonies stored locally
+    const colonyReducer = useSelector(store => store.colonyReducer);
+    //GETS user info stored locally
+    const userReducer = useSelector(store => store.userReducer);
+
+    useEffect(() => {
+        dispatch({ type: 'FETCH_COLONIES' });
+    }, []);
 
     function handleAddColony(){
         console.log('Add colony button clicked')
@@ -28,6 +38,14 @@ export default function ColoniesPage() {
                         <td><button>Edit</button></td>
                         <td><button>Delete</button></td>
                     </tr>
+                    {colonyReducer.map(colony => {
+                        return (
+                            <tr key = {colony.id}>
+                                <td>{colony.name}</td>
+                                <td></td>
+                            </tr>
+                        )
+                    })}
                 </tbody>
             </table>
 
