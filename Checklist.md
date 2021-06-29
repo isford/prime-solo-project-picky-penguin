@@ -78,7 +78,7 @@
 
     [x]Adding tables and data entry forms where applicable
 
-[] Colony Crud
+[x] Colony Crud
     [x]Router built
     [x]Get route
     [x]Tables built with references
@@ -86,7 +86,17 @@
     [x]Reducers and sagas built to store data locally
     [x]FETCH_COLONIES
     [x]POST route
-    []UPDATE
-    []DELETE
+    [x]UPDATE
+    [x]DELETE
+
+[]Penguin Crud
+    []Router built
+    []Tables fixed
+    []Save colonies in reducer to map through in Penguin dropdown
+    []Create reducer and saga js files
+    []GET
+    []POST
+    []Update
+    []Delete
 
 
