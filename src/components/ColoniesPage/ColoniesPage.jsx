@@ -24,6 +24,13 @@ export default function ColoniesPage() {
         dispatch({type: 'REMOVE_COLONIES',
                 payload: colony})
     }
+
+    const handleEdit = (colony) => {
+        console.log('Colony to be updated is', colony);
+        dispatch({type:'EDIT_COLONY', payload: colony})
+        history.push('/editColonyForm');
+
+    }
     return (
         <div>
             <p>You are on the colonies page</p>
@@ -49,7 +56,7 @@ export default function ColoniesPage() {
                             <tr key = {colony.id}>
                                 <td>{colony.name}</td>
                                 <td>Number of Birds</td>
-                                <td><button>Edit</button></td>
+                                <td><button onClick={() => handleEdit(colony)}>Edit</button></td>
                                 <td><button onClick={() => handleDelete(colony)}>Delete</button></td>
                             </tr>
                         )

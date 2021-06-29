@@ -52,4 +52,24 @@ router.delete('/:id', rejectUnauthenticated, (req,res) =>{
     });
 });
 
+//Update Colony in DB
+router.put('/:id', rejectUnauthenticated, (req, res) => {
+    let colonyId = req.params.id;
+    console.log('Colony Id in router.put is', colonyId)
+
+    let updatedColony = req.body;
+    console.log('The updated colony is', updatedColony);
+
+    let queryText = `UPDATE "colony_manager" SET "name" = $1
+                    WHERE "colony_manager".id = $2`
+    pool.query(queryText, [updatedColony.name, colonyId])
+    .then(response => {
+        console.log(response.rowCount);
+        res.sendStatus(202)
+    }).catch(err => {
+        console.log(err);
+        res.sendStatus(500);
+    });
+});
+
 module.exports = router;
