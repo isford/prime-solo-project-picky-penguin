@@ -14,9 +14,15 @@ export default function ColoniesPage() {
         dispatch({ type: 'FETCH_COLONIES' });
     }, []);
 
-    function handleAddColony(){
+    const handleAddColony = () =>{
         console.log('Add colony button clicked')
         history.push('/addColony')
+    }
+
+    const handleDelete = (colony) =>{
+        console.log('Colony to be deleted', colony)
+        dispatch({type: 'REMOVE_COLONIES',
+                payload: colony})
     }
     return (
         <div>
@@ -42,7 +48,9 @@ export default function ColoniesPage() {
                         return (
                             <tr key = {colony.id}>
                                 <td>{colony.name}</td>
-                                <td></td>
+                                <td>Number of Birds</td>
+                                <td><button>Edit</button></td>
+                                <td><button onClick={() => handleDelete(colony)}>Delete</button></td>
                             </tr>
                         )
                     })}

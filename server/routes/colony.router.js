@@ -38,4 +38,18 @@ router.post('/', (req, res) => {
 
 });
 
+//Delete Colony in DB
+router.delete('/:id', rejectUnauthenticated, (req,res) =>{
+    console.log(`You've arrived at /api/colony DELETE`, req.params)
+    console.log(`User deleting item is`, req.user)
+    
+    const queryText = `DELETE FROM "colony_manager" WHERE "id"=$1;`;
+    pool.query(queryText, [req.params.id])
+    .then(()=> res.sendStatus(200))
+    .catch((err)=> {
+        console.log('Error in delete', err)
+        res.sendStatus(500)
+    });
+});
+
 module.exports = router;
