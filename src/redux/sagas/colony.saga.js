@@ -12,8 +12,18 @@ function* fetchColony(){
     }
 }
 
+function* addColony(action){
+    try{
+        yield axios.post('/api/colony', action.payload);
+        yield put({type: 'FETCH_COLONIES'})
+    }catch(error){
+        console.log('Error in addColony generator', error)
+    };
+}
+
 function* colonySaga() {
     yield takeEvery('FETCH_COLONIES', fetchColony);
+    yield takeEvery('POST_COLONY', addColony)
 }
 
 export default colonySaga;
