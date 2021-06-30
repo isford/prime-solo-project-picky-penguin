@@ -90,10 +90,10 @@
     [x]DELETE
 
 []Penguin Crud
-    []Router built
-    []Tables fixed
-    []Save colonies in reducer to map through in Penguin dropdown
-    []Create reducer and saga js files
+    [x]Router built
+    [x]Tables fixed
+    [x]Save colonies in reducer to map through in Penguin dropdown
+    [x]Create reducer and saga js files
     []GET
     []POST
     []Update

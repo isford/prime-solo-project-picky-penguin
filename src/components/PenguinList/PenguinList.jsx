@@ -1,5 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router';
+import { useDispatch, useSelector } from 'react-redux';
 
 //material UI STUFF
 import { makeStyles } from '@material-ui/core/styles';
@@ -21,9 +22,18 @@ const useStyles = makeStyles({
 
 export default function PenguinList() {
     const history = useHistory();
+    const dispatch = useDispatch();
+
     //material UI
     const classes = useStyles();
     //end material ui
+
+    const colonyReducer = useSelector(store => store.PenguinReducer);
+    const userReducer = useSelector(store => store.userReducer);
+
+    useEffect(() => {
+        dispatch({ type: 'FETCH_PENGUINS' });
+    }, []);
 
     const handlePenguinDetails = () =>{
         console.log('Penguin details button clicked')

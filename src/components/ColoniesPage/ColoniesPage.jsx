@@ -45,12 +45,12 @@ export default function ColoniesPage() {
                     </tr>
                 </thead>
                 <tbody>
-                    <tr>
+                    {/* <tr>
                         <td>Breeding Adults</td>
                         <td>22</td>
                         <td><button>Edit</button></td>
                         <td><button>Delete</button></td>
-                    </tr>
+                    </tr> */}
                     {colonyReducer.map(colony => {
                         return (
                             <tr key = {colony.id}>
