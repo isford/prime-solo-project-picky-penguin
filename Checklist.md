@@ -94,8 +94,8 @@
     [x]Tables fixed
     [x]Save colonies in reducer to map through in Penguin dropdown
     [x]Create reducer and saga js files
-    []GET
-        []JOIN Colony and Penguin tables to display colony name
+    [x]GET
+        [x]JOIN Colony and Penguin tables to display colony name
     []POST
     []Update
     []Delete
