@@ -47,6 +47,12 @@ export default function PenguinList() {
         history.push('/addPenguin')
     }
 
+    const handlePenguinEdit = (penguin) => {
+        console.log('Edit penguin clicked', penguin)
+        dispatch({ type: 'EDIT_PENGUIN', payload: penguin })
+        history.push('/editPenguinForm')
+    }
+
     const handlePenguinDelete = (penguin) => {
         console.log('Delete button clicked', penguin)
         dispatch({
@@ -68,17 +74,11 @@ export default function PenguinList() {
                             <TableCell>Fish Count Today</TableCell>
                             <TableCell>5 Day Average</TableCell>
                             <TableCell>View Penguin</TableCell>
+                            <TableCell>Edit Penguin</TableCell>
+                            <TableCell>Delete Penguin</TableCell>
                     </TableRow>
                 </TableHead>
                     <TableBody>
-                        <TableRow>
-                            <TableCell>Nadine</TableCell>
-                            <TableCell>Breeders</TableCell>
-                            <TableCell>16</TableCell>
-                            <TableCell>12</TableCell>
-                            <TableCell><button onClick={handlePenguinDetails}>Penguin Details</button></TableCell>
-                            <TableCell><button onClick={handlePenguinDetails}>Delete</button></TableCell>
-                    </TableRow>
                     {penguinReducer.map(penguin => {
                         return(
                             <TableRow key = {penguin.id}>
@@ -87,6 +87,7 @@ export default function PenguinList() {
                                 <TableCell>FISH EATEN</TableCell>
                                 <TableCell>FISH AVERAGE</TableCell>
                                 <TableCell><button onClick={() => handlePenguinDetails(penguin)}>Penguin Details</button></TableCell>
+                                <TableCell><button onClick={() => handlePenguinEdit(penguin)}>Edit</button></TableCell>
                                 <TableCell><button onClick={() => handlePenguinDelete(penguin)}>Delete</button></TableCell>
                             </TableRow>
                         )

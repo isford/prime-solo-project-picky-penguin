@@ -98,6 +98,7 @@
         [x]JOIN Colony and Penguin tables to display colony name
     [x]POST
     []Update
-    []Delete
+        []Create penguin edit form
+    [x]Delete
 
 

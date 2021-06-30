@@ -32,6 +32,7 @@ import SuccessFeedingPage from '../SuccessFeedingPage/SuccessFeedingPage';
 import DeletePenguin from '../DeletePenguin/DeletePenguin';
 import SuccessNewColonyPage from '../SuccessNewColonyPage/SuccessNewColonyPage';
 import EditColonyForm from '../EditColonyForm/EditColonyForm';
+import EditPenguinForm from '../EditPenguinForm/EditPenguinForm';
 
 import './App.css';
 
@@ -193,6 +194,13 @@ function App() {
             path="/editColonyForm"
           >
             <EditColonyForm />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path="/editPenguinForm"
+          >
+            <EditPenguinForm />
           </ProtectedRoute>
 
           {/* END MY NEW ROUTES */}
