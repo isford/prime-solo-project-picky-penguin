@@ -25,23 +25,23 @@ router.get('/', (req, res) => {
     }
 });
 
-// //Add new colony to DB
-// router.post('/', (req, res) => {
-//     const queryText = `INSERT INTO "colony_manager" ("name", "user_id")
-//                         VALUES ($1, $2);`;
-//     console.log('User adding item is', req.user.id);
-//     if (req.isAuthenticated) {
-//         pool.query(queryText, [req.body.name, req.user.id])
-//             .then(results => {
-//                 res.sendStatus(201);
-//             }).catch(err => {
-//                 console.log('Error in Colony Post', err);
-//             })
-//     } else {
-//         res.sendStatus(403);
-//     }
+//Add new penguin to DB
+router.post('/', (req, res) => {
+    const queryText = `INSERT INTO "penguin" ("name","colony_id", "sex", "band_color", "user_id")
+                        VALUES ($1, $2, $3, $4, $5);`;
+    console.log('User adding item is', req.user.id);
+    if (req.isAuthenticated) {
+        pool.query(queryText, [req.body.name, req.body.colony_id, req.body.sex, req.body.band_color, req.user.id])
+            .then(results => {
+                res.sendStatus(201);
+            }).catch(err => {
+                console.log('Error in Colony Post', err);
+            })
+    } else {
+        res.sendStatus(403);
+    }
 
-// });
+});
 
 // //Delete Colony in DB
 // router.delete('/:id', rejectUnauthenticated, (req, res) => {

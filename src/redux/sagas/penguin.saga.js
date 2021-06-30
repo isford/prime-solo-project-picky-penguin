@@ -12,14 +12,14 @@ function* fetchPenguins() {
     }
 }
 
-// function* addColony(action) {
-//     try {
-//         yield axios.post('/api/colony', action.payload);
-//         yield put({ type: 'FETCH_COLONIES' })
-//     } catch (error) {
-//         console.log('Error in addColony generator', error)
-//     };
-// }
+function* addPenguin(action) {
+    try {
+        yield axios.post('/api/penguin', action.payload);
+        yield put({ type: 'FETCH_PENGUINS' })
+    } catch (error) {
+        console.log('Error in addPenguin generator', error)
+    };
+}
 
 // function* deleteColony(action) {
 //     console.log('Item to be deleted is', action.payload)
@@ -34,7 +34,7 @@ function* fetchPenguins() {
 
 function* penguinSaga() {
     yield takeEvery('FETCH_PENGUINS', fetchPenguins);
-    // yield takeEvery('POST_COLONY', addColony)
+    yield takeEvery('POST_PENGUIN', addPenguin)
     // yield takeEvery('REMOVE_COLONIES', deleteColony)
 }
 

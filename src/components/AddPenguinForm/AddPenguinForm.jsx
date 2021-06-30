@@ -9,7 +9,7 @@ export default function AddPenguinForm() {
 
     const [penguinName, setPenguinName] = useState('');
     const [colony, setColony] = useState ('');
-    const [sex, setSex] = useState('');
+    const [sex, setSex] = useState(0);
     const [bandColor, setBandColor] = useState ('');
     //const [nesting, setNesting] = useState (false);
     //const [mating, setMating] = useState (false);
@@ -34,28 +34,37 @@ export default function AddPenguinForm() {
     }
 
     const handleAdd = () =>{
-        console.log('Submit button clicked')
+        console.log('Submit button clicked', penguinToAdd)
         history.push('/addPenguinSuccess')
+        dispatch({type: 'POST_PENGUIN',
+                payload: penguinToAdd})
+        setPenguinName('');
+        setColony('');
+        setSex(0);
+        setBandColor('');
     }
 
     return (
         <div>
             <p>Add Penguin Form</p>
-            <input type="text" placeholder = "Name"></input>
+            <input type="text" placeholder = "Name" value = {penguinName}
+                onChange={(event) => setPenguinName(event.target.value)}></input>
 
-            <select name="colony_name" id="colony_name">
+            <select name="colony_name" id="colony_name"
+                onChange={(event) => setColony(event.target.value)}>
                 {colonyReducer.map(colony => {
                     return(
-                    <option key={colony.id}>{colony.name}</option>
+                    <option value={colony.id} key={colony.id}>{colony.name}</option>
                     )
                 })}
             </select>
 
             
 
-            <select name="sex" id="sex">
-                <option value="female">Female</option>
-                <option value="male">Male</option>
+            <select onChange={(event) => setSex(event.target.value)} name="sex" id="sex" value={sex}>
+                <option value='0'>Sex</option>
+                <option value='female'>Female</option>
+                <option value='male'>Male</option>
             </select>
 
             {/* <select name="nesting" id="nesting">
@@ -67,8 +76,11 @@ export default function AddPenguinForm() {
                 <option value="true">Yes they are breeding</option>
                 <option value="false">No they are not breeding</option>
             </select> */}
+            <input type="text" placeholder="Band Color" value = {bandColor}
+                onChange={(event) => setBandColor(event.target.value)}></input>
 
-            <input type="text" placeholder="Notes"></input>
+            {/* <input type="text" placeholder="Notes" value = {note}
+                onChange={(event) => setNotes(event.target.value)}></input> */}
 
             <button onClick={handleCancel}>Cancel</button>
             <button onClick={handleAdd}>Submit</button>
