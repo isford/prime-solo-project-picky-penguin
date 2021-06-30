@@ -1,4 +1,4 @@
-const PenguinReducer = (state = [], action) => {
+const penguinReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_PENGUIN':
             return action.payload;
@@ -11,4 +11,4 @@ const PenguinReducer = (state = [], action) => {
     }
 }
 
-export default PenguinReducer;
+export default penguinReducer;

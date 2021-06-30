@@ -3,7 +3,7 @@ import errors from './errors.reducer';
 import user from './user.reducer';
 import colonyReducer from './colony.reducer';
 import editReducer from './edit.reducer';
-import PenguinReducer from './penguin.reducer';
+import penguinReducer from './penguin.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -16,7 +16,7 @@ const rootReducer = combineReducers({
   user, // will have an id and username if someone is logged in
   colonyReducer,
   editReducer,
-  PenguinReducer,
+  penguinReducer,
 });
 
 export default rootReducer;

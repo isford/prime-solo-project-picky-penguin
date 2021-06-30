@@ -12,6 +12,8 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
+//import penguinReducer from '../../redux/reducers/penguin.reducer';
+
 const useStyles = makeStyles({
     table: {
         minWidth: 650,
@@ -28,16 +30,16 @@ export default function PenguinList() {
     const classes = useStyles();
     //end material ui
 
-    const colonyReducer = useSelector(store => store.PenguinReducer);
+    const penguinReducer = useSelector(store => store.penguinReducer);
     const userReducer = useSelector(store => store.userReducer);
 
     useEffect(() => {
         dispatch({ type: 'FETCH_PENGUINS' });
     }, []);
 
-    const handlePenguinDetails = () =>{
-        console.log('Penguin details button clicked')
-        history.push('/penguinDetails')
+    const handlePenguinDetails = (penguin) =>{
+        console.log('Penguin details button clicked', penguin)
+        //history.push('/penguinDetails')
     }
     
     const handleAddPenguin = () => {
@@ -68,6 +70,17 @@ export default function PenguinList() {
                             <TableCell>12</TableCell>
                             <TableCell><button onClick={handlePenguinDetails}>Penguin Details</button></TableCell>
                     </TableRow>
+                    {penguinReducer.map(penguin => {
+                        return(
+                            <TableRow key = {penguin.id}>
+                                <TableCell>{penguin.name}</TableCell>
+                                <TableCell>{penguin.colony_id}</TableCell>
+                                <TableCell>FISH EATEN</TableCell>
+                                <TableCell>FISH AVERAGE</TableCell>
+                                <TableCell><button onClick={() => handlePenguinDetails(penguin)}>Penguin Details</button></TableCell>
+                            </TableRow>
+                        )
+                    })}
                 </TableBody>
             </Table>
             </TableContainer>
