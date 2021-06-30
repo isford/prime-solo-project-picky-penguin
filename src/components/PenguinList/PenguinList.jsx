@@ -46,6 +46,14 @@ export default function PenguinList() {
         console.log('Add penguin clicked')
         history.push('/addPenguin')
     }
+
+    const handlePenguinDelete = (penguin) => {
+        console.log('Delete button clicked', penguin)
+        dispatch({
+            type: 'REMOVE_PENGUINS',
+            payload: penguin
+        })
+    }
     
 
     return (
@@ -69,6 +77,7 @@ export default function PenguinList() {
                             <TableCell>16</TableCell>
                             <TableCell>12</TableCell>
                             <TableCell><button onClick={handlePenguinDetails}>Penguin Details</button></TableCell>
+                            <TableCell><button onClick={handlePenguinDetails}>Delete</button></TableCell>
                     </TableRow>
                     {penguinReducer.map(penguin => {
                         return(
@@ -78,6 +87,7 @@ export default function PenguinList() {
                                 <TableCell>FISH EATEN</TableCell>
                                 <TableCell>FISH AVERAGE</TableCell>
                                 <TableCell><button onClick={() => handlePenguinDetails(penguin)}>Penguin Details</button></TableCell>
+                                <TableCell><button onClick={() => handlePenguinDelete(penguin)}>Delete</button></TableCell>
                             </TableRow>
                         )
                     })}

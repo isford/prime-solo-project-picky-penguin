@@ -96,7 +96,7 @@
     [x]Create reducer and saga js files
     [x]GET
         [x]JOIN Colony and Penguin tables to display colony name
-    []POST
+    [x]POST
     []Update
     []Delete
 

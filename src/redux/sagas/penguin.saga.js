@@ -21,21 +21,21 @@ function* addPenguin(action) {
     };
 }
 
-// function* deleteColony(action) {
-//     console.log('Item to be deleted is', action.payload)
-//     let data = action.payload
-//     try {
-//         yield axios.delete(`/api/colony/${data.id}`)
-//         yield put({ type: 'FETCH_COLONIES' });
-//     } catch (error) {
-//         console.log('Error in delete colony generator', error)
-//     }
-// }
+function* deletePenguin(action) {
+    console.log('Penguin to be deleted is', action.payload)
+    let data = action.payload
+    try {
+        yield axios.delete(`/api/penguin/${data.id}`)
+        yield put({ type: 'FETCH_PENGUINS' });
+    } catch (error) {
+        console.log('Error in delete colony generator', error)
+    }
+}
 
 function* penguinSaga() {
     yield takeEvery('FETCH_PENGUINS', fetchPenguins);
     yield takeEvery('POST_PENGUIN', addPenguin)
-    // yield takeEvery('REMOVE_COLONIES', deleteColony)
+    yield takeEvery('REMOVE_PENGUINS', deletePenguin)
 }
 
 export default penguinSaga;
