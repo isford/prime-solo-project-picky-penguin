@@ -74,7 +74,7 @@ export default function PenguinList() {
                         return(
                             <TableRow key = {penguin.id}>
                                 <TableCell>{penguin.name}</TableCell>
-                                <TableCell>{penguin.colony_id}</TableCell>
+                                <TableCell>{penguin.colony_name}</TableCell>
                                 <TableCell>FISH EATEN</TableCell>
                                 <TableCell>FISH AVERAGE</TableCell>
                                 <TableCell><button onClick={() => handlePenguinDetails(penguin)}>Penguin Details</button></TableCell>

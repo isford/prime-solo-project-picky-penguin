@@ -54,7 +54,7 @@ export default function ColoniesPage() {
                     {colonyReducer.map(colony => {
                         return (
                             <tr key = {colony.id}>
-                                <td>{colony.name}</td>
+                                <td>{colony.colony_name}</td>
                                 <td>Number of Birds</td>
                                 <td><button onClick={() => handleEdit(colony)}>Edit</button></td>
                                 <td><button onClick={() => handleDelete(colony)}>Delete</button></td>

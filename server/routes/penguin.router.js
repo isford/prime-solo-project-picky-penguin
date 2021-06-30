@@ -7,7 +7,12 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 //GET ALL Penguins FROM DB
 router.get('/', (req, res) => {
     console.log('req.user is', req.user)
-    const queryText = `SELECT * FROM "penguin" WHERE "penguin".user_id = $1 ;`;
+    const queryText = `
+    SELECT  "penguin".name, "penguin".id, "colony_manager".name AS "colony_name"
+    FROM "penguin"
+    JOIN "colony_manager"
+    ON "penguin".colony_id = "colony_manager".id
+    WHERE "penguin".user_id = $1;	 ;`;
     if (req.isAuthenticated) {
         pool.query(queryText, [req.user.id])
             .then(results => {
