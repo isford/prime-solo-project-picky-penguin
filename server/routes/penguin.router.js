@@ -8,7 +8,7 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 router.get('/', (req, res) => {
     console.log('req.user is', req.user)
     const queryText = `
-    SELECT  "penguin".name, "penguin".id, "colony_manager".name AS "colony_name"
+    SELECT  "penguin".name, "penguin".id, "penguin".sex, "penguin".band_color, "colony_manager".name AS "colony_name"
     FROM "penguin"
     JOIN "colony_manager"
     ON "penguin".colony_id = "colony_manager".id
@@ -57,24 +57,28 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
         });
 });
 
-// //Update Colony in DB
-// router.put('/:id', rejectUnauthenticated, (req, res) => {
-//     let colonyId = req.params.id;
-//     console.log('Colony Id in router.put is', colonyId)
+//Update Penguin in DB
+router.put('/:id', rejectUnauthenticated, (req, res) => {
+    let penguinId = req.params.id;
+    console.log('Penguin Id in router.put is', penguinId)
 
-//     let updatedColony = req.body;
-//     console.log('The updated colony is', updatedColony);
+    let updatedPenguin = req.body;
+    console.log('The updated colony is', updatedPenguin);
 
-//     let queryText = `UPDATE "colony_manager" SET "name" = $1
-//                     WHERE "colony_manager".id = $2`
-//     pool.query(queryText, [updatedColony.name, colonyId])
-//         .then(response => {
-//             console.log(response.rowCount);
-//             res.sendStatus(202)
-//         }).catch(err => {
-//             console.log(err);
-//             res.sendStatus(500);
-//         });
-// });
+    let queryText = `UPDATE "penguin" SET "name" = $1,
+                    "colony_id" = $2,
+                    "sex"= $3,
+                    "band_color"= $4
+                    WHERE "penguin".id = $5`
+    pool.query(queryText, [updatedPenguin.name, updatedPenguin.colony_id, 
+        updatedPenguin.sex, updatedPenguin.band_color, penguinId])
+        .then(response => {
+            console.log(response.rowCount);
+            res.sendStatus(202)
+        }).catch(err => {
+            console.log(err);
+            res.sendStatus(500);
+        });
+});
 
 module.exports = router;
