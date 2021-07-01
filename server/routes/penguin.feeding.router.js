@@ -4,44 +4,47 @@ const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
 
-// //GET ALL Penguins FROM DB
-// router.get('/', (req, res) => {
-//     console.log('req.user is', req.user)
-//     const queryText = `
-//     SELECT  "penguin".name, "penguin".id, "penguin".sex, "penguin".band_color, "colony_manager".name AS "colony_name"
-//     FROM "penguin"
-//     JOIN "colony_manager"
-//     ON "penguin".colony_id = "colony_manager".id
-//     WHERE "penguin".user_id = $1;	 ;`;
-//     if (req.isAuthenticated) {
-//         pool.query(queryText, [req.user.id])
-//             .then(results => {
-//                 res.send(results.rows)
-//             }).catch(error => {
-//                 console.log('Error in Penguin GET route', error)
-//             })
-//     } else {
-//         res.sendStatus(403)
-//     }
-// });
+// //GET ALL feedings FROM DB
+router.get('/', (req, res) => {
+    console.log('req.user is', req.user)
+    const queryText = `
+    SELECT  "penguin".name, "penguin".id, "penguin".sex, "penguin".band_color, 
+    "colony_manager".name AS "colony_name", "daily_data".daily_total_am, 
+    "daily_data".calcium, "daily_data".multivitamin, "daily_data".itraconazole
+    FROM "penguin"
+    JOIN "colony_manager"
+    ON "penguin".colony_id = "colony_manager".id
+    JOIN "daily_data"
+    ON "penguin".id = "daily_data".penguin_id
+    WHERE "penguin".user_id = $1;`;
+    if (req.isAuthenticated) {
+        pool.query(queryText, [req.user.id])
+            .then(results => {
+                res.send(results.rows)
+            }).catch(error => {
+                console.log('Error in Feeding GET route', error)
+            })
+    } else {
+        res.sendStatus(403)
+    }
+});
 
-// //Add new penguin to DB
-// router.post('/', (req, res) => {
-//     const queryText = `INSERT INTO "penguin" ("name","colony_id", "sex", "band_color", "user_id")
-//                         VALUES ($1, $2, $3, $4, $5);`;
-//     console.log('User adding item is', req.user.id);
-//     if (req.isAuthenticated) {
-//         pool.query(queryText, [req.body.name, req.body.colony_id, req.body.sex, req.body.band_color, req.user.id])
-//             .then(results => {
-//                 res.sendStatus(201);
-//             }).catch(err => {
-//                 console.log('Error in Colony Post', err);
-//             })
-//     } else {
-//         res.sendStatus(403);
-//     }
-
-// });
+//Add new feeding to DB
+router.post('/', (req, res) => {
+    const queryText = `INSERT INTO "daily_data" ("penguin_id","user_id", "date", "daily_total_am", "calcium", "multivitamin", "itraconazole")
+                        VALUES ($1, $2, $3, $4, $5);`;
+    console.log('User adding item is', req.user.id);
+    if (req.isAuthenticated) {
+        pool.query(queryText, [req.body.name, req.body.colony_id, req.body.sex, req.body.band_color, req.user.id])
+            .then(results => {
+                res.sendStatus(201);
+            }).catch(err => {
+                console.log('Error in Colony Post', err);
+            })
+    } else {
+        res.sendStatus(403);
+    }
+});
 
 // // //Delete Penguin in DB
 // router.delete('/:id', rejectUnauthenticated, (req, res) => {

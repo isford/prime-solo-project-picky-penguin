@@ -27,7 +27,7 @@ export default function FeedingPage() {
     const history = useHistory();
     const dispatch = useDispatch();
     const penguinReducer = useSelector(store => store.penguinReducer);
-
+    const penguinFeedingReducer = useSelector(store => store.penguinFeedingReducer);
     //material UI
     const classes = useStyles();
     //end material ui
@@ -54,7 +54,7 @@ export default function FeedingPage() {
     }
 
     useEffect(() => {
-        dispatch({ type: 'FETCH_PENGUINS' });
+        dispatch({ type: 'FETCH_FEEDINGS' });
     }, []);
 
     return (
@@ -94,6 +94,10 @@ export default function FeedingPage() {
             </TableContainer>
 
             <button onClick = {handleFeed}>Submit Feed</button>
+            <select name="time" id="time">
+        <option value="am">AM</option>
+        <option value="pm">PM</option>
+      </select>
         </div>
     )
 }

@@ -1,10 +1,10 @@
 const penguinFeedingReducer = (state = [], action) => {
     switch (action.type) {
-        case 'SET_PENGUIN':
+        case 'SET_FEEDING':
             return action.payload;
-        case 'ADD_PENGUIN':
+        case 'ADD_FEEDING':
             return [...state, action.payload];
-        case 'DELETE_PENGUIN':
+        case 'DELETE_FEEDING':
             return state;
         default:
             return state;

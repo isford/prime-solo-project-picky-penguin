@@ -2,15 +2,15 @@ import axios from 'axios';
 import { put, takeEvery } from 'redux-saga/effects';
 
 
-// function* fetchPenguins() {
-//     try {
-//         const response = yield axios.get('/api/penguin')
-//         console.log('Fetch penguin generator fetched', response)
-//         yield put({ type: "SET_PENGUIN", payload: response.data })
-//     } catch (error) {
-//         console.log('Failed GET request in fetch penguin', error)
-//     }
-// }
+function* fetchFeedings() {
+    try {
+        const response = yield axios.get('/api/feeding')
+        console.log('Fetch penguin generator fetched', response)
+        yield put({ type: "SET_FEEDING", payload: response.data })
+    } catch (error) {
+        console.log('Failed GET request in fetch feeding', error)
+    }
+}
 
 // function* addPenguin(action) {
 //     try {
@@ -33,9 +33,9 @@ import { put, takeEvery } from 'redux-saga/effects';
 // }
 
 function* penguinFeedingSaga() {
-    yield takeEvery('FETCH_PENGUINS', fetchPenguins);
-    yield takeEvery('POST_PENGUIN', addPenguin)
-    yield takeEvery('REMOVE_PENGUINS', deletePenguin)
+    yield takeEvery('FETCH_FEEDINGS', fetchFeedings);
+   //yield takeEvery('POST_PENGUIN', addPenguin)
+    //yield takeEvery('REMOVE_PENGUINS', deletePenguin)
 }
 
 export default penguinFeedingSaga;

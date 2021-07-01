@@ -24,6 +24,12 @@ function UserPage() {
 const handleTally = () => {
   console.log('Start Tally button clicked')
   history.push('/feedingPage')
+  axios.post('/api/feeding')
+  .then(response => {
+    console.log('NO IDEA')
+  }).catch(error =>{
+    console.log('Error in tally post', error)
+  })
 
 }
 
