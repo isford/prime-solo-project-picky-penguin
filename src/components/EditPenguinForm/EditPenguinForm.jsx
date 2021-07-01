@@ -39,7 +39,7 @@ export default function EditPenguinForm() {
         })
     }
 
-    console.log('THe colony is...', colony)
+    console.log('The colony is...', colony)
 
     // const handleEdit = (event) => {
     //     dispatch({
@@ -55,7 +55,7 @@ export default function EditPenguinForm() {
            {/* NAME */}
             <input onChange={(event) => setPenguinName(event.target.value)}
              value={penguinName} type="text" 
-             placeholder="New Penguin Name Here"></input>
+             placeholder={penguin.name}></input>
 
             {/* COLONY */}
             <select name="colony_name" id="colony_name"

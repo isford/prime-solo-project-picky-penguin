@@ -89,7 +89,7 @@
     [x]UPDATE
     [x]DELETE
 
-[]Penguin Crud
+[x]Penguin Crud
     [x]Router built
     [x]Tables fixed
     [x]Save colonies in reducer to map through in Penguin dropdown
@@ -97,8 +97,14 @@
     [x]GET
         [x]JOIN Colony and Penguin tables to display colony name
     [x]POST
-    []Update
-        []Create penguin edit form
+    [x]Update
+        [x]Create penguin edit form
     [x]Delete
+
+[]Feeding Page
+    [x]Create table
+    [x]Create functions to increment and decrement fish count
+    []Store fish count data in reducer
+    
 
 

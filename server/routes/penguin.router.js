@@ -63,7 +63,7 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
     console.log('Penguin Id in router.put is', penguinId)
 
     let updatedPenguin = req.body;
-    console.log('The updated colony is', updatedPenguin);
+    console.log('The updated penguin is', updatedPenguin);
 
     let queryText = `UPDATE "penguin" SET "name" = $1,
                     "colony_id" = $2,

@@ -10,7 +10,8 @@ const passport = require('./strategies/user.strategy');
 // Route includes
 const userRouter = require('./routes/user.router');
 const colonyRouter = require('./routes/colony.router');
-const penguinRouter = require('./routes/penguin.router')
+const penguinRouter = require('./routes/penguin.router');
+const penguinFeedingRouter = require('./routes/penguin.feeding.router');
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -27,6 +28,7 @@ app.use(passport.session());
 app.use('/api/user', userRouter);
 app.use('/api/colony', colonyRouter);
 app.use('/api/penguin', penguinRouter);
+app.use('/api/feeding', penguinFeedingRouter);
 
 // Serve static files
 app.use(express.static('build'));
