@@ -32,6 +32,7 @@ export default function FeedingPage() {
     const classes = useStyles();
     //end material ui
 
+
     const [fishCount, setFishCount] = useState(0);
 
     const handleFishIncrease = (penguin) => {
@@ -64,8 +65,34 @@ export default function FeedingPage() {
         dispatch({ type: 'FETCH_PENGUINS' });
     }, []);
 
-    console.log('IN PFR IS',penguinFeedingReducer);
-    //console.log('IN PR IS', penguinReducer);
+    const handlePenguinCalcium = (penguin) => {
+        penguin.calcium = !penguin.calcium;
+        dispatch({
+            type: 'EDIT_DAILY_TOTAL',
+            payload: penguin
+        })
+        console.log(penguin.calcium)
+    }
+
+    const handlePenguinMultivitamin = (penguin) => {
+        penguin.multivitamin = !penguin.multivitamin;
+        dispatch({
+            type: 'EDIT_DAILY_TOTAL',
+            payload: penguin
+        })
+        console.log(penguin.multivitamin)
+
+    }
+
+    const handlePenguinItra = (penguin) => {
+        penguin.itraconazole = !penguin.itraconazole;
+        dispatch({
+            type: 'EDIT_DAILY_TOTAL',
+            payload: penguin
+        })
+        console.log(penguin.itraconazole)
+
+    }
 
 
 
@@ -79,7 +106,6 @@ export default function FeedingPage() {
                             <TableCell>Name</TableCell>
                             <TableCell>Colony</TableCell>
                             <TableCell>Fish Count</TableCell>
-                            {/* <TableCell>Fish Count</TableCell> */}
                             <TableCell>Calcium</TableCell>
                             <TableCell>Multivitamin</TableCell>
                             <TableCell>Itraconazole</TableCell>
@@ -94,10 +120,10 @@ export default function FeedingPage() {
                                     <TableCell>{penguin.name}</TableCell>
                                     <TableCell>{penguin.colony}</TableCell>
                                     <TableCell>{penguin.daily_total_am}</TableCell>
-                                    {/* <TableCell>{fishCount}</TableCell> */}
-                                    <TableCell><button onClick={() => handlePenguinCalcium(penguin)}>Calcium</button></TableCell>
+                                    <TableCell><button onClick={() => handlePenguinCalcium(penguin)}
+                                        className="red">Calcium</button></TableCell>
                                     <TableCell><button onClick={() => handlePenguinMultivitamin(penguin)}>Multivitamin</button></TableCell>
-                                    <TableCell><button onClick={() => handlePenguinItra(penguin)}>Itra</button></TableCell>
+                                    <TableCell><button onClick={() => handlePenguinItra(penguin)}>Tuna Meds</button></TableCell>
                                     <TableCell><button onClick={() => handleFishIncrease(penguin)}>Increase</button></TableCell>
                                     <TableCell><button onClick={() => handleFishDecrease(penguin)}>Decrease</button></TableCell>
                                 </TableRow>
