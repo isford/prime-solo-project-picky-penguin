@@ -12,8 +12,6 @@ import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
 
-//import penguinReducer from '../../redux/reducers/penguin.reducer';
-
 const useStyles = makeStyles({
     table: {
         minWidth: 650,

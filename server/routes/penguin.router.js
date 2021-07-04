@@ -8,7 +8,7 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 router.get('/', (req, res) => {
     console.log('req.user is', req.user)
     const queryText = `
-    SELECT  "penguin".name, "penguin".id, "penguin".sex, "penguin".band_color, "colony_manager".name AS "colony_name"
+    SELECT  "penguin".name, "penguin".id, "penguin".sex, "penguin".band_color, "penguin".fish_count, "colony_manager".name AS "colony_name"
     FROM "penguin"
     JOIN "colony_manager"
     ON "penguin".colony_id = "colony_manager".id

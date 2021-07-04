@@ -1,10 +1,12 @@
-import React,{ useState } from 'react';
+import React,{ useState, useEffect } from 'react';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import {useSelector} from 'react-redux';
 import { useHistory } from 'react-router';
 import DatePicker from 'react-date-picker'
-
-
+import axios from 'axios';
+//import { useDispatch, useSelector } from 'react-redux';
+//import { useEffect } from 'react';
+import {useDispatch} from 'react-redux';
 //MATERIAL UI STUFF
 //END MATERIAL UI
 
@@ -14,7 +16,8 @@ function UserPage() {
   // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
   //const penguin = useSelector((store => store.penguin.reducer))
-
+  const penguinReducer = useSelector(store => store.penguinReducer);
+  const dispatch = useDispatch();
   const history = useHistory();
   const [value, onChange] = useState(new Date());
   const [time, setTime] = useState('AM');
@@ -24,14 +27,14 @@ function UserPage() {
 const handleTally = () => {
   console.log('Start Tally button clicked')
   history.push('/feedingPage')
-  axios.post('/api/feeding')
-  .then(response => {
-    console.log('NO IDEA')
-  }).catch(error =>{
-    console.log('Error in tally post', error)
-  })
+  dispatch({type: 'SET_FEEDING',
+            payload: penguinReducer })
 
 }
+
+  useEffect(() => {
+    dispatch({ type: 'FETCH_PENGUINS' });
+  }, []);
 
 console.log('The selected date is',value);
 

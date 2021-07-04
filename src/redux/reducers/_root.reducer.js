@@ -6,6 +6,7 @@ import editReducer from './edit.reducer';
 import penguinReducer from './penguin.reducer';
 import penguinEditReducer from './penguin.edit.reducer';
 import penguinFeedingReducer from './penguin.feeding.reducer';
+import editPenguinFeedingReducer from './edit.penguin.feeding.reducer';
 
 // rootReducer is the primary reducer for our entire project
 // It bundles up all of the other reducers so our project can use them.
@@ -21,6 +22,7 @@ const rootReducer = combineReducers({
   penguinReducer,
   penguinEditReducer,
   penguinFeedingReducer,
+  editPenguinFeedingReducer,
 });
 
 export default rootReducer;

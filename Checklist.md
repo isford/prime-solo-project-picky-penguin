@@ -105,6 +105,8 @@
     [x]Create table
     [x]Create functions to increment and decrement fish count
     []Store fish count data in reducer
+    []Need to post on start tally button in order to have an empty data set on feeding page
+        []Feeding page will then be updated as tally continues
     
 
 

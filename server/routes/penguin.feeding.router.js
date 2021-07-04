@@ -39,7 +39,7 @@ router.post('/', (req, res) => {
             .then(results => {
                 res.sendStatus(201);
             }).catch(err => {
-                console.log('Error in Colony Post', err);
+                console.log('Error in Feeding Post', err);
             })
     } else {
         res.sendStatus(403);

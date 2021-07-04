@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useHistory } from 'react-router';
 import './FeedingPage.css';
 import { useDispatch, useSelector } from 'react-redux';
+import axios from 'axios';
 
 //material UI STUFF
 import { makeStyles } from '@material-ui/core/styles';
@@ -12,8 +13,6 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
-
-//import penguinReducer from '../../redux/reducers/penguin.reducer';
 
 const useStyles = makeStyles({
     table: {
@@ -26,27 +25,28 @@ const useStyles = makeStyles({
 export default function FeedingPage() {
     const history = useHistory();
     const dispatch = useDispatch();
-    const penguinReducer = useSelector(store => store.penguinReducer);
+    //const penguinReducer = useSelector(store => store.penguinReducer);
     const penguinFeedingReducer = useSelector(store => store.penguinFeedingReducer);
+
     //material UI
     const classes = useStyles();
     //end material ui
 
-    let [fishCount,setFishCount] = useState(0);
-    const handleFishIncrease = () => {     
-        fishCount += 1;
-       setFishCount(fishCount);
-        console.log(fishCount)
+    const handleFishIncrease = (penguin) => {
+        penguin.daily_total_am += 1;
+        dispatch({
+            type: 'EDIT_DAILY_TOTAL',
+            payload: penguin})
+        console.log('The penguin who is eating is at', penguin)
+        dispatch({type: 'FETCH_PENGUINS'})
         return;
     }
 
     const handleFishDecrease = () => {
         fishCount -= 1;
         setFishCount(fishCount);
-        console.log(fishCount)
         return;
-    }
-
+}
 
     const handleFeed = () => {
         console.log('Feed data submitted');
@@ -54,8 +54,13 @@ export default function FeedingPage() {
     }
 
     useEffect(() => {
-        dispatch({ type: 'FETCH_FEEDINGS' });
+        dispatch({ type: 'FETCH_PENGUINS' });
     }, []);
+
+    console.log('IN PFR IS',penguinFeedingReducer);
+    //console.log('IN PR IS', penguinReducer);
+
+
 
     return (
         <div>
@@ -75,12 +80,12 @@ export default function FeedingPage() {
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {penguinReducer.map(penguin => {
+                        {penguinFeedingReducer.map(penguin => {
                             return (
                                 <TableRow key={penguin.id}>
                                     <TableCell>{penguin.name}</TableCell>
-                                    <TableCell>{penguin.colony_name}</TableCell>
-                                    <TableCell>{fishCount}</TableCell>
+                                    <TableCell>{penguin.colony}</TableCell>
+                                    <TableCell>{penguin.daily_total_am}</TableCell>
                                     <TableCell><button onClick={() => handlePenguinCalcium(penguin)}>Calcium</button></TableCell>
                                     <TableCell><button onClick={() => handlePenguinMultivitamin(penguin)}>Multivitamin</button></TableCell>
                                     <TableCell><button onClick={() => handlePenguinItra(penguin)}>Itra</button></TableCell>
