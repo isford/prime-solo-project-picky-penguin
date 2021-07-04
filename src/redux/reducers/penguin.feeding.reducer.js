@@ -17,10 +17,8 @@ const penguinFeedingReducer = (state = [], action) => {
             return [...state, action.payload];
         case 'DELETE_FEEDING':
             return state;
-        case 'UPDATE_DAILY_TOTAL':
-            return [{ ...state, 
-                [action.payload.property]: action.payload.value }]
-            ;
+        case 'UPDATE_FEEDING_LIST':
+            return state;
         default:
             return state;
     }

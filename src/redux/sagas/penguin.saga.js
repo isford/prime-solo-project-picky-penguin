@@ -5,7 +5,7 @@ import { put, takeEvery } from 'redux-saga/effects';
 function* fetchPenguins() {
     try {
         const response = yield axios.get('/api/penguin')
-        console.log('Fetch penguin generator fetched', response)
+        //console.log('Fetch penguin generator fetched', response)
         yield put({ type: "SET_PENGUIN", payload: response.data })
     } catch (error) {
         console.log('Failed GET request in fetch penguin', error)

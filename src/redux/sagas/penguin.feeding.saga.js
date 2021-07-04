@@ -2,11 +2,11 @@ import axios from 'axios';
 import { put, takeEvery } from 'redux-saga/effects';
 
 
-function* fetchFeedings() {
+function* fetchUpdatedFeedings(action) {
     try {
-        const response = yield axios.get('/api/feeding')
-        console.log('Fetch penguin generator fetched', response)
-        yield put({ type: "SET_FEEDING", payload: response.data })
+        //const response = yield axios.get('/api/feeding')
+        yield put({ type: "EDIT_DAILY_TOTAL", payload: action })
+        yield put ({type: 'UPDATE_FEED'})
     } catch (error) {
         console.log('Failed GET request in fetch feeding', error)
     }
@@ -33,7 +33,7 @@ function* fetchFeedings() {
 // }
 
 function* penguinFeedingSaga() {
-    yield takeEvery('FETCH_FEEDINGS', fetchFeedings);
+    yield takeEvery('UPDATE_FEEDINGS', fetchUpdatedFeedings);
    //yield takeEvery('POST_PENGUIN', addPenguin)
     //yield takeEvery('REMOVE_PENGUINS', deletePenguin)
 }

@@ -5,6 +5,9 @@ const editPenguinFeedingReducer = (state = {}, action) => {
                 ...state,
                 [action.payload.property]: action.payload.value
             }];
+        case 'UPDATE_FEED':
+            console.log('UPDATE FEED payload')
+            return state;
         default:
             return state;
     }

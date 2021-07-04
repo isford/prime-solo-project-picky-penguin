@@ -32,19 +32,26 @@ export default function FeedingPage() {
     const classes = useStyles();
     //end material ui
 
+    const [fishCount, setFishCount] = useState(0);
+
     const handleFishIncrease = (penguin) => {
         penguin.daily_total_am += 1;
+        setFishCount(penguin.daily_total_am);
         dispatch({
             type: 'EDIT_DAILY_TOTAL',
             payload: penguin})
         console.log('The penguin who is eating is at', penguin)
-        dispatch({type: 'FETCH_PENGUINS'})
         return;
     }
 
-    const handleFishDecrease = () => {
-        fishCount -= 1;
-        setFishCount(fishCount);
+    const handleFishDecrease = (penguin) => {
+        penguin.daily_total_am -= 1;
+        setFishCount(penguin.daily_total_am);
+        dispatch({
+            type: 'EDIT_DAILY_TOTAL',
+            payload: penguin
+        })
+        console.log('The penguin who is eating is at', penguin)
         return;
 }
 
@@ -72,6 +79,7 @@ export default function FeedingPage() {
                             <TableCell>Name</TableCell>
                             <TableCell>Colony</TableCell>
                             <TableCell>Fish Count</TableCell>
+                            {/* <TableCell>Fish Count</TableCell> */}
                             <TableCell>Calcium</TableCell>
                             <TableCell>Multivitamin</TableCell>
                             <TableCell>Itraconazole</TableCell>
@@ -86,6 +94,7 @@ export default function FeedingPage() {
                                     <TableCell>{penguin.name}</TableCell>
                                     <TableCell>{penguin.colony}</TableCell>
                                     <TableCell>{penguin.daily_total_am}</TableCell>
+                                    {/* <TableCell>{fishCount}</TableCell> */}
                                     <TableCell><button onClick={() => handlePenguinCalcium(penguin)}>Calcium</button></TableCell>
                                     <TableCell><button onClick={() => handlePenguinMultivitamin(penguin)}>Multivitamin</button></TableCell>
                                     <TableCell><button onClick={() => handlePenguinItra(penguin)}>Itra</button></TableCell>
