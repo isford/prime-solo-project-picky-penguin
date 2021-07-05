@@ -19,6 +19,8 @@ const penguinFeedingReducer = (state = [], action) => {
             return state;
         case 'UPDATE_FEEDING_LIST':
             return state;
+        case 'SET_AVERAGES':
+            return action.payload;
         default:
             return state;
     }

@@ -52,6 +52,28 @@ router.post('/', async (req, res) => {
     }
 });
 
+// //GET ALL feedings FROM DB
+router.post('/average', (req, res) => {
+    console.log('req.user is', req.user)
+    console.log('The payload in average post is', action.payload)
+    const queryText = `SELECT AVG (daily_total_am) 
+    FROM "daily_data"
+    WHERE "daily_data".penguin_id = $1
+    LIMIT 10
+    VALUES ($1);
+`;
+    if (req.isAuthenticated) {
+        pool.query(queryText, [req.body.penguin_id])
+            .then(results => {
+                res.send(results.rows)
+            }).catch(error => {
+                console.log('Error in Feeding GET route', error)
+            })
+    } else {
+        res.sendStatus(403)
+    }
+});
+
 // // //Delete Penguin in DB
 // router.delete('/:id', rejectUnauthenticated, (req, res) => {
 //     console.log(`You've arrived at /api/penguin DELETE`, req.params)

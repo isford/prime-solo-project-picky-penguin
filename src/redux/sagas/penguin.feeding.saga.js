@@ -32,10 +32,20 @@ function* addFeeding(action) {
 //     }
 // }
 
+function* postAverage(action){
+    try{
+        yield axios.post('/api/feeding/average', action.payload)
+        yield put ({type: 'SET_AVERAGES'})
+    }catch (error){
+        console.log('Failed GET request in FETCH AVERAGE', error)
+    }
+}
+
 function* penguinFeedingSaga() {
     //yield takeEvery('UPDATE_FEEDINGS', fetchUpdatedFeedings);
    yield takeEvery('POST_FEEDING', addFeeding)
     //yield takeEvery('REMOVE_PENGUINS', deletePenguin)
+    yield takeEvery('POST_AVERAGES', postAverage)
 }
 
 export default penguinFeedingSaga;

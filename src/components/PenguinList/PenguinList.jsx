@@ -30,10 +30,14 @@ export default function PenguinList() {
 
     const penguinReducer = useSelector(store => store.penguinReducer);
     const userReducer = useSelector(store => store.userReducer);
+    const penguinFeedingReducer = useSelector (store => store.penguinFeedingReducer);
 
     useEffect(() => {
-        dispatch({ type: 'FETCH_PENGUINS' });
+        dispatch({ type: 'FETCH_PENGUINS' },
+                {type: 'FETCH_AVERAGES', payload: penguinReducer});
     }, []);
+
+    console.log('THE AVERAGES ARE?', penguinFeedingReducer)
 
     const handlePenguinDetails = (penguin) =>{
         console.log('Penguin details button clicked', penguin)
@@ -69,7 +73,6 @@ export default function PenguinList() {
                     <TableRow>
                         <TableCell>Name</TableCell>
                             <TableCell>Colony</TableCell>
-                            <TableCell>Fish Count Today</TableCell>
                             <TableCell>5 Day Average</TableCell>
                             <TableCell>View Penguin</TableCell>
                             <TableCell>Edit Penguin</TableCell>
@@ -82,7 +85,6 @@ export default function PenguinList() {
                             <TableRow key = {penguin.id}>
                                 <TableCell>{penguin.name}</TableCell>
                                 <TableCell>{penguin.colony_name}</TableCell>
-                                <TableCell>FISH EATEN</TableCell>
                                 <TableCell>FISH AVERAGE</TableCell>
                                 <TableCell><button onClick={() => handlePenguinDetails(penguin)}>Penguin Details</button></TableCell>
                                 <TableCell><button onClick={() => handlePenguinEdit(penguin)}>Edit</button></TableCell>
