@@ -30,19 +30,25 @@ router.get('/', (req, res) => {
 });
 
 //Add new feeding to DB
-router.post('/', (req, res) => {
-    const queryText = `INSERT INTO "daily_data" ("penguin_id","user_id", "date", "daily_total_am", "calcium", "multivitamin", "itraconazole")
-                        VALUES ($1, $2, $3, $4, $5);`;
-    console.log('User adding item is', req.user.id);
-    if (req.isAuthenticated) {
-        pool.query(queryText, [req.body.name, req.body.colony_id, req.body.sex, req.body.band_color, req.user.id])
-            .then(results => {
-                res.sendStatus(201);
-            }).catch(err => {
-                console.log('Error in Feeding Post', err);
-            })
-    } else {
-        res.sendStatus(403);
+router.post('/', async (req, res) => {
+    const connection = await pool.connect();
+    try{
+        await connection.query('BEGIN')
+        for (let i = 0; i < req.body.length; i++){
+            const queryText = `INSERT INTO "daily_data" ("penguin_id","user_id", "daily_total_am", "calcium", "multivitamin", "itraconazole")
+                        VALUES ($1, $2, $3, $4, $5, $6);`;
+
+            await connection.query(queryText, [req.body[i].penguin_id, req.user.id, req.body[i].daily_total_am, 
+                req.body[i].calcium, req.body[i].multivitamin, req.body[i].itraconazole])
+
+        }await connection.query('COMMIT')
+        res.sendStatus(201);
+    }catch(error){
+        await connection.query('ROLLBACK')
+        console.log('Error in Feeding Post', error)
+        res.sendStatus(500)
+    }finally {
+        connection.release();
     }
 });
 

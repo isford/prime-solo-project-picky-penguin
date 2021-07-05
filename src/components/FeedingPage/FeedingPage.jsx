@@ -58,7 +58,9 @@ export default function FeedingPage() {
 
     const handleFeed = () => {
         console.log('Feed data submitted');
-        history.push('/addFeedingSuccess')
+        history.push('/addFeedingSuccess');
+        dispatch({type: 'POST_FEEDING',
+                payload: penguinFeedingReducer})
     }
 
     useEffect(() => {
@@ -81,7 +83,6 @@ export default function FeedingPage() {
             payload: penguin
         })
         console.log(penguin.multivitamin)
-
     }
 
     const handlePenguinItra = (penguin) => {
@@ -91,7 +92,6 @@ export default function FeedingPage() {
             payload: penguin
         })
         console.log(penguin.itraconazole)
-
     }
 
 
@@ -120,8 +120,7 @@ export default function FeedingPage() {
                                     <TableCell>{penguin.name}</TableCell>
                                     <TableCell>{penguin.colony}</TableCell>
                                     <TableCell>{penguin.daily_total_am}</TableCell>
-                                    <TableCell><button onClick={() => handlePenguinCalcium(penguin)}
-                                        className="red">Calcium</button></TableCell>
+                                    <TableCell><button onClick={() => handlePenguinCalcium(penguin)}>Calcium</button></TableCell>
                                     <TableCell><button onClick={() => handlePenguinMultivitamin(penguin)}>Multivitamin</button></TableCell>
                                     <TableCell><button onClick={() => handlePenguinItra(penguin)}>Tuna Meds</button></TableCell>
                                     <TableCell><button onClick={() => handleFishIncrease(penguin)}>Increase</button></TableCell>
