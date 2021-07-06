@@ -53,7 +53,7 @@ router.post('/', async (req, res) => {
 });
 
 // //GET ALL feedings FROM DB
-router.post('/average', (req, res) => {
+router.get('/average', (req, res) => {
     console.log('req.user is', req.user)
     console.log('The payload in average post is', action.payload)
     const queryText = `SELECT AVG (daily_total_am) 

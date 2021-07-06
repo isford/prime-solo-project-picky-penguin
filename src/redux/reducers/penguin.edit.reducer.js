@@ -6,6 +6,8 @@ const penguinEditReducer = (state = {}, action) => {
             return { ...state, [action.payload.property]: action.payload.value }
         case 'CLEAR_PENGUIN_EDIT':
             return {};
+        case 'SET_ONE_PENGUIN':
+            return action.payload;
         default:
             return state;
     }

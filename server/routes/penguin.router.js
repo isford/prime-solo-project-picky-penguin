@@ -8,11 +8,15 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 router.get('/', (req, res) => {
     console.log('req.user is', req.user)
     const queryText = `
-    SELECT  "penguin".name, "penguin".id, "penguin".sex, "penguin".band_color, "penguin".fish_count, "colony_manager".name AS "colony_name"
-    FROM "penguin"
-    JOIN "colony_manager"
-    ON "penguin".colony_id = "colony_manager".id
-    WHERE "penguin".user_id = $1;	 ;`;
+    SELECT "penguin".name, "penguin".id, "penguin".sex, "colony_manager".name AS "colony_name",
+ROUND (AVG("daily_data".daily_total_am), 2) AS "average"
+FROM "penguin"
+JOIN "colony_manager"
+ON "penguin".colony_id = "colony_manager".id
+JOIN "daily_data"
+ON "penguin".id = "daily_data".penguin_id
+WHERE "penguin".user_id = $1
+GROUP BY "penguin".id, "colony_manager".name;`;
     if (req.isAuthenticated) {
         pool.query(queryText, [req.user.id])
             .then(results => {
@@ -70,8 +74,8 @@ router.put('/:id', rejectUnauthenticated, (req, res) => {
                     "sex"= $3,
                     "band_color"= $4
                     WHERE "penguin".id = $5`
-    pool.query(queryText, [updatedPenguin.name, updatedPenguin.colony_id, 
-        updatedPenguin.sex, updatedPenguin.band_color, penguinId])
+    pool.query(queryText, [updatedPenguin.name, updatedPenguin.colony_id,
+    updatedPenguin.sex, updatedPenguin.band_color, penguinId])
         .then(response => {
             console.log(response.rowCount);
             res.sendStatus(202)

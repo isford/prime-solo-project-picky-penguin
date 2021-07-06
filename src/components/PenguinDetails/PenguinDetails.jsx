@@ -1,9 +1,13 @@
 import React from 'react';
 import { useHistory } from 'react-router';
 import { Line } from 'react-chartjs-2';
+import { useSelector } from 'react-redux';
 
 export default function PenguinDetails() {
     const history = useHistory();
+
+    const penguinEditReducer = useSelector(store => store.penguinReducer)
+
 
     const handleGoBack = () => {
         console.log('Go back to list button clicked')
@@ -48,12 +52,23 @@ export default function PenguinDetails() {
                             }
                         ]
                     }}
-                    height={400}
-                    width={600}
+                    height={200}
+                    width={300}
                     options={{
-                        maintainAspectRatio: true
+                        //maintainAspectRatio: true
                     }}
                 />
+            </div>
+
+            <div>
+                {penguinEditReducer.map(penguin => {
+                    <ul key = {penguin.id}>
+                        <li>{penguin.name}</li>
+                        <li>{penguin.colony_name}</li>
+                        <li>{penguin.sex}</li>
+                        <li>{penguin.band_color}</li>
+                    </ul>
+                })}
             </div>
             
             <button onClick={handleGoBack}>Go Back To List</button>
