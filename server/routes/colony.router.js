@@ -7,7 +7,12 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 //GET ALL COLONIES FROM DB
 router.get('/', (req, res) => {
     console.log('req.user is', req.user)
-    const queryText = `SELECT * FROM "colony_manager" WHERE "colony_manager".user_id = $1 ;`;
+    const queryText = `SELECT "colony_manager".name, COUNT(penguin.id)
+    FROM "colony_manager"
+	JOIN "penguin"
+	ON "colony_manager".id = "penguin".colony_id
+    WHERE "colony_manager".user_id = $1
+    GROUP BY "colony_manager".id;`;
     if (req.isAuthenticated){
         pool.query(queryText, [req.user.id])
         .then(results => {
