@@ -26,18 +26,7 @@ export default function PenguinDetails() {
 
     return (
         <div>
-            <p>You are on penguin details page</p>
-            <ul>
-                <li>Name: Nadine</li>
-                <li>Sex: F</li>
-                <li>Mate: Sphen</li>
-                <li>Band Color: Blue/Pink</li>
-                <li>Itraconazole: Not Needed</li>
-                <li>Nesting: None</li>
-                <li>Breeding: None</li>
-                <li>Notes: A good water chicken</li>
-            </ul>
-
+            <h1>{penguinEditReducer.name}</h1>
             {/* <div>
                 <Line
                     data={{
@@ -62,10 +51,9 @@ export default function PenguinDetails() {
 
             <div>
                     <ul>
-                        <li>{penguinEditReducer.name}</li>
-                        <li>{penguinEditReducer.colony_name}</li>
-                        <li>{penguinEditReducer.sex}</li>
-                        <li>{penguinEditReducer.band_color}</li>
+                        <li>Colony: {penguinEditReducer.colony_name}</li>
+                        <li>Sex: {penguinEditReducer.sex}</li>
+                        <li>Band Colors: {penguinEditReducer.band_color}</li>
                     </ul>
                     
                 

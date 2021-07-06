@@ -2,6 +2,24 @@ import React, {useEffect} from 'react';
 import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 
+//material UI STUFF
+import { makeStyles } from '@material-ui/core/styles';
+import Table from '@material-ui/core/Table';
+import TableBody from '@material-ui/core/TableBody';
+import TableCell from '@material-ui/core/TableCell';
+import TableContainer from '@material-ui/core/TableContainer';
+import TableHead from '@material-ui/core/TableHead';
+import TableRow from '@material-ui/core/TableRow';
+import Paper from '@material-ui/core/Paper';
+
+const useStyles = makeStyles({
+    table: {
+        minWidth: 650,
+    },
+});
+
+//END MATERIAL UI STUFF
+
 export default function ColoniesPage() {
     const history = useHistory();
     const dispatch = useDispatch();
@@ -9,6 +27,10 @@ export default function ColoniesPage() {
     const colonyReducer = useSelector(store => store.colonyReducer);
     //GETS user info stored locally
     const userReducer = useSelector(store => store.userReducer);
+
+    //material UI
+    const classes = useStyles();
+    //end material ui
 
     useEffect(() => {
         dispatch({ type: 'FETCH_COLONIES' });
@@ -35,28 +57,30 @@ export default function ColoniesPage() {
         <div>
             <p>You are on the colonies page</p>
 
-            <table>
-                <thead>
-                    <tr>
-                        <th>Colony Name</th>
-                        <th>Number of Birds</th>
-                        <th>Edit Colony Name</th>
-                        <th>Delete Colony</th>
-                    </tr>
-                </thead>
-                <tbody>
+            <TableContainer component={Paper}>
+                <Table className={classes.table} aria-label="simple table">
+                <TableHead>
+                    <TableRow>
+                            <TableCell>Colony Name</TableCell>
+                            <TableCell>Number of Birds </TableCell>
+                            <TableCell>Edit Colony Name</TableCell>
+                            <TableCell>Delete Colony</TableCell>
+                    </TableRow>
+                </TableHead>
+                <TableBody>
                     {colonyReducer.map(colony => {
                         return (
-                            <tr key = {colony.id}>
-                                <td>{colony.name}</td>
-                                <td>{colony.count}</td>
-                                <td><button onClick={() => handleEdit(colony)}>Edit</button></td>
-                                <td><button onClick={() => handleDelete(colony)}>Delete</button></td>
-                            </tr>
+                            <TableRow key = {colony.id}>
+                                <TableCell>{colony.name}</TableCell>
+                                <TableCell>{colony.count}</TableCell>
+                                <TableCell><button onClick={() => handleEdit(colony)}>Edit</button></TableCell>
+                                <TableCell><button onClick={() => handleDelete(colony)}>Delete</button></TableCell>
+                            </TableRow>
                         )
                     })}
-                </tbody>
-            </table>
+                </TableBody>
+            </Table>
+            </TableContainer>
 
             <button onClick={handleAddColony}>Add Colony</button>
         </div>
