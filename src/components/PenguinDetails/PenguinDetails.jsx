@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 export default function PenguinDetails() {
     const history = useHistory();
 
-    const penguinEditReducer = useSelector(store => store.penguinReducer)
+    const penguinEditReducer = useSelector(store => store.penguinEditReducer)
 
 
     const handleGoBack = () => {
@@ -38,7 +38,7 @@ export default function PenguinDetails() {
                 <li>Notes: A good water chicken</li>
             </ul>
 
-            <div>
+            {/* <div>
                 <Line
                     data={{
                         labels: ['6/26', '6/27', '6/28', '6/29', '6/30', '7/1'],
@@ -58,17 +58,17 @@ export default function PenguinDetails() {
                         //maintainAspectRatio: true
                     }}
                 />
-            </div>
+            </div> */}
 
             <div>
-                {penguinEditReducer.map(penguin => {
-                    <ul key = {penguin.id}>
-                        <li>{penguin.name}</li>
-                        <li>{penguin.colony_name}</li>
-                        <li>{penguin.sex}</li>
-                        <li>{penguin.band_color}</li>
+                    <ul>
+                        <li>{penguinEditReducer.name}</li>
+                        <li>{penguinEditReducer.colony_name}</li>
+                        <li>{penguinEditReducer.sex}</li>
+                        <li>{penguinEditReducer.band_color}</li>
                     </ul>
-                })}
+                    
+                
             </div>
             
             <button onClick={handleGoBack}>Go Back To List</button>

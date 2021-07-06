@@ -8,7 +8,7 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 router.get('/', (req, res) => {
     console.log('req.user is', req.user)
     const queryText = `
-    SELECT "penguin".name, "penguin".id, "penguin".sex, "colony_manager".name AS "colony_name",
+    SELECT "penguin".name, "penguin".id, "penguin".sex, "penguin".band_color, "colony_manager".name AS "colony_name",
 ROUND (AVG("daily_data".daily_total_am), 2) AS "average"
 FROM "penguin"
 JOIN "colony_manager"
