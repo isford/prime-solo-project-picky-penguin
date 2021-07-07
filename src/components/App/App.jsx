@@ -8,6 +8,9 @@ import {
 import '@fontsource/roboto';
 import swal from 'sweetalert';
 
+import ReactDOM from 'react-dom';
+import { ThemeProvider } from '@material-ui/core/styles';
+
 import { useDispatch } from 'react-redux';
 
 import Nav from '../Nav/Nav';
@@ -33,8 +36,11 @@ import DeletePenguin from '../DeletePenguin/DeletePenguin';
 import SuccessNewColonyPage from '../SuccessNewColonyPage/SuccessNewColonyPage';
 import EditColonyForm from '../EditColonyForm/EditColonyForm';
 import EditPenguinForm from '../EditPenguinForm/EditPenguinForm';
+import FeedingList from '../FeedingList/FeedingList';
 
 import './App.css';
+
+const theme = {};
 
 
 
@@ -46,6 +52,7 @@ function App() {
   }, [dispatch]);
 
   return (
+    
     <Router>
       <div>
         <Nav />
@@ -203,6 +210,13 @@ function App() {
             <EditPenguinForm />
           </ProtectedRoute>
 
+          <ProtectedRoute
+            exact
+            path="/feedingList"
+          >
+            <FeedingList />
+          </ProtectedRoute>
+
           {/* END MY NEW ROUTES */}
 
           {/* If none of the other routes matched, we will show a 404. */}
@@ -213,6 +227,7 @@ function App() {
         <Footer />
       </div>
     </Router>
+    
   );
 }
 

@@ -74,7 +74,7 @@ router.get('/average', (req, res) => {
     }
 });
 
-// // //Delete Penguin in DB
+// // //Delete Feeding in DB
 // router.delete('/:id', rejectUnauthenticated, (req, res) => {
 //     console.log(`You've arrived at /api/penguin DELETE`, req.params)
 //     console.log(`User deleting item is`, req.user)
@@ -88,7 +88,7 @@ router.get('/average', (req, res) => {
 //         });
 // });
 
-// //Update Penguin in DB
+// //Update Feeding in DB
 // router.put('/:id', rejectUnauthenticated, (req, res) => {
 //     let penguinId = req.params.id;
 //     console.log('Penguin Id in router.put is', penguinId)

@@ -41,6 +41,10 @@ function Nav() {
             <Link className="navLink" to="/penguinList">
               View Penguins
             </Link>
+
+            <Link className="navLink" to="/feedingList">
+              View Feedings
+            </Link>
             {/* END MY LINKS */}
 
             <Link className="navLink" to="/info">
