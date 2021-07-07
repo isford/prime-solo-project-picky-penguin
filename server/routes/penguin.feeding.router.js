@@ -10,7 +10,8 @@ router.get('/', (req, res) => {
     const queryText = `
     SELECT  "penguin".name, "penguin".id, "penguin".sex, "penguin".band_color, 
     "colony_manager".name AS "colony_name", "daily_data".daily_total_am, 
-    "daily_data".calcium, "daily_data".multivitamin, "daily_data".itraconazole
+    "daily_data".calcium, "daily_data".multivitamin, "daily_data".itraconazole,
+    "daily_data".id AS "feed_id"
     FROM "penguin"
     JOIN "colony_manager"
     ON "penguin".colony_id = "colony_manager".id
@@ -53,40 +54,43 @@ router.post('/', async (req, res) => {
 });
 
 // //GET ALL feedings FROM DB
-router.get('/average', (req, res) => {
-    console.log('req.user is', req.user)
-    console.log('The payload in average post is', action.payload)
-    const queryText = `SELECT AVG (daily_total_am) 
-    FROM "daily_data"
-    WHERE "daily_data".penguin_id = $1
-    LIMIT 10
-    VALUES ($1);
-`;
-    if (req.isAuthenticated) {
-        pool.query(queryText, [req.body.penguin_id])
-            .then(results => {
-                res.send(results.rows)
-            }).catch(error => {
-                console.log('Error in Feeding GET route', error)
-            })
-    } else {
-        res.sendStatus(403)
-    }
-});
-
-// // //Delete Feeding in DB
-// router.delete('/:id', rejectUnauthenticated, (req, res) => {
-//     console.log(`You've arrived at /api/penguin DELETE`, req.params)
-//     console.log(`User deleting item is`, req.user)
-
-//     const queryText = `DELETE FROM "penguin" WHERE "id"=$1;`;
-//     pool.query(queryText, [req.params.id])
-//         .then(() => res.sendStatus(200))
-//         .catch((err) => {
-//             console.log('Error in delete', err)
-//             res.sendStatus(500)
-//         });
+// router.get('/', (req, res) => {
+//     console.log('req.user is', req.user)
+//     console.log('The payload in feeding post is', action.payload)
+//     const queryText = `SELECT "penguin".name, "penguin".id, "colony_manager".name AS "colony_name",
+//     "daily_data".daily_total_am, "daily_data".calcium, "daily_data".multivitamin, "daily_data".itraconazole
+// FROM "penguin"
+// JOIN "colony_manager"
+// ON "penguin".colony_id = "colony_manager".id
+// JOIN "daily_data"
+// ON "penguin".id = "daily_data".penguin_id
+// WHERE "penguin".user_id = $1;
+// `;
+//     if (req.isAuthenticated) {
+//         pool.query(queryText, [req.body.penguin_id])
+//             .then(results => {
+//                 res.send(results.rows)
+//             }).catch(error => {
+//                 console.log('Error in Feeding GET route', error)
+//             })
+//     } else {
+//         res.sendStatus(403)
+//     }
 // });
+
+// //Delete Feeding in DB
+router.delete('/:id', rejectUnauthenticated, (req, res) => {
+    console.log(`You've arrived at /api/feeding DELETE`, req.params)
+    console.log(`User deleting item is`, req.user)
+
+    const queryText = `DELETE FROM "daily_data" WHERE "id"=$1;`;
+    pool.query(queryText, [req.params.id])
+        .then(() => res.sendStatus(200))
+        .catch((err) => {
+            console.log('Error in delete', err)
+            res.sendStatus(500)
+        });
+});
 
 // //Update Feeding in DB
 // router.put('/:id', rejectUnauthenticated, (req, res) => {

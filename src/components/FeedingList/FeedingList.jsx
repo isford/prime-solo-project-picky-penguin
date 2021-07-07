@@ -28,16 +28,15 @@ export default function FeedingList() {
     const classes = useStyles();
     //end material ui
 
-    const penguinReducer = useSelector(store => store.penguinReducer);
-    const userReducer = useSelector(store => store.userReducer);
+    //const penguinReducer = useSelector(store => store.penguinReducer);
+    //const userReducer = useSelector(store => store.userReducer);
     const penguinFeedingReducer = useSelector(store => store.penguinFeedingReducer);
 
     useEffect(() => {
-        dispatch({ type: 'FETCH_PENGUINS' },
-            { type: 'FETCH_AVERAGES' });
+        dispatch({ type: 'FETCH_FEEDINGS' });
     }, []);
 
-    console.log('THE AVERAGES ARE?', penguinFeedingReducer)
+    console.log('The feedings are', penguinFeedingReducer)
 
     const handlePenguinDetails = (penguin) => {
         console.log('Penguin details button clicked', penguin)
@@ -51,16 +50,16 @@ export default function FeedingList() {
         history.push('/addPenguin')
     }
 
-    const handlePenguinEdit = (penguin) => {
+    const handleFeedingEdit = (penguin) => {
         console.log('Edit penguin clicked', penguin)
         dispatch({ type: 'EDIT_PENGUIN', payload: penguin })
         history.push('/editPenguinForm')
     }
 
-    const handlePenguinDelete = (penguin) => {
+    const handleFeedingDelete = (penguin) => {
         console.log('Delete button clicked', penguin)
         dispatch({
-            type: 'REMOVE_PENGUINS',
+            type: 'REMOVE_FEEDINGS',
             payload: penguin
         })
     }
@@ -68,37 +67,35 @@ export default function FeedingList() {
 
     return (
         <div>
-            <p>You are on the Penguin List Page</p>
+            <h1>You are on the Penguin Feeding List Page</h1>
             <TableContainer component={Paper}>
                 <Table className={classes.table} aria-label="simple table">
                     <TableHead>
                         <TableRow>
                             <TableCell>Name</TableCell>
                             <TableCell>Colony</TableCell>
-                            <TableCell>5 Day Average</TableCell>
+                            <TableCell>Daily Total</TableCell>
                             <TableCell>View Penguin</TableCell>
-                            <TableCell>Edit Penguin</TableCell>
-                            <TableCell>Delete Penguin</TableCell>
+                            <TableCell>Edit Feeding</TableCell>
+                            <TableCell>Delete Feeding</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>
-                        {penguinReducer.map(penguin => {
+                        {penguinFeedingReducer.map(penguin => {
                             return (
-                                <TableRow key={penguin.id}>
+                                <TableRow key={penguin.feed_id}>
                                     <TableCell>{penguin.name}</TableCell>
                                     <TableCell>{penguin.colony_name}</TableCell>
-                                    <TableCell>{penguin.average}</TableCell>
+                                    <TableCell>{penguin.daily_total_am}</TableCell>
                                     <TableCell><button onClick={() => handlePenguinDetails(penguin)}>Penguin Details</button></TableCell>
-                                    <TableCell><button onClick={() => handlePenguinEdit(penguin)}>Edit</button></TableCell>
-                                    <TableCell><button onClick={() => handlePenguinDelete(penguin)}>Delete</button></TableCell>
+                                    <TableCell><button onClick={() => handleFeedingEdit(penguin)}>Edit</button></TableCell>
+                                    <TableCell><button onClick={() => handleFeedingDelete(penguin)}>Delete</button></TableCell>
                                 </TableRow>
                             )
                         })}
                     </TableBody>
                 </Table>
             </TableContainer>
-
-            <button onClick={handleAddPenguin}>Add Penguin</button>
         </div>
     )
 }

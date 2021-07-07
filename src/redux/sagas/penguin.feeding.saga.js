@@ -21,31 +21,31 @@ function* addFeeding(action) {
     };
 }
 
-// function* deletePenguin(action) {
-//     console.log('Penguin to be deleted is', action.payload)
-//     let data = action.payload
-//     try {
-//         yield axios.delete(`/api/penguin/${data.id}`)
-//         yield put({ type: 'FETCH_PENGUINS' });
-//     } catch (error) {
-//         console.log('Error in delete colony generator', error)
-//     }
-// }
+function* deleteFeeding(action) {
+    console.log('Feeding to be deleted is', action.payload)
+    let data = action.payload
+    try {
+        yield axios.delete(`/api/feeding/${data.feed_id}`)
+        yield put({ type: 'FETCH_FEEDINGS' });
+    } catch (error) {
+        console.log('Error in delete feeding generator', error)
+    }
+}
 
-function* fetchAverages(){
+function* fetchFeedings(){
     try{
-       const response = yield axios.get('/api/feeding/average')
-        yield put ({type: 'SET_AVERAGES', payload: response.data})
+       const response = yield axios.get('/api/feeding/')
+        yield put ({type: 'SET_ALL_FEEDINGS', payload: response.data})
     }catch (error){
-        console.log('Failed GET request in FETCH AVERAGE', error)
+        console.log('Failed GET request in FETCH Feeding', error)
     }
 }
 
 function* penguinFeedingSaga() {
     //yield takeEvery('UPDATE_FEEDINGS', fetchUpdatedFeedings);
    yield takeEvery('POST_FEEDING', addFeeding)
-    //yield takeEvery('REMOVE_PENGUINS', deletePenguin)
-    yield takeEvery('FETCH_AVERAGES', fetchAverages)
+    yield takeEvery('REMOVE_FEEDINGS', deleteFeeding)
+    yield takeEvery('FETCH_FEEDINGS', fetchFeedings)
 }
 
 export default penguinFeedingSaga;
