@@ -61,6 +61,7 @@ export default function EditPenguinForm() {
             <select name="colony_name" id="colony_name"
                 onChange={(event) => setColony(event.target.value)}>
                 {colonyReducer.map(colony => {
+                    console.log(colony)
                     return (
                         <option value={colony.id} key={colony.id}>{colony.name}</option>
                     )

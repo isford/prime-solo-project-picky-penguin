@@ -8,7 +8,8 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 router.get('/', (req, res) => {
     console.log('req.user is', req.user)
     const queryText = `
-    SELECT "penguin".name, "penguin".id, "penguin".sex, "penguin".band_color, "colony_manager".name AS "colony_name",
+    SELECT "penguin".name, "penguin".id, "penguin".sex, "penguin".band_color,
+     "colony_manager".name AS "colony_name","colony_manager".id AS "colony_id",
 ROUND (AVG("daily_data".daily_total_am), 2) AS "average"
 FROM "penguin"
 JOIN "colony_manager"
@@ -16,7 +17,7 @@ ON "penguin".colony_id = "colony_manager".id
 JOIN "daily_data"
 ON "penguin".id = "daily_data".penguin_id
 WHERE "penguin".user_id = $1
-GROUP BY "penguin".id, "colony_manager".name;`;
+GROUP BY "penguin".id, "colony_manager".name, "colony_manager".id;`;
     if (req.isAuthenticated) {
         pool.query(queryText, [req.user.id])
             .then(results => {
