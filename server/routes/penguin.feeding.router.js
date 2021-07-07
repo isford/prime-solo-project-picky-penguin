@@ -67,28 +67,28 @@ router.delete('/:id', rejectUnauthenticated, (req, res) => {
         });
 });
 
-// //Update Feeding in DB
-// router.put('/:id', rejectUnauthenticated, (req, res) => {
-//     let penguinId = req.params.id;
-//     console.log('Penguin Id in router.put is', penguinId)
+//Update Feeding in DB
+router.put('/:id', rejectUnauthenticated, (req, res) => {
+    let feedId = req.params.id;
+    console.log('Feed Id in router.put is', feedId)
 
-//     let updatedPenguin = req.body;
-//     console.log('The updated penguin is', updatedPenguin);
+    let updatedFeed = req.body;
+    console.log('The updated feed is', updatedFeed);
 
-//     let queryText = `UPDATE "penguin" SET "name" = $1,
-//                     "colony_id" = $2,
-//                     "sex"= $3,
-//                     "band_color"= $4
-//                     WHERE "penguin".id = $5`
-//     pool.query(queryText, [updatedPenguin.name, updatedPenguin.colony_id,
-//     updatedPenguin.sex, updatedPenguin.band_color, penguinId])
-//         .then(response => {
-//             console.log(response.rowCount);
-//             res.sendStatus(202)
-//         }).catch(err => {
-//             console.log(err);
-//             res.sendStatus(500);
-//         });
-// });
+    let queryText = `UPDATE "daily_data" SET "daily_total_am" = $1,
+                    "calcium" = $2,
+                    "multivitamin"= $3,
+                    "itraconazole"= $4
+                    WHERE "daily_data".id = $5`
+    pool.query(queryText, [updatedFeed.fish, updatedFeed.calcium,
+    updatedFeed.multivitamin, updatedFeed.itraconazole, feedId])
+        .then(response => {
+            console.log(response.rowCount);
+            res.sendStatus(202)
+        }).catch(err => {
+            console.log(err);
+            res.sendStatus(500);
+        });
+});
 
 module.exports = router;

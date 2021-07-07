@@ -8,9 +8,9 @@ export default function EditFeedingForm() {
     const history = useHistory();
 
     const [penguinFish, setPenguinFish] = useState(0);
-    const [itraconazole, setItraconazole] = useState(false);
-    const [calcium, setCalcium] = useState(false);
-    const [multivitamin, setMultivitamin] = useState(false);
+    const [itraconazole, setItraconazole] = useState('');
+    const [calcium, setCalcium] = useState('');
+    const [multivitamin, setMultivitamin] = useState('');
 
     // useEffect(() => {
     //     dispatch({ type: 'FETCH_COLONIES' });
@@ -21,7 +21,7 @@ export default function EditFeedingForm() {
 
     console.log('The feeding to be edited is', feeding);
 
-    const updatedPFeeding = {
+    const updatedFeeding = {
         fish: penguinFish,
         calcium: calcium,
         multivitamin: multivitamin,
@@ -30,7 +30,7 @@ export default function EditFeedingForm() {
 
     const handleSubmit = (event) => {
         event.preventDefault();
-        axios.put(`/api/feeding/${penguin.id}`, updatedPenguin)
+        axios.put(`/api/feeding/${feeding.feed_id}`, updatedFeeding)
             .then(response => {
                 dispatch({ type: 'CLEAR_FEEDING_EDIT' });
                 history.push('/feedingList')
