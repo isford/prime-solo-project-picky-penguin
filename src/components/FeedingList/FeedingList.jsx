@@ -45,15 +45,10 @@ export default function FeedingList() {
 
     }
 
-    const handleAddPenguin = () => {
-        console.log('Add penguin clicked')
-        history.push('/addPenguin')
-    }
-
     const handleFeedingEdit = (penguin) => {
-        console.log('Edit penguin clicked', penguin)
-        dispatch({ type: 'EDIT_PENGUIN', payload: penguin })
-        history.push('/editPenguinForm')
+        console.log('Edit Feeding clicked', penguin)
+        dispatch({ type: 'EDIT_FEEDING', payload: penguin })
+        history.push('/editFeedingForm')
     }
 
     const handleFeedingDelete = (penguin) => {

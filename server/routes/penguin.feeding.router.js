@@ -53,31 +53,6 @@ router.post('/', async (req, res) => {
     }
 });
 
-// //GET ALL feedings FROM DB
-// router.get('/', (req, res) => {
-//     console.log('req.user is', req.user)
-//     console.log('The payload in feeding post is', action.payload)
-//     const queryText = `SELECT "penguin".name, "penguin".id, "colony_manager".name AS "colony_name",
-//     "daily_data".daily_total_am, "daily_data".calcium, "daily_data".multivitamin, "daily_data".itraconazole
-// FROM "penguin"
-// JOIN "colony_manager"
-// ON "penguin".colony_id = "colony_manager".id
-// JOIN "daily_data"
-// ON "penguin".id = "daily_data".penguin_id
-// WHERE "penguin".user_id = $1;
-// `;
-//     if (req.isAuthenticated) {
-//         pool.query(queryText, [req.body.penguin_id])
-//             .then(results => {
-//                 res.send(results.rows)
-//             }).catch(error => {
-//                 console.log('Error in Feeding GET route', error)
-//             })
-//     } else {
-//         res.sendStatus(403)
-//     }
-// });
-
 // //Delete Feeding in DB
 router.delete('/:id', rejectUnauthenticated, (req, res) => {
     console.log(`You've arrived at /api/feeding DELETE`, req.params)

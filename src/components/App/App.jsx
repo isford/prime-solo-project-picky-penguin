@@ -37,6 +37,7 @@ import SuccessNewColonyPage from '../SuccessNewColonyPage/SuccessNewColonyPage';
 import EditColonyForm from '../EditColonyForm/EditColonyForm';
 import EditPenguinForm from '../EditPenguinForm/EditPenguinForm';
 import FeedingList from '../FeedingList/FeedingList';
+import EditFeedingForm from '../EditFeedingForm/EditFeedingForm'
 
 import './App.css';
 
@@ -215,6 +216,13 @@ function App() {
             path="/feedingList"
           >
             <FeedingList />
+          </ProtectedRoute>
+
+          <ProtectedRoute
+            exact
+            path="/editFeedingForm"
+          >
+            <EditFeedingForm />
           </ProtectedRoute>
 
           {/* END MY NEW ROUTES */}
