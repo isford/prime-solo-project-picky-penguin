@@ -6,7 +6,7 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 
 //GET ALL Penguins FROM DB
 router.get('/', (req, res) => {
-    console.log('req.user is', req.user)
+    console.log('req.user is in penguin GET', req.user)
     const queryText = `
     SELECT "penguin".name, "penguin".id, "penguin".sex, "penguin".band_color,
      "colony_manager".name AS "colony_name","colony_manager".id AS "colony_id",
@@ -22,6 +22,7 @@ GROUP BY "penguin".id, "colony_manager".name, "colony_manager".id;`;
         pool.query(queryText, [req.user.id])
             .then(results => {
                 res.send(results.rows)
+                console.log('Get is sending', results.rows)
             }).catch(error => {
                 console.log('Error in Penguin GET route', error)
             })
@@ -31,21 +32,61 @@ GROUP BY "penguin".id, "colony_manager".name, "colony_manager".id;`;
 });
 
 //Add new penguin to DB
-router.post('/', (req, res) => {
-    const queryText = `INSERT INTO "penguin" ("name","colony_id", "sex", "band_color", "user_id")
-                        VALUES ($1, $2, $3, $4, $5);`;
-    console.log('User adding item is', req.user.id);
-    if (req.isAuthenticated) {
-        pool.query(queryText, [req.body.name, req.body.colony_id, req.body.sex, req.body.band_color, req.user.id])
-            .then(results => {
-                res.sendStatus(201);
-            }).catch(err => {
-                console.log('Error in Colony Post', err);
-            })
-    } else {
-        res.sendStatus(403);
-    }
+// router.post('/', (req, res) => {
+//     const queryText = `INSERT INTO "penguin" ("name","colony_id", "sex", "band_color", "user_id")
+//                         VALUES ($1, $2, $3, $4, $5);`;
+//     console.log('User adding item is', req.user.id);
+//     if (req.isAuthenticated) {
+//         pool.query(queryText, [req.body.name, req.body.colony_id, req.body.sex, req.body.band_color, req.user.id])
+//             .then(results => {
+//                 res.sendStatus(201);
+//             }).catch(err => {
+//                 console.log('Error in Colony Post', err);
+//             })
+//     } else {
+//         res.sendStatus(403);
+//     }
 
+// });
+
+router.post('/', async (req, res) => {
+    const connection = await pool.connect();
+    try {
+        await connection.query('BEGIN');
+
+        console.log('Data being submitted is',req.body)
+
+        const penguinQueryText = `INSERT INTO "penguin" 
+        ("name","colony_id", "sex", "band_color", 
+        "user_id") 
+                        VALUES ($1, $2, $3, $4, $5) RETURNING id;`;
+
+        const result = await connection.query
+        (penguinQueryText, [req.body.name, 
+            req.body.colony_id, req.body.sex, 
+            req.body.band_color, req.user.id]);
+        console.log('The result is', result.rows)
+        const newId = result.rows[0].id;
+
+        for (let i = 0; i < req.body.length; i++) {
+            const queryText = `INSERT INTO "daily_data" 
+            ("penguin_id","user_id", "daily_total_am", 
+            "calcium", "multivitamin", "itraconazole")
+                        VALUES ($1, $2, $3, $4, $5, $6);`;
+
+            await connection.query(queryText, [newId, 
+                req.user.id, 0, false, false, false])
+
+        }await connection.query('COMMIT')
+
+        res.sendStatus(201);
+    } catch (error) {
+        await connection.query('ROLLBACK')
+        console.log('Error in Feeding Post', error)
+        res.sendStatus(500)
+    } finally {
+        connection.release();
+    }
 });
 
 // //Delete Penguin in DB
