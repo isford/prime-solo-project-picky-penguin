@@ -2,6 +2,9 @@ import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router';
 import { useDispatch,useSelector } from 'react-redux';
 
+import Button from '@material-ui/core/Button'
+
+
 
 export default function AddPenguinForm() {
     const history = useHistory();
@@ -67,23 +70,13 @@ export default function AddPenguinForm() {
                 <option value='male'>Male</option>
             </select>
 
-            {/* <select name="nesting" id="nesting">
-                <option value="true">Yes they are nesting</option>
-                <option value="false">No they are not nesting</option>
-            </select>
 
-            <select name="mating" id="mating">
-                <option value="true">Yes they are breeding</option>
-                <option value="false">No they are not breeding</option>
-            </select> */}
             <input type="text" placeholder="Band Color" value = {bandColor}
                 onChange={(event) => setBandColor(event.target.value)}></input>
 
-            {/* <input type="text" placeholder="Notes" value = {note}
-                onChange={(event) => setNotes(event.target.value)}></input> */}
 
-            <button onClick={handleCancel}>Cancel</button>
-            <button onClick={handleAdd}>Submit</button>
+            <Button variant="contained" color="primary" onClick={handleCancel}>Cancel</Button>
+            <Button variant="contained" color="secondary" onClick={handleAdd}>Submit</Button>
         </div>
     )
 }

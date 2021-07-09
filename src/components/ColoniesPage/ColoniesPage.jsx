@@ -11,6 +11,7 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button'
 
 const useStyles = makeStyles({
     table: {
@@ -73,8 +74,8 @@ export default function ColoniesPage() {
                             <TableRow key = {colony.id}>
                                 <TableCell>{colony.name}</TableCell>
                                 <TableCell>{colony.count}</TableCell>
-                                <TableCell><button onClick={() => handleEdit(colony)}>Edit</button></TableCell>
-                                <TableCell><button onClick={() => handleDelete(colony)}>Delete</button></TableCell>
+                                <TableCell><Button variant="contained" color="primary" onClick={() => handleEdit(colony)}>Edit</Button></TableCell>
+                                <TableCell><Button variant="contained" color="secondary" onClick={() => handleDelete(colony)}>Delete</Button></TableCell>
                             </TableRow>
                         )
                     })}
@@ -82,7 +83,7 @@ export default function ColoniesPage() {
             </Table>
             </TableContainer>
 
-            <button onClick={handleAddColony}>Add Colony</button>
+            <Button variant="contained" color="primary" onClick={handleAddColony}>Add Colony</Button>
         </div>
     )
 }

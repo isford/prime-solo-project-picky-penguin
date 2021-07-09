@@ -3,6 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { useHistory } from 'react-router';
 
+import Button from '@material-ui/core/Button'
+
+
 export default function EditColonyForm() {
     const dispatch = useDispatch();
     const history = useHistory();
@@ -31,7 +34,7 @@ export default function EditColonyForm() {
             <p>{name.name}</p>
             <form>
                 <input onChange = {(event)=> handleEdit(event)} value={name.name} type="text" placeholder="New Colony Name Here"></input>
-                <button onClick = {handleSubmit}>Submit</button>
+                <Button variant="contained" color="primary" onClick = {handleSubmit}>Submit</Button>
             </form>
         </div>
     )

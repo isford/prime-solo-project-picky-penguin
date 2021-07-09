@@ -3,6 +3,9 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { useHistory } from 'react-router';
 
+import Button from '@material-ui/core/Button'
+
+
 export default function EditFeedingForm() {
     const dispatch = useDispatch();
     const history = useHistory();
@@ -69,7 +72,7 @@ export default function EditFeedingForm() {
                 <option value='false'>Not Eaten</option>
             </select>
             {/* SUBMIT BUTTON */}
-            <button onClick={handleSubmit}>Submit</button>
+            <Button variant="contained" color="primary" onClick={handleSubmit}>Submit</Button>
         </div>
     )
 }

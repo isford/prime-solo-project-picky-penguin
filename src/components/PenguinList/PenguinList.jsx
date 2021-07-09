@@ -11,6 +11,10 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button'
+
+import UserPage from '../UserPage/UserPage';
+
 
 const useStyles = makeStyles({
     table: {
@@ -68,7 +72,7 @@ export default function PenguinList() {
 
     return (
         <div>
-            <p>You are on the Penguin List Page</p>
+            <h1>Penguin List</h1>
             <TableContainer component={Paper}>
                 <Table className={classes.table} aria-label="simple table">
                 <TableHead>
@@ -88,9 +92,9 @@ export default function PenguinList() {
                                 <TableCell>{penguin.name}</TableCell>
                                 <TableCell>{penguin.colony_name}</TableCell>
                                 <TableCell>{penguin.average}</TableCell>
-                                <TableCell><button onClick={() => handlePenguinDetails(penguin)}>Penguin Details</button></TableCell>
-                                <TableCell><button onClick={() => handlePenguinEdit(penguin)}>Edit</button></TableCell>
-                                <TableCell><button onClick={() => handlePenguinDelete(penguin)}>Delete</button></TableCell>
+                                <TableCell><Button variant="contained" color="primary" onClick={() => handlePenguinDetails(penguin)}>Penguin Details</Button></TableCell>
+                                <TableCell><Button variant="contained" color="primary" onClick={() => handlePenguinEdit(penguin)}>Edit</Button></TableCell>
+                                <TableCell><Button variant="contained" color="secondary" onClick={() => handlePenguinDelete(penguin)}>Delete</Button></TableCell>
                             </TableRow>
                         )
                     })}
@@ -98,7 +102,7 @@ export default function PenguinList() {
             </Table>
             </TableContainer>
 
-            <button onClick={handleAddPenguin}>Add Penguin</button>
+            <Button variant="contained" color="primary" onClick={handleAddPenguin}>Add Penguin</Button>
         </div>
     )
 }

@@ -8,7 +8,10 @@ import axios from 'axios';
 //import { useEffect } from 'react';
 import {useDispatch} from 'react-redux';
 //MATERIAL UI STUFF
+import  Button  from '@material-ui/core/Button';
 //END MATERIAL UI
+
+import '../UserPage/UserPage.css'
 
 
 
@@ -40,34 +43,14 @@ console.log('The selected date is',value);
 
 
   return (
-    <div className="container">
+    <div>
       <h2>Welcome, {user.username}!</h2>
       <p>Your ID is: {user.id}</p>
       <LogOutButton className="btn" />
 
-
-      {/* MATERIAL UI START */}
-      {/* MATERIAL UI END */}
-
       <p>Start your next feed</p>
 
-      {/* <DatePicker
-        onChange={onChange}
-        value={value} /> */}
-
-      {/* <select name="date" id="date">
-        <option value="6/28">6/28</option>
-        <option value="6/29">6/29</option>
-        <option value="6/30">6/30</option>
-        <option value="7/1">7/1</option>
-      </select> */}
-
-      {/* <select name="time" id="time">
-        <option value="am">AM</option>
-        <option value="pm">PM</option>
-      </select> */}
-
-      <button onClick = {handleTally}>Let's Start Tally</button>
+      <Button variant="contained" color="primary" onClick = {handleTally}>Let's Start Tally</Button>
     </div>
   );
 }

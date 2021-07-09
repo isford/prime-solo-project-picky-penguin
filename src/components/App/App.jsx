@@ -9,7 +9,7 @@ import '@fontsource/roboto';
 import swal from 'sweetalert';
 
 import ReactDOM from 'react-dom';
-import { ThemeProvider } from '@material-ui/core/styles';
+import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
 
 import { useDispatch } from 'react-redux';
 
@@ -41,12 +41,21 @@ import EditFeedingForm from '../EditFeedingForm/EditFeedingForm'
 
 import './App.css';
 
-const theme = {};
-
-
+const theme = createMuiTheme({
+  pallette: {
+    primary: {
+      main: 'yellow'
+    },
+    secondary: {
+      main: 'purple'
+    }
+  }
+});
 
 function App() {
   const dispatch = useDispatch();
+
+  console.log('The theme is', theme)
 
   useEffect(() => {
     dispatch({ type: 'FETCH_USER' });
@@ -54,6 +63,8 @@ function App() {
 
   return (
     
+
+    <ThemeProvider theme={theme}>
     <Router>
       <div>
         <Nav />
@@ -235,6 +246,7 @@ function App() {
         <Footer />
       </div>
     </Router>
+    </ThemeProvider>
     
   );
 }

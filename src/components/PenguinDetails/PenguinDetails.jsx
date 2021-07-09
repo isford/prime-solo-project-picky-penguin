@@ -3,6 +3,9 @@ import { useHistory } from 'react-router';
 import { useSelector } from 'react-redux';
 import { Line } from 'react-chartjs-2';
 
+import Button from '@material-ui/core/Button'
+
+
 
 
 export default function PenguinDetails() {
@@ -35,8 +38,8 @@ export default function PenguinDetails() {
                         <li>Band Colors: {penguinEditReducer.band_color}</li>
                     </ul>
 
-            <div>
-                <div>
+            {/* <div> */}
+                {/* <div>
                     <Line
                         data={{
                             labels: ['Time'],
@@ -57,11 +60,11 @@ export default function PenguinDetails() {
                         }}
                     />
                 </div>
-            </div>
+            </div> */}
             
-            <button onClick={handleGoBack}>Go Back To List</button>
-            <button onClick={handleEdit}>Edit</button>
-            <button onClick={handleDelete}>Delete</button>
+            <Button variant="contained" color="primary" onClick={handleGoBack}>Go Back To List</Button>
+            <Button variant="contained" color="primary" onClick={handleEdit}>Edit</Button>
+            <Button variant="contained" color="secondary" onClick={handleDelete}>Delete</Button>
         </div>
     )
 }

@@ -2,6 +2,9 @@ import React, {useState} from 'react';
 import { useHistory } from 'react-router';
 import { useDispatch } from 'react-redux';
 
+import Button from '@material-ui/core/Button'
+
+
 
 
 export default function AddColonyForm() {
@@ -35,8 +38,8 @@ export default function AddColonyForm() {
                 onChange={(event) => setColony(event.target.value)}
                 value={colony}></input>
 
-            <button onClick = {handleCreateNewColony}>Create New Colony</button>
-            <button onClick={handleCancel}>Cancel</button>
+            <Button variant="contained" color="primary" onClick = {handleCreateNewColony}>Create New Colony</Button>
+            <Button variant="contained" color="secondary" onClick={handleCancel}>Cancel</Button>
         </div>
     )
 }
