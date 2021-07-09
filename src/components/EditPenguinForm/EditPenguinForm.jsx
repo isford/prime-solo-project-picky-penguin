@@ -41,17 +41,11 @@ export default function EditPenguinForm() {
 
     console.log('The colony is...', colony)
 
-    // const handleEdit = (event) => {
-    //     dispatch({
-    //         type: 'EDIT_ON_CHANGE',
-    //         payload: [{ property: 'name', value: event.target.value }
-    //                 { property: 'colony_id', value: event.target.value }]
-    //     })
-    //}
+
 
     return (
         <div>
-           <p>Edit penguin form</p>
+           <h1>Edit Penguin Form</h1>
            {/* NAME */}
             <input onChange={(event) => setPenguinName(event.target.value)}
              value={penguinName} type="text" 
@@ -63,6 +57,7 @@ export default function EditPenguinForm() {
                 {colonyReducer.map(colony => {
                     console.log(colony)
                     return (
+                        
                         <option value={colony.id} key={colony.id}>{colony.name}</option>
                     )
                 })}

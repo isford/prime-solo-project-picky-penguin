@@ -56,7 +56,7 @@ export default function ColoniesPage() {
     }
     return (
         <div>
-            <p>You are on the colonies page</p>
+            <h1>Colonies Page</h1>
 
             <TableContainer component={Paper}>
                 <Table className={classes.table} aria-label="simple table">
@@ -65,7 +65,7 @@ export default function ColoniesPage() {
                             <TableCell>Colony Name</TableCell>
                             <TableCell>Number of Birds </TableCell>
                             <TableCell>Edit Colony Name</TableCell>
-                            <TableCell>Delete Colony</TableCell>
+                            {/* <TableCell>Delete Colony</TableCell> */}
                     </TableRow>
                 </TableHead>
                 <TableBody>
@@ -74,8 +74,8 @@ export default function ColoniesPage() {
                             <TableRow key = {colony.id}>
                                 <TableCell>{colony.name}</TableCell>
                                 <TableCell>{colony.count}</TableCell>
-                                <TableCell><Button variant="contained" color="primary" onClick={() => handleEdit(colony)}>Edit</Button></TableCell>
-                                <TableCell><Button variant="contained" color="secondary" onClick={() => handleDelete(colony)}>Delete</Button></TableCell>
+                                <TableCell><Button variant="contained" color="secondary" onClick={() => handleEdit(colony)}>Edit</Button></TableCell>
+                                {/* <TableCell><Button variant="contained" color="secondary" onClick={() => handleDelete(colony)}>Delete</Button></TableCell> */}
                             </TableRow>
                         )
                     })}
@@ -83,7 +83,7 @@ export default function ColoniesPage() {
             </Table>
             </TableContainer>
 
-            <Button variant="contained" color="primary" onClick={handleAddColony}>Add Colony</Button>
+            {/* <Button variant="contained" color="primary" onClick={handleAddColony}>Add Colony</Button> */}
         </div>
     )
 }

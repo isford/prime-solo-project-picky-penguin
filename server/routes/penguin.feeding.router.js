@@ -30,6 +30,32 @@ router.get('/', (req, res) => {
     }
 });
 
+
+router.get('/graph', (req, res) => {
+    console.log('req.user is', req.user)
+    const queryText = `
+    SELECT  "penguin".name, "penguin".id, "penguin".sex, "penguin".band_color, 
+    "colony_manager".name AS "colony_name", "daily_data".daily_total_am, 
+    "daily_data".calcium, "daily_data".multivitamin, "daily_data".itraconazole,
+    "daily_data".id AS "feed_id"
+    FROM "penguin"
+    JOIN "colony_manager"
+    ON "penguin".colony_id = "colony_manager".id
+    JOIN "daily_data"
+    ON "penguin".id = "daily_data".penguin_id
+    WHERE "penguin".id = $1;`;
+    if (req.isAuthenticated) {
+        pool.query(queryText, [req.body.id])
+            .then(results => {
+                res.send(results.rows)
+            }).catch(error => {
+                console.log('Error in Feeding GET route', error)
+            })
+    } else {
+        res.sendStatus(403)
+    }
+});
+
 //Add new feeding to DB
 router.post('/', async (req, res) => {
     const connection = await pool.connect();

@@ -133,10 +133,10 @@ export default function FeedingPage() {
             </TableContainer>
 
             <button onClick = {handleFeed}>Submit Feed</button>
-            <select name="time" id="time">
+            {/* <select name="time" id="time">
         <option value="am">AM</option>
         <option value="pm">PM</option>
-      </select>
+      </select> */}
         </div>
     )
 }

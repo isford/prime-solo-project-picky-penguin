@@ -41,7 +41,7 @@ export default function PenguinList() {
                 {type: 'FETCH_AVERAGES'});
     }, []);
 
-    console.log('THE AVERAGES ARE?', penguinFeedingReducer)
+    //console.log('THE AVERAGES ARE?', penguinFeedingReducer)
 
     const handlePenguinDetails = (penguin) =>{
         console.log('Penguin details button clicked', penguin)

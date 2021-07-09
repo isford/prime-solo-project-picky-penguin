@@ -36,6 +36,7 @@ export default function PenguinDetails() {
                         <li>Colony: {penguinEditReducer.colony_name}</li>
                         <li>Sex: {penguinEditReducer.sex}</li>
                         <li>Band Colors: {penguinEditReducer.band_color}</li>
+                        <li>5 Day Average: {penguinEditReducer.average}</li>
                     </ul>
 
             {/* <div> */}

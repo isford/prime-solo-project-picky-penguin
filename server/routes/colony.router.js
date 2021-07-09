@@ -7,7 +7,12 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 //GET ALL COLONIES FROM DB
 router.get('/', (req, res) => {
     console.log('req.user is', req.user)
-    const queryText = `SELECT "colony_manager".name, "colony_manager".id, COUNT(penguin.id)
+    const queryText = `SELECT 
+    "colony_manager".name,
+    "colony_manager".id,    
+    COUNT(penguin.id)
+
+    
     FROM "colony_manager"
 	JOIN "penguin"
 	ON "colony_manager".id = "penguin".colony_id
@@ -17,6 +22,7 @@ router.get('/', (req, res) => {
         pool.query(queryText, [req.user.id])
         .then(results => {
             res.send(results.rows)
+            console.log(results.rows)
         }).catch(error => {
             console.log('Error in Colony GET route', error)
         })
