@@ -9,7 +9,9 @@ import '@fontsource/roboto';
 import swal from 'sweetalert';
 
 import ReactDOM from 'react-dom';
-import { ThemeProvider, createMuiTheme } from '@material-ui/core/styles';
+import { ThemeProvider, createTheme } from '@material-ui/core/styles';
+import '@fontsource/roboto';
+
 
 import { useDispatch } from 'react-redux';
 
@@ -41,13 +43,13 @@ import EditFeedingForm from '../EditFeedingForm/EditFeedingForm'
 
 import './App.css';
 
-const theme = createMuiTheme({
+const theme = createTheme({
   pallette: {
     primary: {
-      main: 'yellow'
+      main: '#d834eb'
     },
     secondary: {
-      main: 'purple'
+      main: '#0f4ed6'
     }
   }
 });

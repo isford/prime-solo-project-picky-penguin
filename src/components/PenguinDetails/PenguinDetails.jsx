@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { useHistory } from 'react-router';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { Line } from 'react-chartjs-2';
 
 import Button from '@material-ui/core/Button'
@@ -10,10 +10,13 @@ import Button from '@material-ui/core/Button'
 
 export default function PenguinDetails() {
     const history = useHistory();
+    const dispatch = useDispatch();
+
 
     const penguinEditReducer = useSelector(store => store.penguinEditReducer)
+    const graphData = useSelector(store => store.graphReducer)
 
-
+    console.log('Data to be graphed is',graphData)
     const handleGoBack = () => {
         console.log('Go back to list button clicked')
         history.push('/penguinList')
@@ -28,6 +31,13 @@ export default function PenguinDetails() {
         history.push('/deletePenguin');
     }
 
+    useEffect(() => {
+        dispatch({ type: 'FETCH_GRAPHS', payload: penguinEditReducer },
+            { type: 'FETCH_AVERAGES' });
+    }, []);
+
+    console.log('Penguin edit reducer has', penguinEditReducer)
+
 
     return (
         <div>
@@ -39,29 +49,42 @@ export default function PenguinDetails() {
                         <li>5 Day Average: {penguinEditReducer.average}</li>
                     </ul>
 
-            {/* <div> */}
-                {/* <div>
+            <div>
+                <div>
                     <Line
                         data={{
                             labels: ['Time'],
                             datasets: [
                                 {
                                     label: '# of Fish',
-                                    data: [1, 2],
+                                    data: graphData,
                                     backgroundColor: 'white',
                                     borderColor: 'blue',
                                     tension: 0.2,
                                 }
                             ]
                         }}
-                        height={200}
-                        width={300}
                         options={{
-                            //maintainAspectRatio: true
+                            //maintainAspectRatio: true,
+                            parsing: {
+                                xAxisKey: 'date',
+                                yAxisKey: 'daily_total_am'
+                            },
+                            scales: {
+                                yAxis: {
+                                    min: 0,
+                                    max: 15,
+                                    ticks: {
+                                        beginAtZero: true,
+                                        stepSize: 1,
+                                    },
+                                },
+                                
+                            },
                         }}
                     />
                 </div>
-            </div> */}
+            </div>
             
             <Button variant="contained" color="primary" onClick={handleGoBack}>Go Back To List</Button>
             <Button variant="contained" color="primary" onClick={handleEdit}>Edit</Button>

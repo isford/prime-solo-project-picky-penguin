@@ -34,18 +34,19 @@ router.get('/', (req, res) => {
 router.get('/graph', (req, res) => {
     console.log('req.user is', req.user)
     const queryText = `
-    SELECT  "penguin".name, "penguin".id, "penguin".sex, "penguin".band_color, 
-    "colony_manager".name AS "colony_name", "daily_data".daily_total_am, 
-    "daily_data".calcium, "daily_data".multivitamin, "daily_data".itraconazole,
-    "daily_data".id AS "feed_id"
+        SELECT  "penguin".name, "penguin".id,
+    "daily_data".daily_total_am,
+    "daily_data".id AS "feed_id", "daily_data".date
     FROM "penguin"
     JOIN "colony_manager"
     ON "penguin".colony_id = "colony_manager".id
     JOIN "daily_data"
     ON "penguin".id = "daily_data".penguin_id
-    WHERE "penguin".id = $1;`;
+    WHERE "penguin".id = $1
+    ORDER BY "date" ASC;`;
     if (req.isAuthenticated) {
-        pool.query(queryText, [req.body.id])
+        console.log('The id to be graphed is', req.query)
+        pool.query(queryText, [req.query.id])
             .then(results => {
                 res.send(results.rows)
             }).catch(error => {
