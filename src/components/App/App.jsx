@@ -10,6 +10,7 @@ import swal from 'sweetalert';
 import ReactDOM from 'react-dom';
 import { ThemeProvider, createTheme } from '@material-ui/core/styles';
 import '@fontsource/roboto';
+import purple from '@material-ui/core/colors/purple';
 
 
 import { useDispatch } from 'react-redux';
@@ -42,15 +43,30 @@ import EditFeedingForm from '../EditFeedingForm/EditFeedingForm'
 import PenguinListCopy from '../PenguinList copy/PenguinListCOPY';
 
 import './App.css';
+import { dark } from '@material-ui/core/styles/createPalette';
 
 const theme = createTheme({
   palette: {
     primary: {
-      main: '#d834eb',
+      main: '#29b6f6',
     },
     secondary: {
-      main: '#0f4ed6',
+      main: '#ffa726',
     },
+  },
+  typography: {
+    fontFamily: [
+      '-apple-system',
+      'BlinkMacSystemFont',
+      '"Segoe UI"',
+      'Roboto',
+      '"Helvetica Neue"',
+      'Arial',
+      'sans-serif',
+      '"Apple Color Emoji"',
+      '"Segoe UI Emoji"',
+      '"Segoe UI Symbol"',
+    ].join(','),
   },
 });
 
@@ -64,180 +80,180 @@ function App() {
   }, [dispatch]);
 
   return (
-    
 
-    
+
+
     <Router>
       <ThemeProvider theme={theme}>
-      <div>
-        <Nav />
-        <Switch>
-          {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
-          <Redirect exact from="/" to="/home" />
+        <div>
+          <Nav />
+          <Switch>
+            {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
+            <Redirect exact from="/" to="/home" />
 
-          {/* Visiting localhost:3000/about will show the about page. */}
-          <Route
-            // shows AboutPage at all times (logged in or not)
-            exact
-            path="/about"
-          >
-            <AboutPage />
-          </Route>
+            {/* Visiting localhost:3000/about will show the about page. */}
+            <Route
+              // shows AboutPage at all times (logged in or not)
+              exact
+              path="/about"
+            >
+              <AboutPage />
+            </Route>
 
-          {/* For protected routes, the view could show one of several things on the same route.
+            {/* For protected routes, the view could show one of several things on the same route.
             Visiting localhost:3000/user will show the UserPage if the user is logged in.
             If the user is not logged in, the ProtectedRoute will show the LoginPage (component).
             Even though it seems like they are different pages, the user is always on localhost:3000/user */}
-          <ProtectedRoute
-            // logged in shows UserPage else shows LoginPage
-            exact
-            path="/user"
-          >
-            <UserPage />
-          </ProtectedRoute>
+            <ProtectedRoute
+              // logged in shows UserPage else shows LoginPage
+              exact
+              path="/user"
+            >
+              <UserPage />
+            </ProtectedRoute>
 
-          <ProtectedRoute
-            // logged in shows InfoPage else shows LoginPage
-            exact
-            path="/info"
-          >
-            <InfoPage />
-          </ProtectedRoute>
+            <ProtectedRoute
+              // logged in shows InfoPage else shows LoginPage
+              exact
+              path="/info"
+            >
+              <InfoPage />
+            </ProtectedRoute>
 
-          {/* When a value is supplied for the authRedirect prop the user will
+            {/* When a value is supplied for the authRedirect prop the user will
             be redirected to the path supplied when logged in, otherwise they will
             be taken to the component and path supplied. */}
-          <ProtectedRoute
-            // with authRedirect:
-            // - if logged in, redirects to "/user"
-            // - else shows LoginPage at /login
-            exact
-            path="/login"
-            authRedirect="/user"
-          >
-            <LoginPage />
-          </ProtectedRoute>
+            <ProtectedRoute
+              // with authRedirect:
+              // - if logged in, redirects to "/user"
+              // - else shows LoginPage at /login
+              exact
+              path="/login"
+              authRedirect="/user"
+            >
+              <LoginPage />
+            </ProtectedRoute>
 
-          <ProtectedRoute
-            // with authRedirect:
-            // - if logged in, redirects to "/user"
-            // - else shows RegisterPage at "/registration"
-            exact
-            path="/registration"
-            authRedirect="/user"
-          >
-            <RegisterPage />
-          </ProtectedRoute>
+            <ProtectedRoute
+              // with authRedirect:
+              // - if logged in, redirects to "/user"
+              // - else shows RegisterPage at "/registration"
+              exact
+              path="/registration"
+              authRedirect="/user"
+            >
+              <RegisterPage />
+            </ProtectedRoute>
 
-          <ProtectedRoute
-            // with authRedirect:
-            // - if logged in, redirects to "/user"
-            // - else shows LandingPage at "/home"
-            exact
-            path="/home"
-            authRedirect="/user"
-          >
-            <LandingPage />
-          </ProtectedRoute>
+            <ProtectedRoute
+              // with authRedirect:
+              // - if logged in, redirects to "/user"
+              // - else shows LandingPage at "/home"
+              exact
+              path="/home"
+              authRedirect="/user"
+            >
+              <LandingPage />
+            </ProtectedRoute>
 
             {/* MY NEW ROUTES */}
-          <ProtectedRoute
-            exact
-            path="/feedingPage"
-          >
-            <FeedingPage />
-          </ProtectedRoute>
+            <ProtectedRoute
+              exact
+              path="/feedingPage"
+            >
+              <FeedingPage />
+            </ProtectedRoute>
 
-          <ProtectedRoute
-            exact
-            path="/coloniesPage"
-          >
-            <ColoniesPage />
-          </ProtectedRoute>
+            <ProtectedRoute
+              exact
+              path="/coloniesPage"
+            >
+              <ColoniesPage />
+            </ProtectedRoute>
 
-          {/* <ProtectedRoute
+            {/* <ProtectedRoute
             exact
             path="/penguinList"
           >
             <PenguinList />
           </ProtectedRoute> */}
 
-          <ProtectedRoute
-            exact
-            path="/penguinDetails"
-          >
-            <PenguinDetails />
-          </ProtectedRoute>
+            <ProtectedRoute
+              exact
+              path="/penguinDetails"
+            >
+              <PenguinDetails />
+            </ProtectedRoute>
 
-          <ProtectedRoute
-            exact
-            path="/addColony"
-          >
-            <AddColonyForm />
-          </ProtectedRoute>
+            <ProtectedRoute
+              exact
+              path="/addColony"
+            >
+              <AddColonyForm />
+            </ProtectedRoute>
 
-          <ProtectedRoute
-            exact
-            path="/addPenguin"
-          >
-            <AddPenguinForm />
-          </ProtectedRoute>
+            <ProtectedRoute
+              exact
+              path="/addPenguin"
+            >
+              <AddPenguinForm />
+            </ProtectedRoute>
 
-          <ProtectedRoute
-            exact
-            path="/addPenguinSuccess"
-          >
-            <SuccessPenguinPage />
-          </ProtectedRoute>
+            <ProtectedRoute
+              exact
+              path="/addPenguinSuccess"
+            >
+              <SuccessPenguinPage />
+            </ProtectedRoute>
 
-          <ProtectedRoute
-            exact
-            path="/addFeedingSuccess"
-          >
-            <SuccessFeedingPage />
-          </ProtectedRoute>
+            <ProtectedRoute
+              exact
+              path="/addFeedingSuccess"
+            >
+              <SuccessFeedingPage />
+            </ProtectedRoute>
 
-          <ProtectedRoute
-            exact
-            path="/deletePenguin"
-          >
-            <DeletePenguin />
-          </ProtectedRoute>
+            <ProtectedRoute
+              exact
+              path="/deletePenguin"
+            >
+              <DeletePenguin />
+            </ProtectedRoute>
 
-          <ProtectedRoute
-            exact
-            path="/addColonySuccess"
-          >
-            <SuccessNewColonyPage />
-          </ProtectedRoute>
+            <ProtectedRoute
+              exact
+              path="/addColonySuccess"
+            >
+              <SuccessNewColonyPage />
+            </ProtectedRoute>
 
-          <ProtectedRoute
-            exact
-            path="/editColonyForm"
-          >
-            <EditColonyForm />
-          </ProtectedRoute>
+            <ProtectedRoute
+              exact
+              path="/editColonyForm"
+            >
+              <EditColonyForm />
+            </ProtectedRoute>
 
-          <ProtectedRoute
-            exact
-            path="/editPenguinForm"
-          >
-            <EditPenguinForm />
-          </ProtectedRoute>
+            <ProtectedRoute
+              exact
+              path="/editPenguinForm"
+            >
+              <EditPenguinForm />
+            </ProtectedRoute>
 
-          <ProtectedRoute
-            exact
-            path="/feedingList"
-          >
-            <FeedingList />
-          </ProtectedRoute>
+            <ProtectedRoute
+              exact
+              path="/feedingList"
+            >
+              <FeedingList />
+            </ProtectedRoute>
 
-          <ProtectedRoute
-            exact
-            path="/editFeedingForm"
-          >
-            <EditFeedingForm />
-          </ProtectedRoute>
+            <ProtectedRoute
+              exact
+              path="/editFeedingForm"
+            >
+              <EditFeedingForm />
+            </ProtectedRoute>
 
             <ProtectedRoute
               exact
@@ -246,19 +262,19 @@ function App() {
               <PenguinListCopy />
             </ProtectedRoute>
 
-          {/* END MY NEW ROUTES */}
+            {/* END MY NEW ROUTES */}
 
-          {/* If none of the other routes matched, we will show a 404. */}
-          <Route>
-            <h1>404</h1>
-          </Route>
-        </Switch>
-        <Footer />
-      </div>
+            {/* If none of the other routes matched, we will show a 404. */}
+            <Route>
+              <h1>404</h1>
+            </Route>
+          </Switch>
+          <Footer />
+        </div>
       </ThemeProvider>
     </Router>
-    
-    
+
+
   );
 }
 

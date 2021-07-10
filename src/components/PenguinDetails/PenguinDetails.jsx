@@ -60,8 +60,8 @@ export default function PenguinDetails() {
                                 {
                                     label: '# of Fish',
                                     data: graphData,
-                                    backgroundColor: '#79b1f2',
-                                    borderColor: '#4295f5',
+                                    backgroundColor: '#ffa726',
+                                    borderColor: '#ffa726',
                                     tension: 0.2,
                                 }
                             ]
