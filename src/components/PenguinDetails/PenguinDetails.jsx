@@ -58,8 +58,8 @@ export default function PenguinDetails() {
                                 {
                                     label: '# of Fish',
                                     data: graphData,
-                                    backgroundColor: 'white',
-                                    borderColor: 'blue',
+                                    backgroundColor: '#79b1f2',
+                                    borderColor: '#4295f5',
                                     tension: 0.2,
                                 }
                             ]
@@ -73,7 +73,23 @@ export default function PenguinDetails() {
                             scales: {
                                 yAxis: {
                                     min: 0,
-                                    max: 15,
+                                    max: 10,
+                                    display: true,
+                                    title: {
+                                        display: true,
+                                        text: 'Number of Fish Consumed'
+                                    },
+                                    ticks: {
+                                        beginAtZero: true,
+                                        stepSize: 1,
+                                    },
+                                },
+                                xAxis: {
+                                    display: true,
+                                    title: {
+                                        display: true,
+                                        text: 'Date'
+                                    },
                                     ticks: {
                                         beginAtZero: true,
                                         stepSize: 1,
