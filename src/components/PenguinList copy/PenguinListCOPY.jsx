@@ -60,8 +60,8 @@ function stableSort(array, comparator) {
 
 const headCells = [
     { id: 'name', numeric: false, disablePadding: true, label: 'Name' },
-    { id: 'calories', numeric: true, disablePadding: false, label: 'Colony' },
-    { id: 'fat', numeric: true, disablePadding: false, label: '5 Day Average' },
+    { id: 'colony', numeric: false, disablePadding: true, label: 'Colony' },
+    { id: 'five_day_average', numeric: true, disablePadding: false, label: '5 Day Average' },
     { id: 'penguin_details', numeric: true, disablePadding: false, label: 'Penguin Details' },
     { id: 'edit_penguin', numeric: true, disablePadding: false, label: 'Edit Penguin' },
     { id: 'delete_penguin', numeric: true, disablePadding: false, label: 'Delete Penguin' },
@@ -72,6 +72,8 @@ function EnhancedTableHead(props) {
     const createSortHandler = (property) => (event) => {
         onRequestSort(event, property);
     };
+
+    console.log('The headcell is', headCells)
 
     return (
         <TableHead>
@@ -87,7 +89,7 @@ function EnhancedTableHead(props) {
                 {headCells.map((headCell) => (
                     <TableCell
                         key={headCell.id}
-                        align={headCell.numeric ? 'right' : 'left'}
+                        align={headCell.numeric ? 'right' : 'right'}
                         padding={headCell.disablePadding ? 'none' : 'normal'}
                         sortDirection={orderBy === headCell.id ? order : false}
                     >
@@ -140,46 +142,46 @@ const useToolbarStyles = makeStyles((theme) => ({
     },
 }));
 
-const EnhancedTableToolbar = (props) => {
-    const classes = useToolbarStyles();
-    const { numSelected } = props;
+// const EnhancedTableToolbar = (props) => {
+//     const classes = useToolbarStyles();
+//     const { numSelected } = props;
 
-    return (
-        <Toolbar
-            className={clsx(classes.root, {
-                [classes.highlight]: numSelected > 0,
-            })}
-        >
-            {numSelected > 0 ? (
-                <Typography className={classes.title} color="inherit" variant="subtitle1" component="div">
-                    {numSelected} selected
-                </Typography>
-            ) : (
-                <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
-                    All Penguins
-                </Typography>
-            )}
+//     return (
+//         <Toolbar
+//             className={clsx(classes.root, {
+//                 [classes.highlight]: numSelected > 0,
+//             })}
+//         >
+//             {numSelected > 0 ? (
+//                 <Typography className={classes.title} color="inherit" variant="subtitle1" component="div">
+//                     {numSelected} selected
+//                 </Typography>
+//             ) : (
+//                 <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
+//                     All Penguins
+//                 </Typography>
+//             )}
 
-            {numSelected > 0 ? (
-                <Tooltip title="Delete">
-                    <IconButton aria-label="delete">
-                        <DeleteIcon />
-                    </IconButton>
-                </Tooltip>
-            ) : (
-                <Tooltip title="Filter list">
-                    <IconButton aria-label="filter list">
-                        <FilterListIcon />
-                    </IconButton>
-                </Tooltip>
-            )}
-        </Toolbar>
-    );
-};
+//             {numSelected > 0 ? (
+//                 <Tooltip title="Delete">
+//                     <IconButton aria-label="delete">
+//                         <DeleteIcon />
+//                     </IconButton>
+//                 </Tooltip>
+//             ) : (
+//                 <Tooltip title="Filter list">
+//                     <IconButton aria-label="filter list">
+//                         <FilterListIcon />
+//                     </IconButton>
+//                 </Tooltip>
+//             )}
+//         </Toolbar>
+//     );
+// };
 
-EnhancedTableToolbar.propTypes = {
-    numSelected: PropTypes.number.isRequired,
-};
+// EnhancedTableToolbar.propTypes = {
+//     numSelected: PropTypes.number.isRequired,
+// };
 
 const useStyles = makeStyles((theme) => ({
     root: {
@@ -213,8 +215,8 @@ export default function PenguinListCopy() {
 
 
     const penguinReducer = useSelector(store => store.penguinReducer);
-    const userReducer = useSelector(store => store.userReducer);
-    const penguinFeedingReducer = useSelector (store => store.penguinFeedingReducer);
+    // const userReducer = useSelector(store => store.userReducer);
+    // const penguinFeedingReducer = useSelector (store => store.penguinFeedingReducer);
 
     useEffect(() => {
         dispatch({ type: 'FETCH_PENGUINS' },
@@ -225,13 +227,14 @@ export default function PenguinListCopy() {
 
     const classes = useStyles();
     const [order, setOrder] = React.useState('asc');
-    const [orderBy, setOrderBy] = React.useState('calories');
+    const [orderBy, setOrderBy] = React.useState('colony');
     const [selected, setSelected] = React.useState([]);
     const [page, setPage] = React.useState(0);
     const [dense, setDense] = React.useState(false);
     const [rowsPerPage, setRowsPerPage] = React.useState(5);
 
     const handleRequestSort = (event, property) => {
+        console.log('The property is', property)
         const isAsc = orderBy === property && order === 'asc';
         setOrder(isAsc ? 'desc' : 'asc');
         setOrderBy(property);
@@ -315,7 +318,7 @@ export default function PenguinListCopy() {
     return (
         <div className={classes.root}>
             <Paper className={classes.paper}>
-                <EnhancedTableToolbar numSelected={selected.length} />
+                {/* <EnhancedTableToolbar numSelected={selected.length} /> */}
                 <TableContainer>
                     <Table
                         className={classes.table}
@@ -387,7 +390,7 @@ export default function PenguinListCopy() {
             </Paper>
             <FormControlLabel
                 control={<Switch checked={dense} onChange={handleChangeDense} />}
-                label="Dense padding"
+                label="Compact View"
             />
             <Button variant="contained" color="primary" onClick={handleAddPenguin}>Add Penguin</Button>
 

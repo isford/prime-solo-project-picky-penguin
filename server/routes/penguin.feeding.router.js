@@ -63,11 +63,11 @@ router.post('/', async (req, res) => {
     try{
         await connection.query('BEGIN')
         for (let i = 0; i < req.body.length; i++){
-            const queryText = `INSERT INTO "daily_data" ("penguin_id","user_id", "daily_total_am", "calcium", "multivitamin", "itraconazole")
-                        VALUES ($1, $2, $3, $4, $5, $6);`;
+            const queryText = `INSERT INTO "daily_data" ("penguin_id","user_id", "daily_total_am", "calcium", "multivitamin", "itraconazole", "date")
+                        VALUES ($1, $2, $3, $4, $5, $6, $7);`;
 
             await connection.query(queryText, [req.body[i].penguin_id, req.user.id, req.body[i].daily_total_am, 
-                req.body[i].calcium, req.body[i].multivitamin, req.body[i].itraconazole])
+                req.body[i].calcium, req.body[i].multivitamin, req.body[i].itraconazole, 'today'])
 
         }await connection.query('COMMIT')
         res.sendStatus(201);

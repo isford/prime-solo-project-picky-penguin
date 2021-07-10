@@ -155,12 +155,12 @@ function App() {
             <ColoniesPage />
           </ProtectedRoute>
 
-          <ProtectedRoute
+          {/* <ProtectedRoute
             exact
             path="/penguinList"
           >
             <PenguinList />
-          </ProtectedRoute>
+          </ProtectedRoute> */}
 
           <ProtectedRoute
             exact
@@ -241,7 +241,7 @@ function App() {
 
             <ProtectedRoute
               exact
-              path="/PenguinListCopy"
+              path="/PenguinList"
             >
               <PenguinListCopy />
             </ProtectedRoute>
