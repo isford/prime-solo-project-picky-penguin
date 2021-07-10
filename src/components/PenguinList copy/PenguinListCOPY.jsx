@@ -60,7 +60,7 @@ function stableSort(array, comparator) {
 
 const headCells = [
     { id: 'name', numeric: false, disablePadding: true, label: 'Name' },
-    { id: 'colony', numeric: false, disablePadding: true, label: 'Colony' },
+    { id: 'colony', numeric: true, disablePadding: false, label: 'Colony' },
     { id: 'five_day_average', numeric: true, disablePadding: false, label: '5 Day Average' },
     { id: 'penguin_details', numeric: true, disablePadding: false, label: 'Penguin Details' },
     { id: 'edit_penguin', numeric: true, disablePadding: false, label: 'Edit Penguin' },
@@ -73,23 +73,23 @@ function EnhancedTableHead(props) {
         onRequestSort(event, property);
     };
 
-    console.log('The headcell is', headCells)
+    //console.log('The headcell is', headCells)
 
     return (
         <TableHead>
             <TableRow>
                 <TableCell padding="checkbox">
-                    {/* <Checkbox
+                    <Checkbox
                         indeterminate={numSelected > 0 && numSelected < rowCount}
                         checked={rowCount > 0 && numSelected === rowCount}
                         onChange={onSelectAllClick}
-                        inputProps={{ 'aria-label': 'select all desserts' }}
-                    /> */}
+                        inputProps={{ 'aria-label': 'select all penguins' }}
+                    />
                 </TableCell>
                 {headCells.map((headCell) => (
                     <TableCell
                         key={headCell.id}
-                        align={headCell.numeric ? 'right' : 'right'}
+                        align={headCell.numeric ? 'right' : 'left'}
                         padding={headCell.disablePadding ? 'none' : 'normal'}
                         sortDirection={orderBy === headCell.id ? order : false}
                     >
@@ -142,46 +142,46 @@ const useToolbarStyles = makeStyles((theme) => ({
     },
 }));
 
-// const EnhancedTableToolbar = (props) => {
-//     const classes = useToolbarStyles();
-//     const { numSelected } = props;
+const EnhancedTableToolbar = (props) => {
+    const classes = useToolbarStyles();
+    const { numSelected } = props;
 
-//     return (
-//         <Toolbar
-//             className={clsx(classes.root, {
-//                 [classes.highlight]: numSelected > 0,
-//             })}
-//         >
-//             {numSelected > 0 ? (
-//                 <Typography className={classes.title} color="inherit" variant="subtitle1" component="div">
-//                     {numSelected} selected
-//                 </Typography>
-//             ) : (
-//                 <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
-//                     All Penguins
-//                 </Typography>
-//             )}
+    return (
+        <Toolbar
+            className={clsx(classes.root, {
+                [classes.highlight]: numSelected > 0,
+            })}
+        >
+            {numSelected > 0 ? (
+                <Typography className={classes.title} color="inherit" variant="subtitle1" component="div">
+                    {numSelected} selected
+                </Typography>
+            ) : (
+                <Typography className={classes.title} variant="h6" id="tableTitle" component="div">
+                    All Penguins
+                </Typography>
+            )}
 
-//             {numSelected > 0 ? (
-//                 <Tooltip title="Delete">
-//                     <IconButton aria-label="delete">
-//                         <DeleteIcon />
-//                     </IconButton>
-//                 </Tooltip>
-//             ) : (
-//                 <Tooltip title="Filter list">
-//                     <IconButton aria-label="filter list">
-//                         <FilterListIcon />
-//                     </IconButton>
-//                 </Tooltip>
-//             )}
-//         </Toolbar>
-//     );
-// };
+            {numSelected > 0 ? (
+                <Tooltip title="Delete">
+                    <IconButton aria-label="delete">
+                        <DeleteIcon />
+                    </IconButton>
+                </Tooltip>
+            ) : (
+                <Tooltip title="Filter list">
+                    <IconButton aria-label="filter list">
+                        <FilterListIcon />
+                    </IconButton>
+                </Tooltip>
+            )}
+        </Toolbar>
+    );
+};
 
-// EnhancedTableToolbar.propTypes = {
-//     numSelected: PropTypes.number.isRequired,
-// };
+EnhancedTableToolbar.propTypes = {
+    numSelected: PropTypes.number.isRequired,
+};
 
 const useStyles = makeStyles((theme) => ({
     root: {

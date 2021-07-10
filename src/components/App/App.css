@@ -20,6 +20,7 @@ Container
 
 .container {
   padding: 20px;
+  background:rgb(0, 200, 255, 0.8)
 }
 
 /* --------------------------------------------------------------------------------
@@ -113,3 +114,16 @@ input {
 
 /* MY STUFF */
 /* body {background-color: #d7ccc8;} */
+
+body{
+  background-image:url("https://i.imgur.com/jsVhkfB.png");
+  padding: 0em;
+  width: auto;
+  height: 80%;
+  
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  
+  /* //background-size: cover; */
+}
