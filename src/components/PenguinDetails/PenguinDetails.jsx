@@ -66,6 +66,38 @@ export default function PenguinDetails() {
                         }}
                         options={{
                             //maintainAspectRatio: true,
+                            plugins: {
+                                title: {
+                                    display: true,
+                                    text: 'Fish Consumed Over Time',
+                                    color: '#4295f5',
+                                    font: {
+                                        size: 20,
+                                        family: 'tahoma',
+                                        weight: 'normal',
+                                    },
+                                    padding: {
+                                        bottom: 10
+                                    }
+                                
+                                },
+                                subtitle: {
+                                    display: true,
+                                    text: `5 Day Average Number of Fish: ${penguinEditReducer.average} `,
+                                    color: '#79b1f2',
+                                    font: {
+                                        size: 14,
+                                        family: 'tahoma',
+                                        weight: 'normal',
+                                    },
+                                    padding: {
+                                        bottom: 10
+                                    }
+                                }
+                            },
+                        
+                        
+
                             parsing: {
                                 xAxisKey: 'date',
                                 yAxisKey: 'daily_total_am'
