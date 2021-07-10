@@ -13,6 +13,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button'
+
 
 const useStyles = makeStyles({
     table: {
@@ -120,11 +122,11 @@ export default function FeedingPage() {
                                     <TableCell>{penguin.name}</TableCell>
                                     <TableCell>{penguin.colony}</TableCell>
                                     <TableCell>{penguin.daily_total_am}</TableCell>
-                                    <TableCell><button onClick={() => handlePenguinCalcium(penguin)}>Calcium</button></TableCell>
-                                    <TableCell><button onClick={() => handlePenguinMultivitamin(penguin)}>Multivitamin</button></TableCell>
-                                    <TableCell><button onClick={() => handlePenguinItra(penguin)}>Tuna Meds</button></TableCell>
-                                    <TableCell><button onClick={() => handleFishIncrease(penguin)}>Increase</button></TableCell>
-                                    <TableCell><button onClick={() => handleFishDecrease(penguin)}>Decrease</button></TableCell>
+                                    <TableCell><Button variant="contained" onClick={() => handlePenguinCalcium(penguin)}>Calcium</Button></TableCell>
+                                    <TableCell><Button variant="contained" onClick={() => handlePenguinMultivitamin(penguin)}>Multivitamin</Button></TableCell>
+                                    <TableCell><Button variant="contained" onClick={() => handlePenguinItra(penguin)}>Tuna Meds</Button></TableCell>
+                                    <TableCell><Button variant="contained" color="primary" onClick={() => handleFishIncrease(penguin)}>Increase</Button></TableCell>
+                                    <TableCell><Button variant="contained" color="secondary" onClick={() => handleFishDecrease(penguin)}>Decrease</Button></TableCell>
                                 </TableRow>
                             )
                         })}

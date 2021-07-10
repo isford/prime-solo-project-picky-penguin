@@ -22,8 +22,10 @@ export default function PenguinDetails() {
         history.push('/penguinList')
     }
 
-    const handleEdit = () => {
-        console.log('Edit button clicked');
+    const handleEdit = (penguinEditReducer) => {
+        console.log('Edit penguin clicked', penguinEditReducer)
+        dispatch({ type: 'EDIT_PENGUIN', payload: penguinEditReducer })
+        history.push('/editPenguinForm')
     }
 
     const handleDelete = () => {
@@ -134,9 +136,9 @@ export default function PenguinDetails() {
                 </div>
             </div>
             
-            <Button variant="contained" color="primary" onClick={handleGoBack}>Go Back To List</Button>
-            <Button variant="contained" color="primary" onClick={handleEdit}>Edit</Button>
-            <Button variant="contained" color="secondary" onClick={handleDelete}>Delete</Button>
+            <Button variant="contained" color="primary" onClick={handleGoBack}>Back to Penguin List</Button>
+            {/* <Button variant="contained" color="primary" onClick={handleEdit}>Edit</Button>
+            <Button variant="contained" color="secondary" onClick={handleDelete}>Delete</Button> */}
         </div>
     )
 }

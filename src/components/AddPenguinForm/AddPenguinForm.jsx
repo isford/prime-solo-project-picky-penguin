@@ -75,8 +75,8 @@ export default function AddPenguinForm() {
                 onChange={(event) => setBandColor(event.target.value)}></input>
 
 
-            <Button variant="contained" color="primary" onClick={handleCancel}>Cancel</Button>
-            <Button variant="contained" color="secondary" onClick={handleAdd}>Submit</Button>
+            <Button variant="contained" color="secondary" onClick={handleCancel}>Cancel</Button>
+            <Button variant="contained" color="primary" onClick={handleAdd}>Submit</Button>
         </div>
     )
 }
