@@ -5,7 +5,6 @@ import {
   Redirect,
   Switch,
 } from 'react-router-dom';
-import '@fontsource/roboto';
 import swal from 'sweetalert';
 
 import ReactDOM from 'react-dom';
@@ -40,18 +39,19 @@ import EditColonyForm from '../EditColonyForm/EditColonyForm';
 import EditPenguinForm from '../EditPenguinForm/EditPenguinForm';
 import FeedingList from '../FeedingList/FeedingList';
 import EditFeedingForm from '../EditFeedingForm/EditFeedingForm'
+import PenguinListCopy from '../PenguinList copy/PenguinListCOPY';
 
 import './App.css';
 
 const theme = createTheme({
-  pallette: {
+  palette: {
     primary: {
-      main: '#d834eb'
+      main: '#d834eb',
     },
     secondary: {
-      main: '#0f4ed6'
-    }
-  }
+      main: '#0f4ed6',
+    },
+  },
 });
 
 function App() {
@@ -66,8 +66,9 @@ function App() {
   return (
     
 
-    <ThemeProvider theme={theme}>
+    
     <Router>
+      <ThemeProvider theme={theme}>
       <div>
         <Nav />
         <Switch>
@@ -238,6 +239,13 @@ function App() {
             <EditFeedingForm />
           </ProtectedRoute>
 
+            <ProtectedRoute
+              exact
+              path="/PenguinListCopy"
+            >
+              <PenguinListCopy />
+            </ProtectedRoute>
+
           {/* END MY NEW ROUTES */}
 
           {/* If none of the other routes matched, we will show a 404. */}
@@ -247,8 +255,9 @@ function App() {
         </Switch>
         <Footer />
       </div>
+      </ThemeProvider>
     </Router>
-    </ThemeProvider>
+    
     
   );
 }
