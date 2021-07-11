@@ -60,15 +60,14 @@ const handleTally = () => {
   return (
     <div>
 
-      <h2>Welcome, {user.username}!</h2>
-      <p>Your ID is: {user.id}</p>
-      <LogOutButton className="btn" />
+      <h1>Welcome back, {user.username}!</h1>
+      {/* <p>Your ID is: {user.id}</p> */}
 
-      <p>Start your next feed</p>
+      <h2>Start your next feed</h2>
           
-          
-
       <Button variant="contained" color="primary" onClick = {handleTally}>Let's Start Tally</Button>
+
+      <LogOutButton className="btn" />
 
     </div>
   );

@@ -68,7 +68,10 @@ Button
   border-radius: 0;
   background: none;
   font: inherit;
-  color: #444;
+  font-size: large;
+  font-weight: bold;
+  color: white;
+  
 }
 
 .btn_asLink:hover {
@@ -119,11 +122,37 @@ body{
   background-image:url("https://i.imgur.com/jsVhkfB.png");
   padding: 0em;
   width: auto;
-  height: 80%;
+  height: auto;
   
   background-position: center;
   background-repeat: no-repeat;
   background-attachment: fixed;
+
+  font-family: Georgia, 'Times New Roman', Times, serif;
   
   /* //background-size: cover; */
 }
+
+.chart{
+  background-color: rgb(239, 239, 239, 0.7);
+  width: auto;
+    height:600px
+}
+
+h1{
+  padding: 20px;
+  background:rgb(0, 200, 255, 0.8)
+}
+
+.lists-of-items{
+  text-align: center;
+}
+
+ul {
+ list-style: none;
+}
+
+.form-inputs{
+  padding-left: 100px;
+}
+

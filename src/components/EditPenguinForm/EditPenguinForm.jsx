@@ -99,7 +99,9 @@ export default function EditPenguinForm() {
             {/* <input onChange={(event) => setPenguinName(event.target.value)}
              value={penguinName} type="text" 
              placeholder={penguin.name}></input> */}
+        <div className="form-inputs">
 
+            <div>
             <TextField
                 onChange={(event) => setPenguinName(event.target.value)}
                 id="penguin-nameField"
@@ -107,7 +109,8 @@ export default function EditPenguinForm() {
                 value={penguinName}          
                 helperText="Set the New Name"
             />
-
+            </div>
+            <div>
             {/* COLONY */}
             {/* <select name="colony_name" id="colony_name"
                 onChange={(event) => setColony(event.target.value)}>
@@ -174,7 +177,8 @@ export default function EditPenguinForm() {
             {/* <input onChange={(event) => setBandColor(event.target.value)}
                 value={bandColor} type="text"
                 placeholder="New Band Color Here"></input> */}
-
+            </div>
+            <div>
             <TextField
                 onChange={(event) => setBandColor(event.target.value)}
                 id="penguin-bandColorField"
@@ -182,11 +186,13 @@ export default function EditPenguinForm() {
                 value={bandColor}
                 helperText="Set the New Band Color(s)"
             />
+            </div>
             {/* SUBMIT BUTTON */}
             <Button variant="contained" color="primary" onClick={handleSubmit}>Submit</Button>
             {/* CANCEL BUTTON */}
             <Button variant="contained" color="secondary" onClick={handleCancel}>Cancel</Button>
-
+            
+            </div>
         </div>
     )
 }

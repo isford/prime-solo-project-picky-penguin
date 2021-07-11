@@ -52,7 +52,7 @@ export default function PenguinDetails() {
                     </ul>
 
             <div>
-                <div>
+                <div className = "chart">
                     <Line
                         data={{
                             labels: ['Time'],
@@ -62,12 +62,13 @@ export default function PenguinDetails() {
                                     data: graphData,
                                     backgroundColor: '#ffa726',
                                     borderColor: '#ffa726',
-                                    tension: 0.2,
+                                    tension: 0.3,
                                 }
                             ]
                         }}
                         options={{
-                            //maintainAspectRatio: true,
+                            responsive: true,
+                            maintainAspectRatio: false,
                             plugins: {
                                 title: {
                                     display: true,
@@ -97,9 +98,6 @@ export default function PenguinDetails() {
                                     }
                                 }
                             },
-                        
-                        
-
                             parsing: {
                                 xAxisKey: 'date',
                                 yAxisKey: 'daily_total_am'

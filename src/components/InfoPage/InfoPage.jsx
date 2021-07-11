@@ -7,8 +7,7 @@ import React from 'react';
 
 function InfoPage() {
   return (
-    <div className="container">
-      <h1>About this App</h1>
+    <div className="container lists-of-items">
       <h3>This app was built using</h3>
       <ul>
         <li>Material UI</li>
