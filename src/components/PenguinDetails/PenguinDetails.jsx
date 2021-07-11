@@ -73,11 +73,11 @@ export default function PenguinDetails() {
                                 title: {
                                     display: true,
                                     text: 'Fish Consumed Over Time',
-                                    color: '#4295f5',
+                                    color: 'black',
                                     font: {
                                         size: 20,
                                         family: 'tahoma',
-                                        weight: 'normal',
+                                        weight: 'bold',
                                     },
                                     padding: {
                                         bottom: 10
@@ -86,12 +86,12 @@ export default function PenguinDetails() {
                                 },
                                 subtitle: {
                                     display: true,
-                                    text: `5 Day Average Number of Fish: ${penguinEditReducer.average} `,
-                                    color: '#79b1f2',
+                                    text: `5 Day Average: ${penguinEditReducer.average} `,
+                                    color: 'black',
                                     font: {
                                         size: 14,
                                         family: 'tahoma',
-                                        weight: 'normal',
+                                        weight: 'bold',
                                     },
                                     padding: {
                                         bottom: 10
@@ -134,7 +134,7 @@ export default function PenguinDetails() {
                 </div>
             </div>
             
-            <Button variant="contained" color="primary" onClick={handleGoBack}>Back to Penguin List</Button>
+            <Button variant="contained" className = "penguin-details" color="primary" onClick={handleGoBack}>Back to Penguin List</Button>
             {/* <Button variant="contained" color="primary" onClick={handleEdit}>Edit</Button>
             <Button variant="contained" color="secondary" onClick={handleDelete}>Delete</Button> */}
         </div>

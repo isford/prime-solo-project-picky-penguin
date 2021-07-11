@@ -1,5 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router';
+import Button from '@material-ui/core/Button'
+
 
 export default function SuccessFeedingPage() {
     const history = useHistory();
@@ -10,8 +12,8 @@ export default function SuccessFeedingPage() {
     }
     return (
         <div>
-            <p>Success Feeding Data Submitted</p>
-            <button onClick={goHome}>Home</button>
+            <h1>Success! Feeding Data Saved</h1>
+            <Button variant="contained" color="primary" onClick={goHome}>Home</Button>
         </div>
     )
 }

@@ -23,6 +23,7 @@ function InfoPage() {
       <ul>
         <li>Be able to track long term history of penguins</li>
         <li>Export to CSV</li>
+        <li>Make all tables organizable by name, date, fish average etc.</li>
       </ul>
     </div>
   );

@@ -36,6 +36,12 @@ export default function FeedingPage() {
 
 
     const [fishCount, setFishCount] = useState(0);
+    const [editCalcium, setEditCalcium] = useState(false);
+    const [editMultivitamin, setEditMultivitamin] = useState(false);
+    const [editItraconazole, setEditItraconazole] = useState(false);
+
+
+    
 
     const handleFishIncrease = (penguin) => {
         penguin.daily_total_am += 1;
@@ -71,15 +77,18 @@ export default function FeedingPage() {
 
     const handlePenguinCalcium = (penguin) => {
         penguin.calcium = !penguin.calcium;
+        setEditCalcium(penguin.calcium);
         dispatch({
             type: 'EDIT_DAILY_TOTAL',
             payload: penguin
         })
         console.log(penguin.calcium)
+        return;
     }
 
     const handlePenguinMultivitamin = (penguin) => {
         penguin.multivitamin = !penguin.multivitamin;
+        setEditMultivitamin(penguin.multivitamin);
         dispatch({
             type: 'EDIT_DAILY_TOTAL',
             payload: penguin
@@ -89,6 +98,7 @@ export default function FeedingPage() {
 
     const handlePenguinItra = (penguin) => {
         penguin.itraconazole = !penguin.itraconazole;
+        setEditItraconazole(penguin.itraconazole);
         dispatch({
             type: 'EDIT_DAILY_TOTAL',
             payload: penguin
@@ -117,14 +127,24 @@ export default function FeedingPage() {
                     </TableHead>
                     <TableBody>
                         {penguinFeedingReducer.map(penguin => {
+
                             return (
                                 <TableRow key={penguin.id}>
                                     <TableCell>{penguin.name}</TableCell>
                                     <TableCell>{penguin.colony}</TableCell>
                                     <TableCell>{penguin.daily_total_am}</TableCell>
-                                    <TableCell><Button variant="contained" onClick={() => handlePenguinCalcium(penguin)}>Calcium</Button></TableCell>
-                                    <TableCell><Button variant="contained" onClick={() => handlePenguinMultivitamin(penguin)}>Multivitamin</Button></TableCell>
-                                    <TableCell><Button variant="contained" onClick={() => handlePenguinItra(penguin)}>Tuna Meds</Button></TableCell>
+
+                                    <TableCell><Button variant="contained"
+                                    color={penguin.calcium == true ? 'secondary' : 'default'}
+                                    onClick={() => handlePenguinCalcium(penguin)}>Calcium</Button></TableCell>
+
+                                    <TableCell><Button variant="contained" 
+                                        color={penguin.multivitamin == true ? 'secondary' : 'default'}
+                                    onClick={() => handlePenguinMultivitamin(penguin)}>Multivitamin</Button></TableCell>
+
+                                    <TableCell><Button variant="contained" 
+                                        color={penguin.itraconazole == true ? 'secondary' : 'default'}
+                                    onClick={() => handlePenguinItra(penguin)}>Tuna Meds</Button></TableCell>
                                     <TableCell><Button variant="contained" color="primary" onClick={() => handleFishIncrease(penguin)}>Increase</Button></TableCell>
                                     <TableCell><Button variant="contained" color="secondary" onClick={() => handleFishDecrease(penguin)}>Decrease</Button></TableCell>
                                 </TableRow>
@@ -134,7 +154,7 @@ export default function FeedingPage() {
                 </Table>
             </TableContainer>
 
-            <button onClick = {handleFeed}>Submit Feed</button>
+            <Button variant="contained" color="primary" onClick = {handleFeed}>Submit Feed</Button>
             {/* <select name="time" id="time">
         <option value="am">AM</option>
         <option value="pm">PM</option>
