@@ -115,14 +115,14 @@ export default function FeedingPage() {
                 <Table className={classes.table} aria-label="simple table">
                     <TableHead>
                         <TableRow>
-                            <TableCell>Name</TableCell>
-                            <TableCell>Colony</TableCell>
-                            <TableCell>Fish Count</TableCell>
-                            <TableCell>Calcium</TableCell>
-                            <TableCell>Multivitamin</TableCell>
-                            <TableCell>Itraconazole</TableCell>
-                            <TableCell>Increase Fish</TableCell>
-                            <TableCell>Decrease Fish</TableCell>
+                            <TableCell className = "table-head-titles">Name</TableCell>
+                            <TableCell className="table-head-titles">Colony</TableCell>
+                            <TableCell className="table-head-titles">Fish Count</TableCell>
+                            <TableCell className="table-head-titles">Calcium</TableCell>
+                            <TableCell className="table-head-titles">Multivitamin</TableCell>
+                            <TableCell className="table-head-titles">Itraconazole</TableCell>
+                            <TableCell className="table-head-titles">Increase Fish</TableCell>
+                            <TableCell className="table-head-titles">Decrease Fish</TableCell>
                         </TableRow>
                     </TableHead>
                     <TableBody>

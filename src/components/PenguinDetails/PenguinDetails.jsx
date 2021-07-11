@@ -105,7 +105,7 @@ export default function PenguinDetails() {
                             scales: {
                                 yAxis: {
                                     min: 0,
-                                    max: 10,
+                                    //max: 10,
                                     display: true,
                                     title: {
                                         display: true,
@@ -117,6 +117,7 @@ export default function PenguinDetails() {
                                     },
                                 },
                                 xAxis: {
+                                    min: 0,
                                     display: true,
                                     title: {
                                         display: true,
