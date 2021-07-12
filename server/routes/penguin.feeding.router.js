@@ -30,14 +30,42 @@ router.get('/', (req, res) => {
     }
 });
 
+
+router.get('/graph', (req, res) => {
+    console.log('req.user is', req.user)
+    const queryText = `
+        SELECT  "penguin".name, "penguin".id,
+    "daily_data".daily_total_am,
+    "daily_data".id AS "feed_id", "daily_data".date
+    FROM "penguin"
+    JOIN "colony_manager"
+    ON "penguin".colony_id = "colony_manager".id
+    JOIN "daily_data"
+    ON "penguin".id = "daily_data".penguin_id
+    WHERE "penguin".id = $1
+    ORDER BY "date" ASC;`;
+    if (req.isAuthenticated) {
+        console.log('The id to be graphed is', req.query)
+        pool.query(queryText, [req.query.id])
+            .then(results => {
+                res.send(results.rows)
+            }).catch(error => {
+                console.log('Error in Feeding GET route', error)
+            })
+    } else {
+        res.sendStatus(403)
+    }
+});
+
 //Add new feeding to DB
 router.post('/', async (req, res) => {
     const connection = await pool.connect();
     try{
         await connection.query('BEGIN')
         for (let i = 0; i < req.body.length; i++){
-            const queryText = `INSERT INTO "daily_data" ("penguin_id","user_id", "daily_total_am", "calcium", "multivitamin", "itraconazole")
-                        VALUES ($1, $2, $3, $4, $5, $6);`;
+            const queryText = `INSERT INTO "daily_data" ("penguin_id","user_id", 
+            "daily_total_am", "calcium", "multivitamin", "itraconazole", "date")
+                        VALUES ($1, $2, $3, $4, $5, $6, LOCALTIMESTAMP);`;
 
             await connection.query(queryText, [req.body[i].penguin_id, req.user.id, req.body[i].daily_total_am, 
                 req.body[i].calcium, req.body[i].multivitamin, req.body[i].itraconazole])

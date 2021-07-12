@@ -1,4 +1,5 @@
 import React from 'react';
+import './AboutPage.css'
 
 // This is one of our simplest components
 // It doesn't have local state,
@@ -9,6 +10,7 @@ function AboutPage() {
   return (
     <div className="container">
       <div>
+        <h2>Why is this Needed?</h2>
         <p>African Penguins historically had a population 
           of 4 million birds at the advent of the 19th 
           century but due to poaching and habitat destruction 

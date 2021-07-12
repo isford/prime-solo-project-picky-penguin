@@ -11,6 +11,8 @@ import TableContainer from '@material-ui/core/TableContainer';
 import TableHead from '@material-ui/core/TableHead';
 import TableRow from '@material-ui/core/TableRow';
 import Paper from '@material-ui/core/Paper';
+import Button from '@material-ui/core/Button'
+
 
 const useStyles = makeStyles({
     table: {
@@ -82,9 +84,9 @@ export default function FeedingList() {
                                     <TableCell>{penguin.name}</TableCell>
                                     <TableCell>{penguin.colony_name}</TableCell>
                                     <TableCell>{penguin.daily_total_am}</TableCell>
-                                    <TableCell><button onClick={() => handlePenguinDetails(penguin)}>Penguin Details</button></TableCell>
-                                    <TableCell><button onClick={() => handleFeedingEdit(penguin)}>Edit</button></TableCell>
-                                    <TableCell><button onClick={() => handleFeedingDelete(penguin)}>Delete</button></TableCell>
+                                    <TableCell><Button variant="contained" color="primary" onClick={() => handlePenguinDetails(penguin)}>Penguin Details</Button></TableCell>
+                                    <TableCell><Button variant="contained" color="primary" onClick={() => handleFeedingEdit(penguin)}>Edit</Button></TableCell>
+                                    <TableCell><Button variant="contained" color="secondary" onClick={() => handleFeedingDelete(penguin)}>Delete</Button></TableCell>
                                 </TableRow>
                             )
                         })}

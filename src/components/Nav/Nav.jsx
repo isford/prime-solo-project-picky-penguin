@@ -34,9 +34,9 @@ function Nav() {
         {user.id && (
           <>
             {/* MY LINKS */}
-            <Link className="navLink" to="/coloniesPage">
+            {/* <Link className="navLink" to="/coloniesPage">
               View Colonies
-            </Link>
+            </Link> */}
 
             <Link className="navLink" to="/penguinList">
               View Penguins
