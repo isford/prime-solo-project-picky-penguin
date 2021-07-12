@@ -21,7 +21,7 @@ function LandingPage() {
         <div className="grid-col grid-col_8">
           <p>
             Use this app to track feeding of your penguin colonies, and display trends in real time. 
-            This will be better help to maintain colony health, and promote more informed decisions.
+            This will be used to help maintain colony health, and promote more informed decisions.
 
           </p>
 

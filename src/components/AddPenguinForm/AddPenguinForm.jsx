@@ -75,7 +75,7 @@ export default function AddPenguinForm() {
 
     return (
         <div>
-            <p>Add Penguin Form</p>
+            <h1>Add Penguin Form</h1>
 
             <div className="form-inputs">
 
