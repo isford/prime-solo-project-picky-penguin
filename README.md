@@ -1,4 +1,4 @@
-
+<!-- 
 # EDA Project
 This version uses React, Redux, Express, Passport, and PostgreSQL (a full list of dependencies can be found in `package.json`).
 
@@ -118,4 +118,69 @@ This code is also heavily commented. We recommend reading through the comments, 
 
 ## Update Documentation
 
-Customize this ReadMe and the code comments in this project to read less like a starter repo and more like a project. Here is an example: https://gist.github.com/PurpleBooth/109311bb0361f32d87a2
+Customize this ReadMe and the code comments in this project to read less like a starter repo and more like a project. Here is an example: https://gist.github.com/PurpleBooth/109311bb0361f32d87a2 -->
+
+
+
+![MIT LICENSE](https://img.shields.io/github/license/scottbromander/the_marketplace.svg?style=flat-square)
+![REPO SIZE](https://img.shields.io/github/repo-size/scottbromander/the_marketplace.svg?style=flat-square)
+![TOP_LANGUAGE](https://img.shields.io/github/languages/top/scottbromander/the_marketplace.svg?style=flat-square)
+![FORKS](https://img.shields.io/github/forks/scottbromander/the_marketplace.svg?style=social)
+
+# Pick Penguins Solo Project
+
+## Description
+
+_Duration: 2 Weeks_
+
+This project took approximately 2 weeks. I set out to create a useable app that can be used for zoo keepers to keep track of fish eaten by penguins.  Penguins, and their feedings can be created, updated, read, and deleted (CRUD).
+
+### Prerequisites
+
+Link to software that is required to install the app (e.g. node).
+
+- [Node.js](https://nodejs.org/en/)
+- [Visual Studio Code](https://visualstudio.microsoft.com/)
+
+## Installation
+
+1. Create a database named `picky_penguins_app`,
+2. The queries in the `database.sql` file are set up to create all the necessary tables and populate the needed data to allow the application to run correctly. The project is built on [Postgres](https://www.postgresql.org/download/), so you will need to make sure to have that installed. We recommend using Postico to run those queries as that was used to create the queries, 
+3. Open up your editor of choice and run an `npm install`
+4. Run `npm run server` in your terminal
+5. Run `npm run client` in a second terminal
+5. Navigate to `localhost:5000` to open the app and begin adding penguins, and start feeding
+
+## Usage
+How does someone use this application? Tell a user story here.
+
+1. Register
+2. Login
+3. Navigate to View Penguins
+4. Add a new penguin
+5. Click "Let's start tally" on bottom of home page
+6. Submit feed when completed
+
+
+## Built With
+
+-Javascript
+-Node.js
+-JQuery
+-PG
+-Express
+-Passport
+-React
+-Redux
+-Chart.js
+-SQL
+-MUI
+-HTML
+-CSS
+
+## License
+[MIT](https://choosealicense.com/licenses/mit/)
+
+
+## Acknowledgement
+Thanks to [Prime Digital Academy](www.primeacademy.io) who equipped and helped me to make this application a reality. (Thank your people)
