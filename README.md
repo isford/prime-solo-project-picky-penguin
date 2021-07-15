@@ -155,11 +155,26 @@ Link to software that is required to install the app (e.g. node).
 How does someone use this application? Tell a user story here.
 
 1. Register
-2. Login
-3. Navigate to View Penguins
-4. Add a new penguin
-5. Click "Let's start tally" on bottom of home page
-6. Submit feed when completed
+2. <img width="1440" alt="Register" src="https://user-images.githubusercontent.com/78660416/125850935-7b091cc1-381c-4147-a5d8-d553d0087541.png">
+
+3. Login
+4. Navigate to View Penguins
+5. <img width="1255" alt="Screen Shot 2021-07-15 at 3 08 51 PM" src="https://user-images.githubusercontent.com/78660416/125851038-bd80963a-571b-4149-be9f-0bea3acaccbd.png">
+
+6. Add a new penguin by clicking button on bottom of page
+7. <img width="1425" alt="Screen Shot 2021-07-15 at 3 10 03 PM" src="https://user-images.githubusercontent.com/78660416/125851165-97123f28-59d0-4e09-987f-4185e44ffb48.png">
+8.Fill out form and submit new bird
+9.<img width="432" alt="Screen Shot 2021-07-15 at 3 11 06 PM" src="https://user-images.githubusercontent.com/78660416/125851272-ab798b45-5178-4917-83ab-0c8e9d238ed6.png">
+
+10. Click "Let's start tally" on bottom of home page
+11. <img width="422" alt="Screen Shot 2021-07-15 at 3 11 37 PM" src="https://user-images.githubusercontent.com/78660416/125851352-8c4abccb-11f4-42c3-8dcc-8c40d06d91bc.png">
+12. Submit feed when completed
+13. <img width="1390" alt="Screen Shot 2021-07-15 at 3 12 33 PM" src="https://user-images.githubusercontent.com/78660416/125851519-35e0b595-2566-4254-92cb-924067150ac7.png">
+14. View Previous Feeding data by selecting View Feedings in Nav Bar
+15. <img width="1409" alt="Screen Shot 2021-07-15 at 3 14 02 PM" src="https://user-images.githubusercontent.com/78660416/125851626-79836a13-527d-45ed-b99e-22ccd7642c26.png">
+16. Selecting Penguin Details will show you trends over time
+17. <img width="1428" alt="Screen Shot 2021-07-15 at 3 15 13 PM" src="https://user-images.githubusercontent.com/78660416/125851742-da0948b1-265e-48a5-b94d-860e93ccb6e7.png">
+
 
 
 ## Built With
