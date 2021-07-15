@@ -2,6 +2,7 @@
 
 const colonyReducer = (state = [], action) => {
     switch(action.type){
+        //Sets colonies to an array to be mapped over
         case 'SET_COLONY':
             return action.payload;
         case 'ADD_COLONY':

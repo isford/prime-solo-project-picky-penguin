@@ -1,6 +1,7 @@
 import React from 'react'
 import { useHistory } from 'react-router';
 
+//Page seen upon successfully creating new colony
 export default function SuccessNewColonyPage() {
     const history = useHistory();
 

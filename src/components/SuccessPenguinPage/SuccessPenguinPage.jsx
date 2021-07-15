@@ -2,7 +2,7 @@ import React from 'react';
 import { useHistory } from 'react-router';
 import Button from '@material-ui/core/Button'
 
-
+//Page seen upon successfully creating new penguin
 export default function SuccessPenguinPage() {
     const history = useHistory();
 

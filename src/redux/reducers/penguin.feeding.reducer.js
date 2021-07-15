@@ -1,6 +1,7 @@
 const penguinFeedingReducer = (state = [], action) => {
     switch (action.type) {
         case 'SET_FEEDING':
+            //sets default values for beginning of tally, each penguin has its' own object of data
             return action.payload.map(penguin => {
                 return {penguin_id: penguin.id,
                     name: penguin.name,

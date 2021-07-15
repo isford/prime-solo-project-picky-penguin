@@ -1,6 +1,6 @@
 const penguinOldFeedingReducer = (state = {}, action) => {
     switch (action.type) {
-        //Data to be edited stored here
+        //Feeding to be edited stored here
         case 'EDIT_FEEDING':
             return action.payload;
         case 'EDIT_FEEDING_ON_CHANGE':

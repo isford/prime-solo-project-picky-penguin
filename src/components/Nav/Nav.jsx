@@ -16,7 +16,7 @@ function Nav() {
     loginLinkData.path = '/user';
     loginLinkData.text = 'Home';
   }
-
+  //NAV bar at top
   return (
     <div className="nav">
       <Link to="/home">

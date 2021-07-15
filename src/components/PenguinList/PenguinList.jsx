@@ -41,26 +41,25 @@ export default function PenguinList() {
                 {type: 'FETCH_AVERAGES'});
     }, []);
 
-    //console.log('THE AVERAGES ARE?', penguinFeedingReducer)
-
+    //Goes to details page
     const handlePenguinDetails = (penguin) =>{
         console.log('Penguin details button clicked', penguin)
         history.push('/penguinDetails');
         dispatch({ type: 'SET_ONE_PENGUIN', payload: penguin })
 
     }
-    
+        //Goes to add penguin penguin page
     const handleAddPenguin = () => {
         console.log('Add penguin clicked')
         history.push('/addPenguin')
     }
-
+    //Goes to edit penguin page
     const handlePenguinEdit = (penguin) => {
         console.log('Edit penguin clicked', penguin)
         dispatch({ type: 'EDIT_PENGUIN', payload: penguin })
         history.push('/editPenguinForm')
     }
-
+    //Deletes penguin from DB
     const handlePenguinDelete = (penguin) => {
         console.log('Delete button clicked', penguin)
         dispatch({

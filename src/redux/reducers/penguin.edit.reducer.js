@@ -1,5 +1,6 @@
 const penguinEditReducer = (state = {}, action) => {
     switch (action.type) {
+        //stores data from penguin to be edited
         case 'EDIT_PENGUIN':
             return action.payload;
         case 'EDIT_PENGUIN_ON_CHANGE':

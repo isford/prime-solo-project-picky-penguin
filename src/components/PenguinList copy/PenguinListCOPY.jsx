@@ -31,7 +31,7 @@ import UserPage from '../UserPage/UserPage';
 
 
 
-
+//MUI TABLE START (GOES TO LINE 210)
 function descendingComparator(a, b, orderBy) {
     if (b[orderBy] < a[orderBy]) {
         return -1;
@@ -223,7 +223,7 @@ export default function PenguinListCopy() {
                 {type: 'FETCH_AVERAGES'});
     }, []);
 
-// MATERIAL UI
+// MATERIAL UI Start (Ends at 289)
 
     const classes = useStyles();
     const [order, setOrder] = React.useState('asc');
@@ -288,24 +288,25 @@ export default function PenguinListCopy() {
 
     //MATERIAL UI END
 
+    //Navigates user to penguin details page
     const handlePenguinDetails = (row) =>{
         console.log('Penguin details button clicked', row)
         history.push('/penguinDetails');
         dispatch({ type: 'SET_ONE_PENGUIN', payload: row })
 
     }
-    
+    //Navigates user to add penguin page
     const handleAddPenguin = () => {
         console.log('Add penguin clicked')
         history.push('/addPenguin')
     }
-
+    //Navigates user to edit penguin page
     const handlePenguinEdit = (row) => {
         console.log('Edit penguin clicked', row)
         dispatch({ type: 'EDIT_PENGUIN', payload: row })
         history.push('/editPenguinForm')
     }
-
+    //Deletes penguin from db
     const handlePenguinDelete = (row) => {
         console.log('Delete button clicked', row)
         dispatch({

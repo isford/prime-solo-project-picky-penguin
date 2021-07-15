@@ -1,5 +1,6 @@
 const graphReducer = (state = [], action) => {
     switch (action.type) {
+        //sets data for graph on penguin details
         case 'SET_GRAPH':
             return action.payload;
         case 'ADD_GRAPH':

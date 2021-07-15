@@ -19,14 +19,14 @@ import graphReducer from './graph.reducer';
 const rootReducer = combineReducers({
   errors, // contains registrationMessage and loginMessage
   user, // will have an id and username if someone is logged in
-  colonyReducer,
-  editReducer,
-  penguinReducer,
-  penguinEditReducer,
-  penguinFeedingReducer,
-  editPenguinFeedingReducer,
-  penguinOldFeedingReducer,
-  graphReducer,
+  colonyReducer,//Stores colonies[]
+  editReducer,//stores colonies to be edited{}
+  penguinReducer,//stores all penguins []
+  penguinEditReducer,//Stores penguin to be edited {}
+  penguinFeedingReducer,//stores feedings []
+  editPenguinFeedingReducer,//can be removed
+  penguinOldFeedingReducer,//Stores feeding to be edited
+  graphReducer,//stores data to used on details page for chart.js
 });
 
 export default rootReducer;

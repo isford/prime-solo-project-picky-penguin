@@ -22,17 +22,18 @@ export default function PenguinDetails() {
         history.push('/penguinList')
     }
 
-    const handleEdit = (penguinEditReducer) => {
-        console.log('Edit penguin clicked', penguinEditReducer)
-        dispatch({ type: 'EDIT_PENGUIN', payload: penguinEditReducer })
-        history.push('/editPenguinForm')
-    }
+    // const handleEdit = (penguinEditReducer) => {
+    //     console.log('Edit penguin clicked', penguinEditReducer)
+    //     dispatch({ type: 'EDIT_PENGUIN', payload: penguinEditReducer })
+    //     history.push('/editPenguinForm')
+    // }
 
-    const handleDelete = () => {
-        console.log('Delete clicked');
-        history.push('/deletePenguin');
-    }
+    // const handleDelete = () => {
+    //     console.log('Delete clicked');
+    //     history.push('/deletePenguin');
+    // }
 
+    //Gets penguin details data from reducer on page load
     useEffect(() => {
         dispatch({ type: 'FETCH_GRAPHS', payload: penguinEditReducer },
             { type: 'FETCH_AVERAGES' });
