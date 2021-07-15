@@ -135,6 +135,11 @@ _Duration: 2 Weeks_
 
 This project took approximately 2 weeks. I set out to create a useable app that can be used for zoo keepers to keep track of fish eaten by penguins.  Penguins, and their feedings can be created, updated, read, and deleted (CRUD).
 
+## Live Demo of the App
+Please follow this link to see the App live as I present it!
+https://www.facebook.com/primedigitalacademy/videos/539936834112611/?t=2484
+
+
 ### Prerequisites
 
 Link to software that is required to install the app (e.g. node).
