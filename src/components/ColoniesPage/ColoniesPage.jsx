@@ -33,21 +33,25 @@ export default function ColoniesPage() {
     const classes = useStyles();
     //end material ui
 
+    //Loads colonies from reducer to display on DOM
     useEffect(() => {
         dispatch({ type: 'FETCH_COLONIES' });
     }, []);
 
+    //Pushes user to add colony form
     const handleAddColony = () =>{
         console.log('Add colony button clicked')
         history.push('/addColony')
     }
 
+    //Deletes colony via dispatch via colony saga
     const handleDelete = (colony) =>{
         console.log('Colony to be deleted', colony)
         dispatch({type: 'REMOVE_COLONIES',
                 payload: colony})
     }
-
+    //Allows user to edit colony name by saving as object in
+    //edit.reducer.js
     const handleEdit = (colony) => {
         console.log('Colony to be updated is', colony);
         dispatch({type:'EDIT_COLONY', payload: colony})

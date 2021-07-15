@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import { useHistory } from 'react-router';
 import { useDispatch, useSelector } from 'react-redux';
 
-//material UI STUFF
+//End Mui
 import { makeStyles } from '@material-ui/core/styles';
 import Table from '@material-ui/core/Table';
 import TableBody from '@material-ui/core/TableBody';
@@ -20,7 +20,7 @@ const useStyles = makeStyles({
     },
 });
 
-//END MATERIAL UI STUFF
+//END Mui
 
 export default function FeedingList() {
     const history = useHistory();
@@ -30,29 +30,28 @@ export default function FeedingList() {
     const classes = useStyles();
     //end material ui
 
-    //const penguinReducer = useSelector(store => store.penguinReducer);
-    //const userReducer = useSelector(store => store.userReducer);
     const penguinFeedingReducer = useSelector(store => store.penguinFeedingReducer);
-
+    //Fetches all feedings to be displayed on DOM
     useEffect(() => {
         dispatch({ type: 'FETCH_FEEDINGS' });
     }, []);
 
-    console.log('The feedings are', penguinFeedingReducer)
-
+    //console.log('The feedings are', penguinFeedingReducer)
+    //Sends user to penguin details page and
+    //store penguin details in penguin.edit.reducer.js
     const handlePenguinDetails = (penguin) => {
         console.log('Penguin details button clicked', penguin)
         history.push('/penguinDetails');
         dispatch({ type: 'SET_ONE_PENGUIN', payload: penguin })
 
     }
-
+    //Sends feeding data to edit.old.feeding.reducer.js
     const handleFeedingEdit = (penguin) => {
         console.log('Edit Feeding clicked', penguin)
         dispatch({ type: 'EDIT_FEEDING', payload: penguin })
         history.push('/editFeedingForm')
     }
-
+    //Deletes penguin
     const handleFeedingDelete = (penguin) => {
         console.log('Delete button clicked', penguin)
         dispatch({

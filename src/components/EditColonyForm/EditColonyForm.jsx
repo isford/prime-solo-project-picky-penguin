@@ -9,17 +9,19 @@ import Button from '@material-ui/core/Button'
 export default function EditColonyForm() {
     const dispatch = useDispatch();
     const history = useHistory();
-
+    //Retrieves colony from edit.reducer.js
     const name = useSelector(store => store.editReducer);
-    console.log(name);
+    //console.log(name);
 
+    //Dispatches each change to reducer
     const handleEdit = (event) => {
         dispatch({type: 'EDIT_ON_CHANGE',
                         payload: {property: 'name', value: event.target.value}})
     }
-
+    //Handles submission of the new colonies name
     const handleSubmit = (event) => {
         event.preventDefault();
+        //Put request made on client side
         axios.put(`/api/colony/${name.id}`, name)
         .then(response => {
             dispatch({type: 'CLEAR_EDIT'});

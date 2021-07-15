@@ -9,8 +9,11 @@ const passport = require('./strategies/user.strategy');
 
 // Route includes
 const userRouter = require('./routes/user.router');
+//Handles all colony related Data
 const colonyRouter = require('./routes/colony.router');
+//Handles all penguin related Data
 const penguinRouter = require('./routes/penguin.router');
+//Handles all feeding related Data
 const penguinFeedingRouter = require('./routes/penguin.feeding.router');
 
 // Body parser middleware

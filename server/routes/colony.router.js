@@ -4,15 +4,13 @@ const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
 
-//GET ALL COLONIES FROM DB
+//Get all Colonies from DB
 router.get('/', (req, res) => {
     console.log('req.user is', req.user)
     const queryText = `SELECT 
     "colony_manager".name,
     "colony_manager".id,    
-    COUNT(penguin.id)
-
-    
+    COUNT(penguin.id) 
     FROM "colony_manager"
 	JOIN "penguin"
 	ON "colony_manager".id = "penguin".colony_id

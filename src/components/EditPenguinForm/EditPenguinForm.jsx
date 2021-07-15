@@ -3,7 +3,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import axios from 'axios';
 import { useHistory } from 'react-router';
 
-//Material UI
+//Mui Start
 import { makeStyles } from '@material-ui/core/styles';
 import InputLabel from '@material-ui/core/InputLabel';
 import FormHelperText from '@material-ui/core/FormHelperText';
@@ -29,17 +29,20 @@ const useStyles = makeStyles((theme) => ({
     },
     
 }));
-//END MUI
+//Mui End
 
 export default function EditPenguinForm() {
     const dispatch = useDispatch();
     const history = useHistory();
 
+    //State variables to store data locally before making 
+    //Put request
     const [penguinName, setPenguinName] = useState('');
     const [colony, setColony] = useState('');
     const [sex, setSex] = useState(0);
     const [bandColor, setBandColor] = useState('');
 
+    //Fetches colonies from reducer
     useEffect(() => {
         dispatch({ type: 'FETCH_COLONIES' });
     }, []);
@@ -64,24 +67,29 @@ export default function EditPenguinForm() {
         history.push('/penguinList')
     }
     //MUI END
-
+    
+    //Selects penguin to be edited in penguinEditReducer.js
     const penguin = useSelector(store => store.penguinEditReducer);
+    //Selects colonies user can select from
     const colonyReducer = useSelector(store => store.colonyReducer);
 
     console.log('The penguin to be edited is',penguin);
-
+    //Penguin object to be sent to DB in put request
     const updatedPenguin = {
         name: penguinName,
         colony_id: colony,
         sex: sex,
         band_color: bandColor
     }
-
+    //
     const handleSubmit = (event) => {
         event.preventDefault();
+        //Updates penguin info in DB
         axios.put(`/api/penguin/${penguin.id}`, updatedPenguin)
         .then(response => {
+            //Clears edit penguin reducer
             dispatch({type: 'CLEAR_PENGUIN_EDIT'});
+            //Sends user to penguin list
             history.push('/penguinList')
         }).catch(error => {
             console.log(error)
@@ -96,9 +104,6 @@ export default function EditPenguinForm() {
         <div>
            <h1>Edit Penguin Form</h1>
            {/* NAME */}
-            {/* <input onChange={(event) => setPenguinName(event.target.value)}
-             value={penguinName} type="text" 
-             placeholder={penguin.name}></input> */}
         <div className="form-inputs">
 
             <div>
@@ -112,17 +117,6 @@ export default function EditPenguinForm() {
             </div>
             <div>
             {/* COLONY */}
-            {/* <select name="colony_name" id="colony_name"
-                onChange={(event) => setColony(event.target.value)}>
-                {colonyReducer.map(colony => {
-                    console.log(colony)
-                    return (
-                        
-                        <option value={colony.id} key={colony.id}>{colony.name}</option>
-                    )
-                })}
-            </select> */}
-
             <FormControl className={classes.formControl}>
                 <InputLabel shrink htmlFor="age-native-label-placeholder">
                     Colony
@@ -148,12 +142,6 @@ export default function EditPenguinForm() {
             </FormControl>
 
             {/* SEX */}
-            {/* <select onChange={(event) => setSex(event.target.value)} name="sex" id="sex" value={sex}>
-                <option value=''>Sex</option>
-                <option value='female'>Female</option>
-                <option value='male'>Male</option>
-            </select> */}
-
             <FormControl className={classes.formControl}>
                 <InputLabel shrink htmlFor="age-native-label-placeholder">
                     Sex
@@ -174,9 +162,6 @@ export default function EditPenguinForm() {
             </FormControl>
 
             {/* BAND COLOR */}
-            {/* <input onChange={(event) => setBandColor(event.target.value)}
-                value={bandColor} type="text"
-                placeholder="New Band Color Here"></input> */}
             </div>
             <div>
             <TextField

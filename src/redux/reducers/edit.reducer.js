@@ -1,5 +1,6 @@
 const editReducer = (state = {}, action) => {
     switch (action.type) {
+        //Sets colony as object to be edited
         case 'EDIT_COLONY':
             return action.payload;
         case 'EDIT_ON_CHANGE':

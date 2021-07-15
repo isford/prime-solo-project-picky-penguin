@@ -1,17 +1,6 @@
 import axios from 'axios';
 import { put, takeEvery } from 'redux-saga/effects';
 
-
-// function* fetchUpdatedFeedings(action) {
-//     try {
-//         //const response = yield axios.get('/api/feeding')
-//         yield put({ type: "EDIT_DAILY_TOTAL", payload: action })
-//         yield put ({type: 'UPDATE_FEED'})
-//     } catch (error) {
-//         console.log('Failed GET request in fetch feeding', error)
-//     }
-// }
-
 function* addFeeding(action) {
     try {
         yield axios.post('/api/feeding', action.payload);

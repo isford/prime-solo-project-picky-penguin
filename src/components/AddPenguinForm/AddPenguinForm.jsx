@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useHistory } from 'react-router';
-import { useDispatch,useSelector } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 
 //Material UI
 import { makeStyles } from '@material-ui/core/styles';
@@ -19,13 +19,14 @@ export default function AddPenguinForm() {
     const dispatch = useDispatch();
 
     const [penguinName, setPenguinName] = useState('');
-    const [colony, setColony] = useState ('');
+    const [colony, setColony] = useState('');
     const [sex, setSex] = useState(0);
-    const [bandColor, setBandColor] = useState ('');
+    const [bandColor, setBandColor] = useState('');
     //const [nesting, setNesting] = useState (false);
     //const [mating, setMating] = useState (false);
     //const [notes, setNotes] = useState ('');
 
+    //Mui Start
     const useStyles = makeStyles((theme) => ({
         root: {
             '& .MuiTextField-root': {
@@ -42,19 +43,27 @@ export default function AddPenguinForm() {
         },
 
     }));
+    //Mui End
 
+    //Loads all colonies on page load to map through
+    //reducer on Form
     useEffect(() => {
         dispatch({ type: 'FETCH_COLONIES' });
     }, []);
-
+    //Selector to have access to colony data in DB
     const colonyReducer = useSelector(store => store.colonyReducer);
+    //Mui Start
     const classes = useStyles();
+    //Mui End
 
+    //Cancel Start
     const handleCancel = () => {
         console.log('Cancel button clicked')
         history.push('/penguinList')
-    }
+        //sends user back to Penguin List Page
+    }//Cancel End
 
+    //Stores all new penguin data in an object to send
     const penguinToAdd = {
         name: penguinName,
         colony_id: colony,
@@ -62,16 +71,22 @@ export default function AddPenguinForm() {
         band_color: bandColor
     }
 
-    const handleAdd = () =>{
+    //Adds penguin to DB
+    const handleAdd = () => {
         console.log('Submit button clicked', penguinToAdd)
+        //Sends user to success page
         history.push('/addPenguinSuccess')
-        dispatch({type: 'POST_PENGUIN',
-                payload: penguinToAdd})
+        //Dispatches to penguin.saga.js
+        dispatch({
+            type: 'POST_PENGUIN',
+            payload: penguinToAdd
+        })
+        //Sets all values back to null
         setPenguinName('');
         setColony('');
         setSex(0);
         setBandColor('');
-    }
+    }//End handle add
 
     return (
         <div>
@@ -79,40 +94,17 @@ export default function AddPenguinForm() {
 
             <div className="form-inputs">
 
-            {/* <input type="text" placeholder = "Name" value = {penguinName}
-                onChange={(event) => setPenguinName(event.target.value)}></input> */}
-
                 <div>
                     <TextField
                         onChange={(event) => setPenguinName(event.target.value)}
                         id="penguin-nameField"
-                        //label={penguin.name}
                         value={penguinName}
                         helperText="Set the New Name"
                     />
                 </div>
 
-            {/* <select name="colony_name" id="colony_name"
-                onChange={(event) => setColony(event.target.value)}>
-                {colonyReducer.map(colony => {
-                    return(
-                    <option value={colony.id} key={colony.id}>{colony.name}</option>
-                    )
-                })}
-            </select> */}
-
                 <div>
                     {/* COLONY */}
-                    {/* <select name="colony_name" id="colony_name"
-                onChange={(event) => setColony(event.target.value)}>
-                {colonyReducer.map(colony => {
-                    console.log(colony)
-                    return (
-                        
-                        <option value={colony.id} key={colony.id}>{colony.name}</option>
-                    )
-                })}
-            </select> */}
 
                     <FormControl className={classes.formControl}>
                         <InputLabel shrink htmlFor="age-native-label-placeholder">
@@ -138,14 +130,6 @@ export default function AddPenguinForm() {
                         <FormHelperText>Select the Colony</FormHelperText>
                     </FormControl>
 
-            
-
-            {/* <select onChange={(event) => setSex(event.target.value)} name="sex" id="sex" value={sex}>
-                <option value='0'>Sex</option>
-                <option value='female'>Female</option>
-                <option value='male'>Male</option>
-            </select> */}
-
                     <FormControl className={classes.formControl}>
                         <InputLabel shrink htmlFor="age-native-label-placeholder">
                             Sex
@@ -165,9 +149,7 @@ export default function AddPenguinForm() {
                         <FormHelperText>Select the Sex</FormHelperText>
                     </FormControl>
 
-</div>
-            {/* <input type="text" placeholder="Band Color" value = {bandColor}
-                onChange={(event) => setBandColor(event.target.value)}></input> */}
+                </div>
                 <div>
                     <TextField
                         onChange={(event) => setBandColor(event.target.value)}
@@ -178,8 +160,8 @@ export default function AddPenguinForm() {
                     />
                 </div>
 
-            <Button variant="contained" color="secondary" onClick={handleCancel}>Cancel</Button>
-            <Button variant="contained" color="primary" onClick={handleAdd}>Submit</Button>
+                <Button variant="contained" color="secondary" onClick={handleCancel}>Cancel</Button>
+                <Button variant="contained" color="primary" onClick={handleAdd}>Submit</Button>
             </div>
         </div>
     )

@@ -30,7 +30,7 @@ router.get('/', (req, res) => {
     }
 });
 
-
+//Get Data for graphs on /penguindetails
 router.get('/graph', (req, res) => {
     console.log('req.user is', req.user)
     const queryText = `

@@ -18,8 +18,8 @@ export default function* rootSaga() {
     loginSaga(), // login saga is now registered
     registrationSaga(),
     userSaga(),
-    colonySaga(),
-    penguinSaga(),
-    penguinFeedingSaga(),
+    colonySaga(),//Handles colony dispatches
+    penguinSaga(),//Handles penguin dispatches
+    penguinFeedingSaga(),//Handles feeding dispatches
   ]);
 }

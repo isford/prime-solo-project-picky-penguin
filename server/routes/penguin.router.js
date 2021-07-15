@@ -4,7 +4,7 @@ const router = express.Router();
 const { rejectUnauthenticated } = require('../modules/authentication-middleware');
 
 
-//GET ALL Penguins FROM DB
+//GET ALL Penguins from DB
 router.get('/', (req, res) => {
     console.log('req.user is in penguin GET', req.user)
     const queryText = `
@@ -37,7 +37,7 @@ router.get('/', (req, res) => {
     }
 });
 
-
+//Add new penguin to DB
 router.post('/', async (req, res) => {
     const connection = await pool.connect();
     try {
@@ -80,6 +80,7 @@ router.post('/', async (req, res) => {
     }
 });
 
+//Delete penguin from DB
 router.delete('/:id', async (req, res) => {
     const connection = await pool.connect();
     try {
@@ -106,23 +107,6 @@ router.delete('/:id', async (req, res) => {
         connection.release();
     }
 });
-
-// //Delete Penguin in DB
-// router.delete('/:id', rejectUnauthenticated, async (req, res) => {
-//     console.log(`You've arrived at /api/penguin DELETE`, req.params)
-//     console.log(`User deleting item is`, req.user)
-//     const connection = await pool.connect();
-
-//     //const queryDelete = `DELETE FROM "daily_data" WHERE "penguin_id"=$1;`
-
-//     const queryText = `DELETE FROM "penguin" WHERE "id"=$1;`;
-//     pool.query(queryText, [req.params.id])
-//         .then(() => res.sendStatus(200))
-//         .catch((err) => {
-//             console.log('Error in delete', err)
-//             res.sendStatus(500)
-//         });
-// });
 
 //Update Penguin in DB
 router.put('/:id', rejectUnauthenticated, (req, res) => {

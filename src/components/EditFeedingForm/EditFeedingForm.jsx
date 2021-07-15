@@ -13,7 +13,7 @@ import NativeSelect from '@material-ui/core/NativeSelect';
 import TextField from '@material-ui/core/TextField';
 import Button from '@material-ui/core/Button'
 
-
+//Start MUI
 const useStyles = makeStyles((theme) => ({
     root: {
         '& .MuiTextField-root': {
@@ -30,13 +30,15 @@ const useStyles = makeStyles((theme) => ({
     },
 
 }));
-//END MUI
+//End MUI
 
 
 export default function EditFeedingForm() {
     const dispatch = useDispatch();
     const history = useHistory();
 
+    //State variables to store new feed data locally before
+    //put request on submission
     const [penguinFish, setPenguinFish] = useState(0);
     const [itraconazole, setItraconazole] = useState('');
     const [calcium, setCalcium] = useState('');
@@ -58,16 +60,11 @@ export default function EditFeedingForm() {
     };
 
     //MUI END
-
-    // useEffect(() => {
-    //     dispatch({ type: 'FETCH_COLONIES' });
-    // }, []);
-
+    //Selects feeding from penguinOldFeedingReducer.js
     const feeding = useSelector(store => store.penguinOldFeedingReducer);
-    //const colonyReducer = useSelector(store => store.colonyReducer);
 
     console.log('The feeding to be edited is', feeding);
-
+    //Object to save and send over to DB
     const updatedFeeding = {
         fish: penguinFish,
         calcium: calcium,
@@ -75,6 +72,7 @@ export default function EditFeedingForm() {
         itraconazole: itraconazole
     }
 
+    //Submits new feed data and a PUT request
     const handleSubmit = (event) => {
         event.preventDefault();
         axios.put(`/api/feeding/${feeding.feed_id}`, updatedFeeding)
@@ -85,7 +83,7 @@ export default function EditFeedingForm() {
                 console.log(error)
             })
     }
-
+    //Sends user back penguin list
     const handleCancel = () => {
         console.log('Cancel button clicked')
         history.push('/penguinList')
@@ -95,9 +93,6 @@ export default function EditFeedingForm() {
         <div>
             <h1>Edit Feeding Form</h1>
             {/* NUMBER OF FISH */}
-            {/* <input onChange={(event) => setPenguinFish(event.target.value)}
-                value={penguinFish} type="number"
-                placeholder={feeding.daily_data_am}></input> */}
             <div className="form-inputs">
                 <TextField
                     onChange={(event) => setPenguinFish(event.target.value)}
@@ -107,13 +102,7 @@ export default function EditFeedingForm() {
                     value={penguinFish}
                     helperText="Set the New Fish Count"
                 />
-
                 {/* CALCIUM */}
-                {/* <select onChange={(event) => setCalcium(event.target.value)} value={calcium}>
-                <option value='0'>Calcium</option>
-                <option value='true'>Eaten</option>
-                <option value='false'>Not Eaten</option>
-            </select> */}
                 <div>
                     <FormControl className={classes.formControl}>
                         <InputLabel shrink htmlFor="calcium-native-label-placeholder">
@@ -133,15 +122,7 @@ export default function EditFeedingForm() {
                         </NativeSelect>
                         <FormHelperText>Set Calcium Consumption</FormHelperText>
                     </FormControl>
-
-
                     {/* MULTIVITAMIN */}
-                    {/* <select onChange={(event) => setMultivitamin(event.target.value)} name="sex" id="sex" value={multivitamin}>
-                <option value='0'>Multivitamin</option>
-                <option value='true'>Eaten</option>
-                <option value='false'>Not Eaten</option>
-            </select> */}
-
                     <FormControl className={classes.formControl}>
                         <InputLabel shrink htmlFor="multivitamin-native-label-placeholder">
                             Multivitamin
@@ -162,12 +143,6 @@ export default function EditFeedingForm() {
                     </FormControl>
                 </div>
                 {/* ITRACONAZOLE */}
-                {/* <select onChange={(event) => setItraconazole(event.target.value)} name="sex" id="sex" value={itraconazole}>
-                <option value='0'>Itraconazole</option>
-                <option value='true'>Eaten</option>
-                <option value='false'>Not Eaten</option>
-            </select> */}
-
                 <FormControl className={classes.formControl}>
                     <InputLabel shrink htmlFor="itraconazole-native-label-placeholder">
                         Itraconazole
